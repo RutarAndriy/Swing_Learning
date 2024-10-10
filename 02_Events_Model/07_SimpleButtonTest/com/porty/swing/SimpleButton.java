@@ -1,5 +1,5 @@
 // com/porty/swing/SimpleButton.java
-// Пример компонента со своим собственным событием
+// Приклад компонента зі своєю власною подією
 package com.porty.swing;
 
 import javax.swing.*;
@@ -10,36 +10,36 @@ import java.util.*;
 import com.porty.swing.event.*;
 
 public class SimpleButton extends JComponent {
-  // список слушателей
+  // список прослуховувачів
   private ArrayList<ButtonPressListener>
       listenerList = new ArrayList<ButtonPressListener>();
-  // один объект-событие на все случаи жизни
+  // один об'єкт-подія на всі випадки життя
   private ButtonPressEvent event =
       new ButtonPressEvent(this);
 
-  // конструктор - присоединяет к кнопке слушателя
-  // событий от мыши
+  // конструктор - приєднює до кнопки прослуховувача
+  // подій від миші
   public SimpleButton() {
     addMouseListener(new PressL());
-    // зададим размеры компонента
+    // задамо розмір компонента
     setPreferredSize(new Dimension(100, 100));
   }
 
-  // присоединяет слушателя нажатия кнопки
+  // приєднує прослуховувача натискання кнопки
   public void addButtonPressListener(
       ButtonPressListener l) {
     listenerList.add(l);
   }
 
-  // отсоединяет слушателя нажатия кнопки
+  // відє'днує прослуховувача натискання кнопки
   public void removeButtonPressListener(
       ButtonPressListener l) {
     listenerList.remove(l);
   }
 
-  // прорисовывает кнопку
+  // промальовує кнопку
   public void paintComponent(Graphics g) {
-    // зальем зеленым цветом
+    // заливаємо зеленим кольором
     g.setColor(Color.green);
     g.fillRect(0, 0, getWidth(), getHeight());
     // рамка
@@ -47,7 +47,7 @@ public class SimpleButton extends JComponent {
     g.draw3DRect(0, 0, getWidth(), getHeight(), true);
   }
 
-  // оповещает слушателей о событии
+  // сповіщаємо прослуховувачів про подію
   protected void fireButtonPressed() {
     for (ButtonPressListener l :
         listenerList) {
@@ -55,11 +55,11 @@ public class SimpleButton extends JComponent {
     }
   }
 
-  // внутренний класс, следит за нажатиями мыши
+  // внутрішній клас, слідкує за натисканням миші
   class PressL extends MouseAdapter {
-    // нажатие мыши в области кнопки
+    // натискання миші в області кнопки
     public void mousePressed(MouseEvent e) {
-      // оповестим слушателей
+      // сповіщаємо прослуховувачів
       fireButtonPressed();
     }
   }
