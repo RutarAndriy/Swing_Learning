@@ -1,5 +1,5 @@
 // AnonymousClassEvents.java
-// Анонимные классы для обработки событий
+// Анонімні класи для обробки подій
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -8,24 +8,24 @@ import java.awt.*;
 public class AnonymousClassEvents extends JFrame {
   public AnonymousClassEvents() {
     super("AnonymousClassEvents");
-    // анонимный класс присоединяется прямо на месте
-    // выход из приложения при закрытии окна
+    // анонімний клас приєднується прямо на місці
+    // вихід із програми при закритті вікна
     addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
         System.exit(0);
       }
     });
-    // добавим кнопку
-    JButton button = new JButton("Нажмите меня");
+    // додаємо кнопку
+    JButton button = new JButton("Натисни мене");
     getContentPane().add(button);
-    // слушатель создается в методе
+    // прослуховувач створюється в методі
     button.addActionListener(getButtonL());
-    // выводим окно на экран
+    // виводимо вікно на екран
     pack();
     setVisible(true);
   }
 
-  // этот метод создает слушателя для кнопки
+  // цей метод створює прослуховувача для кнопки
   public ActionListener getButtonL() {
     return new ActionListener() {
       public void actionPerformed(ActionEvent e) {
