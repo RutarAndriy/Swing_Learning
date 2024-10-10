@@ -1,5 +1,5 @@
 // SimpleButtonTest.java
-// Обработка события нового компонента
+// Обробка події нового компонента
 
 import javax.swing.*;
 
@@ -12,22 +12,22 @@ public class SimpleButtonTest extends JFrame {
   public SimpleButtonTest() {
     super("SimpleButtonTest");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем кнопку и присоединим слушателей
+    // створюємо кнопку і приєднуємо прослуховувачів
     SimpleButton button = new SimpleButton();
-    // анонимный класс
+    // анонімний клас
     button.addButtonPressListener(
         new ButtonPressListener() {
           public void buttonPressed(ButtonPressEvent e) {
             System.out.println("1!");
           }
         });
-    // внутренний класс
+    // внутрішній клас
     button.addButtonPressListener(new ButtonL());
-    // добавим кнопку в окно
+    // додаємо кнопку у вікно
     JPanel contents = new JPanel();
     contents.add(button);
     setContentPane(contents);
-    // выведем окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }

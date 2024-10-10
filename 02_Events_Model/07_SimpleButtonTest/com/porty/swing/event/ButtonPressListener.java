@@ -1,10 +1,10 @@
 // com/porty/swing/event/ButtonPressListener.java
-// Интерфейс слушателя события нажатия кнопки
+// Інтерфейс прослуховувача події натискання кнопки
 package com.porty.swing.event;
 
 import java.util.EventListener;
 
 public interface ButtonPressListener extends EventListener {
-  // данный метод будет вызываться при нажатии кнопки
+  // даний метод буде викликатися при натисканні кнопки
   void buttonPressed(ButtonPressEvent e);
 }
