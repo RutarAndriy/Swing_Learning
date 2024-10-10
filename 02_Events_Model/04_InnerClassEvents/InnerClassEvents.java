@@ -1,5 +1,5 @@
 // InnerClassEvents.java
-// Внутренние классы для обработки событий
+// Внутрішні класи для обробки подій
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,22 +11,22 @@ public class InnerClassEvents extends JFrame {
 
   public InnerClassEvents() {
     super("InnerClassEvents");
-    // при закрытии окна - выход
+    // при закритті вікна - вихід
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // последовательное расположение
+    // послідовне розміщення
     setLayout(new FlowLayout());
-    // добавим текстовое поле
+    // додаємо текстове поле
     add(text = new JTextField(10));
-    // и кнопку
-    add(button = new JButton("Нажмите"));
-    // будем следить за нажатиями кнопки
+    // і кнопку
+    add(button = new JButton("Натисніть"));
+    // будемо слідкувати за натисканням кнопки
     button.addActionListener(new ButtonL());
-    // выводим окно на экран
+    // виводимо вікно на екран
     pack();
     setVisible(true);
   }
 
-  // класс - слушатель нажатия на кнопку
+  // клас-прослуховувач натискання на кнопку
   class ButtonL implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       System.out.println(text.getText());
