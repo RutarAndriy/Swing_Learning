@@ -16,7 +16,7 @@ public class LowLevelEvents extends JFrame {
     // додаємо текстове поле
     add(new JScrollPane(out = new JTextArea()));
     // і кнопку
-    JButton button = new JButton("Источник событий");
+    JButton button = new JButton("Джерело подій");
     add(button, "South");
     // реєструємо нашого прослуховувача
     OurListener ol = new OurListener();
