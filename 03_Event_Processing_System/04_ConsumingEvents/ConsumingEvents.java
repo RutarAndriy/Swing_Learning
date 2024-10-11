@@ -1,5 +1,5 @@
 // ConsumingEvents.java
-// Поглощение событий
+// Поглинання подій
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,16 +8,16 @@ import javax.swing.*;
 public class ConsumingEvents extends JFrame {
   public ConsumingEvents() {
     super("ConsumingEvents");
-    // при закрытии окна - выход
+    // при закритті вікна - вихід
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // слушатель, поглощающий печатание символов
+    // прослуховувач, поглинаючий друкування символів
     KeyListener kl = new KeyAdapter() {
       @Override
       public void keyTyped(KeyEvent e) {
         e.consume();
       }
     };
-    // добавляем текстовые поля
+    // додаємо текстові поля
     setLayout(new FlowLayout());
     JTextField swingField = new JTextField(10);
     swingField.addKeyListener(kl);
@@ -26,16 +26,16 @@ public class ConsumingEvents extends JFrame {
     add(awtField);
     awtField.addKeyListener(kl);
     // кнопка
-    JButton button = new JButton("Жмите!");
+    JButton button = new JButton("Натисніть!");
     add(button);
-    // слушатель пытается поглотить события от мыши
+    // прослуховувач намагається поглинути подію від миші
     button.addMouseListener(new MouseAdapter() {
       @Override
       public void mousePressed(MouseEvent e) {
         e.consume();
       }
     });
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
