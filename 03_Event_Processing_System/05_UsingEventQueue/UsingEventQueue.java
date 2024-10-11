@@ -1,5 +1,5 @@
 // UsingEventQueue.java
-// Использование очереди событий
+// Використання черги подій
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,22 +8,22 @@ import javax.swing.*;
 public class UsingEventQueue extends JFrame {
   public UsingEventQueue() {
     super("UsingEventQueue");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // кнопка и ее слушатель
-    JButton button = new JButton("Генерировать событие");
+    // кнопка та її прослуховувач
+    JButton button = new JButton("Генерувати подію");
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // генерируем событие закрытия окна
+        // генеруємо подію закривання вікна
         getToolkit().getSystemEventQueue().postEvent(
             new WindowEvent(UsingEventQueue.this,
                 WindowEvent.WINDOW_CLOSING));
       }
     });
-    // добавим кнопку в панель содержимого
+    // додаємо кнопку в панель вмісту
     setLayout(new FlowLayout());
     add(button);
-    // выведем окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
