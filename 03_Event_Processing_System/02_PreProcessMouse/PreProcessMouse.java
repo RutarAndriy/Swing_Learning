@@ -1,5 +1,5 @@
 // PreProcessMouse.java
-// Перехват событий от мыши до их поступления к слушателям
+// Перехоплення подій від миші перед їх поступленням до прослуховувачів
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -7,26 +7,26 @@ import java.awt.event.*;
 public class PreProcessMouse extends JFrame {
   PreProcessMouse() {
     super("PreProcessMouse");
-    // при закрытии окна - выход
+    // при закриванні вікна - вихід
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавим слушателя событий от мыши
+    // додаємо прослуховувач подій від миші
     addMouseListener(new MouseL());
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(200, 200);
     setVisible(true);
   }
 
-  // перехват событий от мыши
+  // перехоплення подій від миші
   public void processMouseEvent(MouseEvent e) {
     if (e.getClickCount() == 1) {
-      // один щелчок не пропускаем к слушателям
+      // одне клацання не пропускаємо до прослуховувача
       return;
     }
-    // иначе вызываем метод базового класса
+    // інакше викликаємо метод базового класу
     else super.processMouseEvent(e);
   }
 
-  // в этом слушателе будем следить за щелчками мыши
+  // у цьому прослуховувачі будемо слідкувати за клацанням миші
   class MouseL extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
