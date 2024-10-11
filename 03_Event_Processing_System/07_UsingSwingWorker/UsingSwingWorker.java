@@ -1,5 +1,5 @@
 // UsingSwingWorker.java
-// Класс SwingWorker для отзывчивости интерфейса
+// Клас SwingWorker для відкликуваності інтерфейсу
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,18 +11,18 @@ public class UsingSwingWorker extends JFrame {
 
   public UsingSwingWorker() {
     super("UsingSwingWorker");
-    // при закрытии окна - выход
+    // при закритті вікна - вихід
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавим кнопку со слушателем
-    button = new JButton("Выполнить сложную работу");
+    // добавимо кнопку із прослуховувачем
+    button = new JButton("Виконати важку роботу");
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // запустим отдельную долгую работу
+        // запустипо окрему довгу роботу
         new ComplexJob().execute();
-        button.setText("Подождите...");
+        button.setText("Почекайте...");
       }
     });
-    // настроим панель содержимого и выведем окно на экран
+    // налаштуємо панель вмісту та виведемо вікно на екран
     setLayout(new FlowLayout());
     add(new JTextField(20));
     add(button);
@@ -30,24 +30,24 @@ public class UsingSwingWorker extends JFrame {
     setVisible(true);
   }
 
-  // класс, выполняющий "сложную работу"
+  // клас, виконуючий "важку роботу"
   class ComplexJob extends SwingWorker<String, String> {
-    // здесь выполняется работа, это отдельный поток!
+    // тут виконується робота, це окремий потік!
     public String doInBackground() throws Exception {
       Thread.sleep(2000);
-      // публикуем промежуточные результаты
-      publish("Половина работы закончена...");
+      // публікуємо проміжні результати
+      publish("Половина роботи закінчена...");
       Thread.sleep(2000);
       return "";
     }
 
-    // обработка промежуточных результатов
-    // это поток рассылки событий!
+    // обробка проміжних результатів
+    // це потік розсилки подій!
     public void process(List<String> chunks) {
       button.setText(chunks.get(0));
     }
 
-    // окончание работы - и вновь это поток рассылки
+    // закінчення роботи - і знову це потік розсилки
     public void done() {
       button.setText("Работа завершена");
     }
