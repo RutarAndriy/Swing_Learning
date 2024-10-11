@@ -1,5 +1,5 @@
 // MaskingEvents.java
-// Маскирование событий
+// Маскування подій
 
 import java.awt.*;
 import javax.swing.*;
@@ -7,24 +7,26 @@ import javax.swing.*;
 public class MaskingEvents extends JFrame {
   public MaskingEvents() {
     super("MaskingEvents");
-    // при закрытии окна - выход
+    // при закритті вікна - вихід
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // отключим события от окна
+    // відключаємо події від вікна
+    // це код не працює - функцію викмнули із міркувань безпеки
     disableEvents(AWTEvent.WINDOW_EVENT_MASK);
-    // добавим особую кнопку
+    // додамо особливу кнопку
     JPanel contents = new JPanel();
-    contents.add(new CustomButton("Привет!"));
+    contents.add(new CustomButton("Привіт!"));
     setContentPane(contents);
-    // выведем окно на экран
+    // виведемо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
 
-  // особая кнопка
+  // особлива кнопка
   class CustomButton extends JButton {
     public CustomButton(String label) {
       super(label);
-      // отключаем события с клавиатуры и от мыши
+      // вимикаємо події з клавіатури та миші
+      // цей код також не працює - кнопка має внутрішнього прослуховувача
       disableEvents(AWTEvent.KEY_EVENT_MASK);
       disableEvents(AWTEvent.MOUSE_EVENT_MASK);
     }
