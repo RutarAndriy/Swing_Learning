@@ -1,5 +1,5 @@
 // AWTLightweights.java
-// Использование легковесных компонентов в AWT
+// Використання легких компонентів в AWT
 import java.awt.*;
 import java.awt.event.*;
 
@@ -7,21 +7,21 @@ public class AWTLightweights extends Frame {
 
   public AWTLightweights() {
     super("AWTLightweights");
-    // при закрытии окна приложение завершается
+    // при закриванні вікна програма завершується
     addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
         System.exit(0);
       }
     });
-    // добавляем пару легковесных компонентов
+    // додаємо декілька легких компонентів
     LightweightRect rect1 =
         new LightweightRect(Color.BLUE, true);
     LightweightRect rect2 =
         new LightweightRect(Color.RED, true);
     LightweightRect transparentRect =
         new LightweightRect(Color.BLACK, false);
-    // укажем координаты вручную, чтобы компоненты
-    // перекрывались
+    // вкажемо координати вручну, щоб
+    // компоненти перекривалися
     setLayout(null);
     rect1.setBounds(40, 40, 100, 100);
     rect2.setBounds(50, 50, 100, 100);
@@ -29,8 +29,8 @@ public class AWTLightweights extends Frame {
     add(transparentRect);
     add(rect1);
     add(rect2);
-    // последним добавляем тяжеловесный компонент
-    Button button = new Button("Тяжелая!");
+    // останнім добаємо важкий компонент
+    Button button = new Button("Важка!");
     button.setBounds(50, 175, 80, 30);
     add(button);
     // выводим окно на экран
@@ -38,12 +38,12 @@ public class AWTLightweights extends Frame {
     setVisible(true);
   }
 
-  // легковесный компонент - цветной прямоугольник
+  // легкий компонент - кольоровий прямокутник
   class LightweightRect extends Component {
     private Color color;
     private boolean fill;
 
-    // параметы - цвет и нужно ли зарисовывать всю область
+    // параметри - колір і чи потрібно замальовувати всю область
     public LightweightRect(Color color, boolean fill) {
       this.color = color;
       this.fill = fill;
