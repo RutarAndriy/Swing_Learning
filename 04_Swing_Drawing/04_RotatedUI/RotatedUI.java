@@ -1,56 +1,56 @@
 // RotatedUI.java
-// Кручение и верчение стандартных компонентов
+// Крутіння та вертіння стандартних компонентів
 import javax.swing.*;
 import java.awt.*;
 
 public class RotatedUI extends JFrame {
   public RotatedUI() {
     super("RotatedUI");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавляем особую панель
+    // додаємо особливу панель
     RotatingPanel rp = new RotatingPanel();
     add(rp);
-    // добавляем в панель компоненты
-    rp.add(new JButton("Привет!"));
+    // добавляємо в панель компоненти
+    rp.add(new JButton("Привіт!"));
     rp.add(new JTextField(20));
-    // устанавливаем свой RepaintManager
+    // встановлюємо свій RepaintManager
     RepaintManager.setCurrentManager(
         new RotatingRepaintManager());
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(200, 300);
     setVisible(true);
   }
-  // компонент, который поворачивает всех потомков
+  // компонент, який повертає всіх своїх нащадків
   class RotatingPanel extends JPanel {
-    // отвечает за прорисовку потомков
+    // відповідає за промальовку нащадків
     protected void paintChildren(Graphics g) {
       Graphics2D g2 = (Graphics2D) g;
       g2.translate(50, 200);
-      // поворот на 45 градусов
+      // поворот на 45 градусів
       g2.rotate(-Math.PI/4);
-      // небольшое растяжение
+      // невелике розтягнення
       g2.shear(-0.1, -0.1);
-      // обычное рисование предков
+      // звичайне малювання предків
       super.paintChildren(g);
     }
   }
-  // особый тип RepaintManager
+  // особливий тип RepaintManager
   class RotatingRepaintManager extends RepaintManager {
-    // все запросы на перерисовку попадают сюда
+    // всі запити на перемальовку потрапляють сюди
     public void addDirtyRegion(JComponent c,
         int x, int y, int w, int h) {
-      // ищем нужного предка
+      // шукамо потрібного предка
       Container parent = c;
       while (! (parent instanceof RotatingPanel)) {
         parent = parent.getParent();
         if ( parent == null ) {
-          // мы не нашли нашего предка, сброс
+          // ми не знайшли нашого предка, відміна
           parent = c;
           break;
         }
       }
-      // перерисовываем весь компонент полностью
+      // перемальовуємо весь компонент повністю
       super.addDirtyRegion((JComponent) parent,
           0, 0, parent.getWidth(), parent.getHeight());
     }
