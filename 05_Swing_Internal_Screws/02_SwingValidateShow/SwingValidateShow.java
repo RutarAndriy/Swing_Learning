@@ -1,6 +1,7 @@
-// Валидация Swing - большинство компонентов
-// позаботятся о себе сами. В остальном метод revalidate()
-// позволяет не задумываться о деталях
+// SwingValidateShow.java
+// Валідація Swing - більшість компонентів
+// потурбуються про себе самі. В іншому метож revalidate()
+// позволяє не задумуватися про деталі
 import javax.swing.*;
 
 public class SwingValidateShow extends JFrame {
@@ -25,23 +26,23 @@ public class SwingValidateShow extends JFrame {
       }
     });
     Thread.sleep(2000);
-    // Кнопка при смене параметра сама вызовет
-    // revalidate() и мы сразу же увидим изменения
+    // Кнопка при зміні мараметра сама викличе
+    // revalidate() і ми зразу побачимо зміни
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {
-        button.setText("Очень длинный текст");
+        button.setText("Дуже довгий текст");
       }
     });
-    // при добавлении в контейнер revalidate()
-    // автоматически не вызывается
+    // при додаванні в контейнер revalidate()
+    // автоматично не викличеться
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {
-        newButton = new JButton("Новичок");
+        newButton = new JButton("Новачок");
         button.getParent().add(newButton);
       }
     });
     Thread.sleep(2000);
-    // revalidate() может быть вызван из любого потока
+    // revalidate() может бути викиканий із будь-якого потоку
     newButton.revalidate();
   }
 }
