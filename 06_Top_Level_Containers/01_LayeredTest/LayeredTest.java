@@ -1,39 +1,39 @@
 // LayeredTest.java
-// Возможности многослойной панели
+// Можливості багатошарової панелі
 import javax.swing.*;
 import java.awt.*;
 
 public class LayeredTest extends JFrame {
   public LayeredTest() {
     super("LayeredTest");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // получаем многослойную панель
+    // отримуємо багатошарову панель
     JLayeredPane lp = getLayeredPane();
-    // три фигуры
+    // три фігури
     Figure fg1 = new Figure(Color.red, 0, "POPUP");
     Figure fg2 = new Figure(Color.blue, 0, "PALETTE1");
     Figure fg3 = new Figure(Color.green, 1, "PALETTE2");
-    // расположение фигур в окне
+    // розміщення фігур у вікні
     fg1.setBounds(10, 10, 120, 120);
     fg2.setBounds(60, 80, 160, 180);
     fg3.setBounds(90, 15, 250, 180);
-    // добавляем в различные слои
+    // додаємо у різні шари
     lp.add(fg1, JLayeredPane.POPUP_LAYER);
     lp.add(fg2, JLayeredPane.PALETTE_LAYER);
     lp.add(fg3, JLayeredPane.PALETTE_LAYER);
-    // смена позиции одной из фигур
+    // зміна позиції однієї з фігур
     lp.setPosition(fg3, 0);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
-  // класс, позволяющий рисовать два типа фигур с текстом
+  // клас, дозволяючий малювати два типи фігур з текстом
   class Figure extends JComponent {
     private Color color;
     private int type;
     private String text;
-    // параметры: цвет и тип фигуры
+    // параметри: колір та тип фігури
     Figure(Color color, int type, String text) {
       this.color = color;
       this.type = type;
@@ -41,7 +41,7 @@ public class LayeredTest extends JFrame {
       setOpaque(false);
     }
     public void paintComponent(Graphics g) {
-      // прорисовка фигуры
+      // промальовка фігур
       g.setColor(color);
       switch (type) {
         case 0: g.fillOval(0, 0, 90, 90); break;
