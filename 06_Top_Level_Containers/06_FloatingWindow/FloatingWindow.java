@@ -1,22 +1,22 @@
 // FloatingWindow.java
-// Окно без рамки, всегда остающееся
-// выше основного окна приложения
+// Вікно без рамки, яке завжди залишається
+// вище основного вікна програми
 import javax.swing.*;
 
 public class FloatingWindow extends JFrame {
   public FloatingWindow() {
     super("FloatingWindow");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // выведем главное окно на экран
+    // виводимо головне вікно на екран
     setSize(400, 300);
     setVisible(true);
-    // добавим плавающее окно
+    // додаємо плаваюче вікно
     JWindow window = new JWindow(this);
-    // всегда над другими окнами
+    // завжди над іншими вікнами
     window.setAlwaysOnTop(true);
     window.setType(Type.UTILITY);
-    // выведем окно на экран
+    // виводимо вікно на екран
     window.setSize(100, 300);
     window.setVisible(true);
 
