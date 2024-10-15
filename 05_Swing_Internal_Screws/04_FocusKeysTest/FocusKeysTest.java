@@ -1,5 +1,5 @@
 // FocusKeysTest.java
-// Настройка клавиш перехода фокуса ввода
+// Налаштування клавіш переходу фокусу вводу
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -8,21 +8,21 @@ import java.util.HashSet;
 public class FocusKeysTest extends JFrame {
   public FocusKeysTest() {
     super("FocusKeysTest");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавляем пару кнопок
+    // додаємо декілька кнопок
     setLayout(new FlowLayout());
-    // особая кнопка
-    JButton button = new JButton("Особая");
+    // особлива кнопка
+    JButton button = new JButton("Особлива");
     add(button);
-    add(new JButton("Обычная"));
-    // настроим клавиши перехода фокуса
+    add(new JButton("Звичайна"));
+    // налаштуємо клавіші передавання фокусу
     HashSet<AWTKeyStroke> set = new HashSet<AWTKeyStroke>();
     set.add(AWTKeyStroke.getAWTKeyStroke(
         'Q', KeyEvent.CTRL_MASK));
     button.setFocusTraversalKeys(
         KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(200, 200);
     setVisible(true);
   }
