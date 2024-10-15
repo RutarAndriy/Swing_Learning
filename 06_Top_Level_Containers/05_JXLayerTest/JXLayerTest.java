@@ -1,5 +1,6 @@
 // JXLayerTest.java
-// Пример использования слоев JXLayer
+// java -classpath jxlayer-3.0.4.jar JXLayerTest.java
+// Приклад використання шарів JXLayer
 import org.jdesktop.jxlayer.JXLayer;
 import org.jdesktop.jxlayer.plaf.BufferedLayerUI;
 import javax.swing.*;
@@ -9,24 +10,24 @@ import java.awt.event.MouseEvent;
 public class JXLayerTest extends JFrame {
   public JXLayerTest() {
     super("JXLayerTest");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создадим простое содержимое
+    // створюємо простий вміст
     JPanel p = new JPanel();
     p.add(new JTextField(10));
     p.add(new JButton("ОК"));
-    // поместим содержимое в слой
+    // покладемо вміст в шар
     JXLayer<JPanel> layer = new JXLayer<JPanel>(p);
-    // создадим слой реагирующий на события
+    // створимо шар реагуючий на події
     layer.setUI(new BufferedLayerUI<JPanel>() {
       private int lastX, lastY;
-      // прорисовка слоя
+      // промальовка шару
       public void paint(Graphics g, JComponent c) {
         super.paint(g, c);
         g.setColor(Color.RED);
         g.fillOval(lastX, lastY, 15, 15);
       }
-      // получение событий в пределах слоя
+      // отримання подій в межах шару
       protected void processMouseMotionEvent(MouseEvent e,
                JXLayer<? extends JPanel> layer) {
         lastX = SwingUtilities.convertMouseEvent(
@@ -36,9 +37,9 @@ public class JXLayerTest extends JFrame {
         repaint();
       }
     });
-    // JXLayer необходимо добавлять в контейнер
+    // JXLayer потрібно додати в контейнер
     add(layer);
-    // выведем окно на экран
+    // вивід вікна на екран
     setSize(400, 150);
     setVisible(true);
   }
