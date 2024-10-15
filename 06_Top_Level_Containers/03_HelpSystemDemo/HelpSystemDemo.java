@@ -1,12 +1,12 @@
 // HelpSystemDemo.java
-// Как прозрачная панель может помочь в создании
-// системы помощи
+// Приклад як прозора панель може допомогти у створенні
+// системи допомоги
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class HelpSystemDemo extends JFrame {
-  // необходимые нам поля
+  // необхідні нам поля
   private JButton button1, button2, help;
   private HelpSystem hs = new HelpSystem();
   private InterceptPane ip = new InterceptPane();
@@ -15,75 +15,75 @@ public class HelpSystemDemo extends JFrame {
   public HelpSystemDemo() {
     super("HelpSystemDemo");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем нащ интерфейс
-    button1 = new JButton("Что-то делает");
-    button2 = new JButton("Тоже что-то делает");
+    // створюємо наш інтерфейс
+    button1 = new JButton("Що-небуть робить");
+    button2 = new JButton("Також що-небуть робить");
     JPanel contents = new JPanel();
     contents.add(button1);
     contents.add(button2);
-    // кнопка вызова помощи
+    // кнопка виклику допомоги
     help = new JButton(helpIcon);
     help.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // при нажатии включаем прозрачную панель
+        // при натисненні включаємо прозору панель
         ip.setVisible(true);
-        // и специальный указатель мыши
+        // та спеціальний вказівник миші
         getRootPane().setCursor(getToolkit().
             createCustomCursor(helpIcon.getImage(),
             new Point(0, 0), ""));
       }
     });
     contents.add(help);
-    // настраиваем наш интерфейс и прозрачную панель
+    // налаштовуємо наш інтерфейс та прозору панель
     setContentPane(contents);
     setGlassPane(ip);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(200, 200);
     setVisible(true);
   }
-  // компонент, перехватывающий события
+  // компонент, перехоплюючий події
   class InterceptPane extends JComponent {
     InterceptPane() {
-      // надо включить события от мыши
+      // потрібно увімкнути події від миші
       enableEvents(MouseEvent.MOUSE_EVENT_MASK);
       enableEvents(KeyEvent.KEY_EVENT_MASK);
-      // по умолчанию невидим и прозрачен
+      // за замовлуванням невидимий та прозорий
       setVisible(false);
       setOpaque(false);
     }
-    // перехватываем события от мыши
+    // перехоплюємо події від миші
     public void processMouseEvent(MouseEvent e) {
-      // отслеживаем нажатия мыши
+      // відслідковуємо натискання миші
       if ( e.getID() == MouseEvent.MOUSE_PRESSED) {
-        // определяем, какой компонент был выбран
+        // визначаємо, який компонент був вибраний
         Component contentPane = getContentPane();
         MouseEvent ne =
             SwingUtilities.convertMouseEvent(
                 this, e, contentPane);
-        // видимый компонент в указанных координатах
+        // видимий компонент у вказаних координатах
         Component visibleComp =
             SwingUtilities.getDeepestComponentAt(
                 contentPane, ne.getX(), ne.getY());
-        // показываем справочную информацию
+        // показуємо довідкову інформацію
         JOptionPane.showMessageDialog(
             null, hs.getHelpFor(visibleComp));
-        // отключаемся
+        // вимикаємося
         setVisible(false);
-        // возвращаем на место обычный указатель мыши
+        // повертаємо на місце звичний вказівник миші
         getRootPane().setCursor(
             Cursor.getDefaultCursor());
       }
     }
   }
-  // прототип системы помощи
+  // прототип системи допомоги
   class HelpSystem {
-    // получает помощь для компонентов
+    // отримуємо допомогу для компонентів
     public String getHelpFor(Component comp) {
       if ( comp == button1)
-        return "Останавливает реактор. Лучше не жмите";
+        return "Зупиняє реактор. Краще не натискайте";
       else if ( comp == button2 )
-        return "Хотите лимонада? Тогда жмите смело!";
-      return "Даже и не знаю, что это такое";
+        return "Хочите лимонаду? Тоді сміливо натискайте!";
+      return "Навіть не знаю, що це таке";
     }
   }
   public static void main(String[] args) {
