@@ -1,6 +1,6 @@
 // LayeredPaneEffects.java
-// Создание эффектов для интерфейса 
-// с помощью многослойной панели
+// Створення ефектів для інтерфейсу 
+// з допомогою багатошарової панелі
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,39 +8,39 @@ public class LayeredPaneEffects extends JFrame {
   public LayeredPaneEffects() {
     super("LayeredPaneEffects");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // несколько обычных кнопок и текстовое поле
+    // декілька звичайних кнопок та текстове поле
     JPanel buttons = new JPanel();
-    buttons.add(new JButton("Применить"));
-    buttons.add(new JButton("Записать"));
+    buttons.add(new JButton("Застосувати"));
+    buttons.add(new JButton("Записати"));
     buttons.add(new JTextField(20));
-    // добавляем в панель содержимого
+    // додаємо у панель вмісту
     getContentPane().add(buttons);
-    // добавляем компонент с анимацией в слой PALETTE
+    // додаємо компонент з анімацією у шар PALETTE
     Animation an = new Animation();
     an.setBounds(50, 10, anim.getWidth(this),
-        anim.getHeight(this));
+                         anim.getHeight(this));
     getLayeredPane().add(an, JLayeredPane.PALETTE_LAYER);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(250, 100);
     setVisible(true);
   }
-  // изображение
+  // зображення
   private Image anim =
-      new ImageIcon("anim.gif").getImage();
-  // компонент, рисующий анимированное изображение
+      new ImageIcon("Anim.gif").getImage();
+  // компонент, малюючий анімоване зображення
   class Animation extends JComponent {
     public Animation() {
       setOpaque(false);
     }
     public void paintComponent(Graphics g) {
       Graphics2D g2 = (Graphics2D)g;
-      // полупрозрачность
+      // напівпрозорість
       g2.setComposite(AlphaComposite.getInstance(
           AlphaComposite.SRC_OVER, 0.3f));
-      // рисуем изображение
+      // малюємо зображення
       g2.drawImage(anim, 0, 0, this);
     }
-    // мы никогда не получаем событий от мыши
+    // ми ніколи не отримуємо подій від миші
     public boolean contains(int x, int y) {
       return false;
     }
