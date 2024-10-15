@@ -1,6 +1,5 @@
 // KeyBindingTest.java
 // Приклад використання клавіатурних скорочень
-
 import javax.swing.*;
 import java.awt.event.*;
 
