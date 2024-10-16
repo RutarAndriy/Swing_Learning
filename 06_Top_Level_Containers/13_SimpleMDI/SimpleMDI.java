@@ -1,5 +1,5 @@
 // SimpleMDI.java
-// Демонстрация внутренних окон Swing
+// Демонстрація внутрішніх вікон Swing
 import javax.swing.*;
 
 public class SimpleMDI extends JFrame {
@@ -7,29 +7,29 @@ public class SimpleMDI extends JFrame {
     super("SimpleMDI");
     setSize(400, 300);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем рабочий стол Swing
+    // створюємо робочий стіл Swing
     JDesktopPane desktopPane = new JDesktopPane();
-    // добавляем его в центр окна
+    // додаємо його в центр вікна
     add(desktopPane);
-    // создаем несколько внутренних окон
+    // створюємо декілька внутрішніх вікон
     JInternalFrame frame1 =
-        new JInternalFrame("Окно 1", true);
+        new JInternalFrame("Вікно 1", true);
     JInternalFrame frame2 =
-        new JInternalFrame("Окно 2", true, true, true, true);
+        new JInternalFrame("Вікно 2", true, true, true, true);
     JInternalFrame frame3 =
-        new JInternalFrame("Палитра", false, true);
-    // смена типа окна на "палитру"
+        new JInternalFrame("Палітра", false, true);
+    // зміна типу вікна на "палітру"
     frame3.putClientProperty("JInternalFrame.isPalette", true);
-    // добавляем внутренние окна на рабочий стол
+    // додаємо внутрішні вікна на робочий стіл
     desktopPane.add(frame1);
     desktopPane.add(frame2);
     desktopPane.add(frame3);
-    // задаем размеры и расположения, делаем окна видимыми
+    // задаємо розміри та місцезнаходження, робимо вікна видимими
     frame1.setSize(200, 100);
     frame1.setLocation(80, 100); frame1.setVisible(true);
     frame2.setSize(200, 60); frame2.setVisible(true);
     frame3.setSize(100, 200); frame3.setVisible(true);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setVisible(true);
   }
   public static void main(String[] args) {
