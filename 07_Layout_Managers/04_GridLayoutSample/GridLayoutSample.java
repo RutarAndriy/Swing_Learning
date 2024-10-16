@@ -1,5 +1,5 @@
 // GridLayoutSample.java
-// Табличное расположение
+// Табличне розміщення
 import java.awt.*;
 import javax.swing.*;
 
@@ -9,22 +9,22 @@ public class GridLayoutSample extends JFrame {
 		setSize(300, 200);
 		setLocation(100, 100);
 		setDefaultCloseOperation( EXIT_ON_CLOSE );
-		// вспомогательная панель
+		// допоміжна панель
 		JPanel grid = new JPanel();
-		// первые два параметра конструктора GridLayout -
-		// количество строк и столбцов в таблице
-		// вторые два - расстояние между ячейками по X и Y
+		// перші два параметри конструктора GridLayout -
+		// кількість рядків і стовбців у таблиці
+		// наступні два - відстань між клітинками по X та Y
 		GridLayout gl = new GridLayout(2, 0, 5, 12);
 		grid.setLayout(gl);
-		// создаем 8 кнопок
+		// створюємо 8 кнопок
 		for (int i=0; i<8; i++) {
 			grid.add(new JButton("Кнопка " + i));
 		}
-		// помещаем нашу панель в центр окна
+		// поміщаємо нашу панель у центр вікна
 		add(grid);
-		// устанавливаем оптимальный размер
+		// встановлюємо оптимальний розмір
 		pack();
-		// показываем окно
+		// відображаємо вікно
 		setVisible(true);
 	}
 	public static void main(String[] args) {
