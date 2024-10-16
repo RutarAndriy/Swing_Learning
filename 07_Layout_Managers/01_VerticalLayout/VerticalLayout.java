@@ -1,57 +1,57 @@
 // VerticalLayout.java
-// Простой менеджер расположения, располагает
-// компоненты в вертикальный ряд с отступами
+// Простий менеджер розміщення, розміщує
+// компоненти у вертикальний ряд з відступами
 import java.awt.*;
 import javax.swing.*;
 
 public class VerticalLayout implements LayoutManager {
-  // отступ между компонентами
+  // відступ між компонентами
   public int GAP = 5;
-  // сигнал расположить компоненты в контейнере
+  // сигнал розмістити компоненти в контейнері
   public void layoutContainer(Container c) {
     Component comps[] = c.getComponents();
     int currentY = GAP;
     for (Component comp : comps) {
-      // предпочтительный размер компонента
+      // бажаний розмір компонента
       Dimension pref = comp.getPreferredSize();
-      // указываем положение компонента на экране
+      // вказуємо розташування компонента на екрані
       comp.setBounds(GAP, currentY,
           pref.width, pref.height);
-      // промежуток между компонентами
+      // проміжок між компонентами
       currentY += GAP;
       currentY += pref.height;
     }
   }
-  // эти два метода нам не понадобятся
+  // ці два методи нам не знадобляться
   public void addLayoutComponent(
       String name, Component comp) {
   }
   public void removeLayoutComponent(
       Component comp) {
   }
-  // минимальный размер для контейнера
+  // мінімальний розмір для контейнера
   public Dimension minimumLayoutSize(Container c) {
     return calculateBestSize(c);
   }
-  // предпочтительный размер для контейнера
+  // бажаний розмір для контейнера
   public Dimension preferredLayoutSize(Container c) {
     return calculateBestSize(c);
   }
 
   private Dimension size = new Dimension();
-  // вычисляет оптимальный размер контейнера
+  // вираховує оптимальний розмір контейнера
   private Dimension calculateBestSize(Container c) {
-    // сначала вычислим длину контейнера
+    // спочатку вирахуємо довжину контейнера
     Component[] comps = c.getComponents();
     int maxWidth = 0;
     for (Component comp : comps) {
       int width = comp.getWidth();
-      // поиск компонента с максимальной длиной
+      // пошук компонента з максимальною довжиною
       if (width > maxWidth) maxWidth = width;
     }
-    // длина контейнера с учетом левого отступа
+    // довжина контейнера із врахуванням лівого відступу
     size.width = maxWidth + GAP;
-    // вычисляем высоту контейнера
+    // вираховуємо висоту контейнера
     int height = 0;
     for (Component comp : comps) {
       height += GAP;
@@ -61,7 +61,7 @@ public class VerticalLayout implements LayoutManager {
     return size;
   }
 
-  // проверим работу нового менеджера
+  // перевіримо роботу нового менеджера
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
         new Runnable() {
@@ -69,10 +69,10 @@ public class VerticalLayout implements LayoutManager {
             JFrame frame = new JFrame("VerticalLayout");
             frame.setDefaultCloseOperation(
                 JFrame.EXIT_ON_CLOSE);
-            // панель будет использовать новое расположение
+            // панель буде використовувати нове розміщення
             JPanel contents = new JPanel(
                 new VerticalLayout());
-            // добавим пару кнопок и текстовое поле
+            // додаємо пару кнопок і текстове поле
             contents.add(new JButton("Один"));
             contents.add(new JButton("Два"));
             contents.add(new JTextField(30));
