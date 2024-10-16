@@ -1,15 +1,15 @@
 // FrameClosing.java
-// Использование окна с рамкой
+// Використання вікна з рамкою
 import javax.swing.*;
 
 public class FrameClosing extends JFrame {
   public FrameClosing() {
-    super("Заголовок Окна");
-    // операция при закрытии окна
+    super("Заголовок Вікна");
+    // дія при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // значок для окна
-    setIconImage(getToolkit().getImage("icon.gif"));
-    // вывод на экран
+    // значок для вікна
+    setIconImage(getToolkit().getImage("Icon.gif"));
+    // вивід на екран
     setSize(300, 100);
     setVisible(true);
   }
