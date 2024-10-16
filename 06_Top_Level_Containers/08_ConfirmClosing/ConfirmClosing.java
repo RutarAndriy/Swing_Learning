@@ -1,25 +1,25 @@
 // ConfirmClosing.java
-// Подтверждение о выходе из приложения
+// Підтвердження виходу з програми
 import javax.swing.*;
 import java.awt.event.*;
 
 public class ConfirmClosing extends JFrame {
   public ConfirmClosing() {
-    super("Приложение");
-    // отключаем операцию закрытия
+    super("Програма");
+    // відключаємо дію закриття
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-    // добавляем слушателя событий от окна
+    // додаємо прослуховувач подій від вікна
     addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {
-        // потверждение выхода
+        // підтвердження виходу
         int res = JOptionPane.
-         showConfirmDialog(null, "Действительно выйти?");
+         showConfirmDialog(null, "Справді вийти?");
         if ( res == JOptionPane.YES_OPTION )
          System.exit(0);
       }
       });
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(200, 100);
     setVisible(true);
   }
