@@ -1,29 +1,29 @@
 // GridBagStart.java
-// Первые опыты с расположением GridBagLayout
+// Перші досліди із розміщенням GridBagLayout
 import java.awt.*;
 import javax.swing.*;
 
 public class GridBagStart extends JFrame {
   public GridBagStart() {
     super("GridBagStart");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // устанавливаем расположение компонентов
+    // встановлюємо розміщення компонентів
     setLayout(new GridBagLayout());
-    // добавляем две кнопки, ячейки по умолчанию
-    add(new JButton("Привет"));
-    add(new JButton("Отмена"));
-    // настройка ячейки для текстового поля
+    // додаємо дві кнопки, клітинки за замовчуванням
+    add(new JButton("Привіт"));
+    add(new JButton("Відміна"));
+    // налаштування клітинки для текстового поля
     GridBagConstraints textFieldConstraints =
         new GridBagConstraints();
-    // заполнение ячейки по горизонтали
+    // заповнення клітинки по горизонталі
     textFieldConstraints.fill = GridBagConstraints.HORIZONTAL;
-    // просим занять все оставшиеся ячейки
+    // просимо зайняти всі вільні клітинки
     textFieldConstraints.gridwidth =
         GridBagConstraints.REMAINDER;
     textFieldConstraints.weightx = 1.0f;
     add(new JTextField(10), textFieldConstraints);
-    // выведем окно на экран
+    // виводимо вікно на екран
     setSize(400, 200);
     setVisible(true);
   }
