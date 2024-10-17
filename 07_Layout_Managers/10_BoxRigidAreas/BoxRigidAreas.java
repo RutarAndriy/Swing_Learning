@@ -1,5 +1,5 @@
 // BoxRigidAreas.java
-// Пример использования фиксированных областей
+// Приклад використання фіксованих областей
 import javax.swing.*;
 import com.porty.swing.BoxLayoutUtils;
 import java.awt.*;
@@ -9,20 +9,20 @@ public class BoxRigidAreas extends JFrame {
     super("BoxRigidAreas");
     setSize(250, 200);
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // вертикальная панель
+    // вертикальна панель
     JPanel pVert = BoxLayoutUtils.createVerticalPanel();
     pVert.add(new JButton("Один"));
-    // горизонтальная панель
+    // горизонтальна панель
     JPanel pHor = BoxLayoutUtils.createHorizontalPanel();
     pHor.add(new JButton("Два"));
-    // размер пространства задается в виде объекта
-    // Dimension из пакета java.awt
+    // розмір простору задається у вигляді об'єкта
+    // Dimension із пакету java.awt
     pHor.add(Box.createRigidArea(new Dimension(50,120)));
     pHor.add(new JButton("Три"));
     pVert.add(pHor);
-    // добавляем вертикальную панель в центр окна
+    // додаємо вертикальну панель у центр вікна
     add(pVert);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setVisible(true);
   }
   public static void main(String[] args) {
