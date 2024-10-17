@@ -1,5 +1,5 @@
 // BoxGlues.java
-// Использование заполнителей
+// Використання заповнювачів
 import javax.swing.*;
 import com.porty.swing.BoxLayoutUtils;
 
@@ -8,30 +8,29 @@ public class BoxGlues extends JFrame {
     super("BoxGlues");
     setSize(250, 200);
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // панель с вертикальным блочным расположением
-    // в нее поместим все остальные панели
+    // панель з вертикальним блочним розміщенням
+    // у неї помістимо решту панелей
     JPanel main = BoxLayoutUtils.createVerticalPanel();
-    // вертикальная панель
+    // вертикальна панель
     JPanel pVert = BoxLayoutUtils.createVerticalPanel();
-    // заполнитель перед компонентами отодвинет
-    // их вниз
+    // заповнювач перед компонентами зсовує їх донизу
     pVert.add(Box.createVerticalGlue());
     pVert.add(new JButton("Один"));
     pVert.add(new JButton("Два"));
-    // горизонтальная панель
-    // теперь можно разместить компоненты по центру
+    // горизонтальна панель
+    // тепер можна розмістити компоненти по центру
     JPanel pHor = BoxLayoutUtils.createHorizontalPanel();
     pHor.add(Box.createHorizontalGlue());
     pHor.add(new JButton("Три"));
-    pHor.add(new JButton("Четыре"));
+    pHor.add(new JButton("Чотири"));
     pHor.add(Box.createHorizontalGlue());
-    // укладываем панели вертикально
+    // кладемо панелі вертикально
     main.add(pVert);
     main.add(Box.createVerticalStrut(15));
     main.add(pHor);
-    // добавляем панель в центр окна
+    // додаємо панель у центр вікна
     add(main);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setVisible(true);
   }
   public static void main(String[] args) {
