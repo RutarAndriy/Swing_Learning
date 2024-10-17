@@ -1,7 +1,7 @@
 // BoxStruts.java
-// Использование распорок при блочном расположении
+// Використання клинів при блоковому розміщеннні
 import javax.swing.*;
-// используем наш новый класс
+// використовуємо наш новий клас
 import com.porty.swing.BoxLayoutUtils;
 
 public class BoxStruts extends JFrame {
@@ -9,27 +9,27 @@ public class BoxStruts extends JFrame {
 		super("BoxStruts");
 		setSize(250, 200);
 		setDefaultCloseOperation( EXIT_ON_CLOSE );
-		// панель с вертикальным блочным расположением
+		// панель із вертикальним блоковим розміщенням
 		JPanel p = BoxLayoutUtils.createVerticalPanel();
 		p.add(new JButton("Один"));
-		// создание вертикальной распорки
+		// створення вертикального клину
 		p.add(Box.createVerticalStrut(15));
-		// новый компонент и распорка другого размера
+		// новий компонент та клин іншого розміру
 		p.add(new JButton("Два"));
 		p.add(Box.createVerticalStrut(5));
 		p.add(new JButton("Три"));
-		// панель с горизонтальным блочным расположением
+		// панель із горизонтальним блоковим розміщенням
 		JPanel p2 = BoxLayoutUtils.createHorizontalPanel();
-		// распорки можно ставить и перед компонентами
+		// клини можна ставити і перед компонентами
 		p2.add(Box.createHorizontalStrut(10));
 		p2.add(new JButton("Один"));
-		// создание горизонтальной распорки
+		// створення горизонтального клину
 		p2.add(Box.createHorizontalStrut(25));
 		p2.add(new JButton("Два"));
-		// добавляем панели на север и юг окна
+		// додаємо панелі на північ та південь вікна
 		add(p, "North");
 		add(p2, "South");
-		// выводим окно на экран
+		// виводимо вікно на екран
 		setVisible(true);
 	}  
 	public static void main(String[] args) {
