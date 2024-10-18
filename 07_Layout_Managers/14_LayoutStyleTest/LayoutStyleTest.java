@@ -1,5 +1,5 @@
 // LayoutStyleTest.java
-// Автоматическое определение стиля интерфейса
+// Автоматичне визначення стилю інтерфейсу
 import javax.swing.*;
 import static javax.swing.LayoutStyle.ComponentPlacement.*;
 
@@ -8,15 +8,15 @@ public class LayoutStyleTest {
     SwingUtilities.invokeLater(
         new Runnable() {
           public void run() {
-            // компоненты
+            // компоненти
             JPanel panel = new JPanel();
             JTextField text = new JTextField();
             JLabel label = new JLabel("Тест");
-            // отступ от границы контейнера
+            // відступ від меж контейнера
             LayoutStyle style = LayoutStyle.getInstance();
             System.out.println("" + style.getContainerGap(
                 text, SwingConstants.WEST, panel));
-            // расстояние между связанными компонентами
+            // відстань між зв'язаними компонентами
             System.out.println("" + style.getPreferredGap(
                 label, text, RELATED, SwingConstants.EAST, panel));
           } });
