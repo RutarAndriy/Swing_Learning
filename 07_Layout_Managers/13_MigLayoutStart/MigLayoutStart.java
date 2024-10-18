@@ -1,21 +1,22 @@
 // MigLayoutStart.java
-// Знакомство с MigLayout
+// Знайомство з MigLayout
+// java -cp miglayout-3.7-swing-java14.jar MigLayoutStart.java
 import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 
 public class MigLayoutStart extends JFrame {
   public MigLayoutStart() {
     super("MigLayoutStart");
-    // выход при закрытии окна
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // устанавливаем менеджер расположения
+    // встановлюємо менеджер розміщення
     setLayout(new MigLayout());
-    // добавляем компоненты с описанием ячеек
-    add(new JLabel("Имя:"), "gap, sg 1");
+    // додаємо компоненти з описом клітинок
+    add(new JLabel("Ім'я:"), "gap, sg 1");
     add(new JTextField(10), "wrap");
-    add(new JLabel("Фамилия:"), "gap, sg 1");
+    add(new JLabel("Прізвище:"), "gap, sg 1");
     add(new JTextField(10), "wrap");
-    // выведем окно на экран
+    // виводимо вікно на екран
     pack();
     setVisible(true);
   }
