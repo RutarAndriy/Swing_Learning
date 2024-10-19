@@ -1,5 +1,5 @@
 // HTMLabel.java
-// Использование в надписях языка HTML
+// Використання в написах мови HTML
 import javax.swing.*;
 
 public class HTMLabel extends JFrame {
@@ -9,20 +9,20 @@ public class HTMLabel extends JFrame {
       "<html><font size=4 color=blue>" +
           "<ul>Список:<li>Один<li>Два";
   private String html3 =
-      "<html><body bgcolor=white><h2>Любой цвет фона";
+      "<html><body bgcolor=white><h2>Будь-який колір фону";
   private String html4 =
-      "<html><h2>Изображения:<img src=\"file:monkey.gif\">";
+      "<html><h2>Зображення:<img src=\"file:Monkey.gif\">";
   public HTMLabel() {
     super("HTMLabel");
-    // при закрытии окна выход
+    // при закриванні вікна - вихід
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавляем надписи
+    // додаємо написи
     JPanel contents = new JPanel();
     contents.add(new JLabel(html1));
     contents.add(new JLabel(html2));
     contents.add(new JLabel(html3));
     contents.add(new JLabel(html4));
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(contents);
     setSize(400, 300);
     setVisible(true);
