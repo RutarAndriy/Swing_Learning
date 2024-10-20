@@ -6,12 +6,12 @@ public class UsingBorderFactory extends JFrame {
   public UsingBorderFactory() {
     super("UsingBorderFactory");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // рамка для панели содержимого
+    // рамка для панелі вмісту
     JPanel cp = (JPanel)getContentPane();
     cp.setBorder(BorderFactory.createTitledBorder(
         BorderFactory.createRaisedBevelBorder(),
-        "Сделано на фабрике рамок"));
-    // выводим окно на экран
+        "Зроблено на фариці рамок"));
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
