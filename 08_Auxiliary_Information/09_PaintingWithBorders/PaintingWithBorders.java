@@ -1,5 +1,5 @@
 // PaintingWithBorders.java
-// Рисование компонента с учетом рамки
+// Малювання компонента із врахуванням рамки
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
@@ -8,23 +8,23 @@ public class PaintingWithBorders extends JFrame {
   public PaintingWithBorders() {
     super("PaintingWithBorders");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавим к нашему компоненту рамку
+    // додамо до нашого компонента рамку
     CustomComponent cc = new CustomComponent();
     cc.setBorder(BorderFactory.
         createTitledBorder("Рамка!"));
-    // добавим компонент в окно
+    // додамо компонент у вікно
     getContentPane().add(cc);
     setSize(400, 300);
     setVisible(true);
   }
-  // компонент со своей собственной процедурой прорисовки
+  // компонент із своїм власним методом перемальовування
   class CustomComponent extends JComponent {
     public void paintComponent(Graphics g) {
-      // получаем подходящий прямоугольник
+      // отримуємо підходящий прямокутник
       Rectangle rect = AbstractBorder.
           getInteriorRectangle(this, getBorder(),
               0, 0, getWidth(), getHeight());
-      // рисуем в нем
+      // малюємо в ньому
       g.setColor(Color.white);
       g.fillRect(
           rect.x, rect.y, rect.width, rect.height);
