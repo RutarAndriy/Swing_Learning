@@ -1,5 +1,5 @@
 // ToggleButtons.java
-// Использование выключателей JToggleButton
+// Використання вимикачів JToggleButton
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,12 +8,12 @@ public class ToggleButtons extends JFrame {
   public ToggleButtons() {
     super("ToggleButtons");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // используем последовательное расположение
+    // використовуємо послідовне розміщення
     setLayout(new FlowLayout());
-    // создадим пару кнопок JToggleButton
-    button1 = new JToggleButton("Первая", true);
-    button2 = new JToggleButton("Вторая", false);
-    // добавим слушатель события о смене состояния
+    // створюємо пару кнопок JToggleButton
+    button1 = new JToggleButton("Перша", true);
+    button2 = new JToggleButton("Друга", false);
+    // добавимо прослуховувач подій про зміну стану
     button2.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
         button1.setSelected(
@@ -22,11 +22,11 @@ public class ToggleButtons extends JFrame {
     });
     add(button1);
     add(button2);
-    // выводим окно на экран
+    // виводимо вікна на екран
     pack();
     setVisible(true);
   }
-  // ссылки на используемые кнопки
+  // посилання на використовувані кнопки
   private JToggleButton button1, button2;
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
