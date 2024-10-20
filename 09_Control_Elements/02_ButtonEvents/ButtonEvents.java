@@ -1,5 +1,5 @@
 // ButtonEvents.java
-// Обработка событий от кнопок JButton
+// Обробка подій від кноаок JButton
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -10,38 +10,38 @@ public class ButtonEvents extends JFrame {
   public ButtonEvents() {
     super("ButtonEvents");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // создаем кнопку и помещаем ее на север окна
-    JButton button = new JButton("Нажмите меня!");
+    // створюємо кнопку і поміщаємо її на північ вікна
+    JButton button = new JButton("Нажміть мене!");
     add(button, "North");
-    // поле для вывода сообщений о событиях
-    info = new JTextArea("Пока событий не было\n");
+    // поле для виводу повідомлень про події
+    info = new JTextArea("Поки подій не було\n");
     add(new JScrollPane(info));
-    // привязываем к нашей кнопке слушателей событий
-    // слушатели описаны как внутренние классы
+    // прив'язуємо до нашої кнопки прослуховувачів подій
+    // прослуховувачі описані як внутрішні класи
     button.addActionListener(new ActionL());
     button.addChangeListener(new ChangeL());
-    // присоединение слушателя прямо на месте
+    // приєднуємо прослуховувачів прямо на місці
     button.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-        info.append("Это вы все равно не увидите");
+        info.append("Це ви все одно не побачите");
       }
     });
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
   class ActionL implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       info.append(
-          "Получено сообщение о нажатии кнопки! От - "
+          "Отримано повідомлення про натискання кнопки! Від - "
               + e.getActionCommand() + "\n");
     }
   }
   class ChangeL implements ChangeListener {
     public void stateChanged(ChangeEvent e) {
       info.append(
-          "Получено сообщение о смене состояния кнопки!\n");
-      // это источник события
+          "Отримано повідомлення про зміну стану кнопки!\n");
+      // це джерело події
       Object src = e.getSource();
     }
   }
