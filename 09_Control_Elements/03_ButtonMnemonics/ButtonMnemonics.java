@@ -1,5 +1,5 @@
 // ButtonMnemonics.java
-// Поддержка кнопками клавиатурных мнемоник
+// Підтримка кнопками клавіатурних мнемонік
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,20 +7,20 @@ public class ButtonMnemonics extends JFrame {
   public ButtonMnemonics() {
     super("ButtonMnemonics");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // используем последовательное расположение
+    // використовуємо послідовне розміщення
     setLayout(new FlowLayout());
-    // создаем кнопку
-    JButton button = new JButton("Нажмите меня!");
-    // мнемоника (русский символ)
+    // створюємо кнопку
+    JButton button = new JButton("Нажміть мене!");
+    // мнемоніка (український символ)
     button.setMnemonic('Н');
     add(button);
-    // еще одна кнопка, только надпись на английском
+    // ще одна кнопка, тільки напис англійською
     button = new JButton("All Right!");
     button.setMnemonic('L');
-    button.setToolTipText("Жмите смело");
+    button.setToolTipText("Сміливо натискайте");
     button.setDisplayedMnemonicIndex(2);
     add(button);
-    // выводим окно на экран
+    // виводимо вікно на екран
     pack();
     setVisible(true);
   }
