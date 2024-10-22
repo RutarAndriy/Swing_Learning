@@ -1,5 +1,5 @@
 // TrickyMenuBar.java
-// Полоска меню JMenuBar может многое
+// Смужка меню JMenuBar може багато
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,25 +7,25 @@ public class TrickyMenuBar extends JFrame {
   public TrickyMenuBar() {
     super("TrickyMenuBar");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // создаем главную полоску меню
+    // створюємо основну смужку меню
     JMenuBar menuBar = new JMenuBar();
-    // добавляем в нее выпадающие меню
+    // додаємо в неї випадаючі меню
     menuBar.add(new JMenu("Файл"));
     menuBar.add(new JMenu("Правка"));
-    // мы знаем, что используется блочное
-    // расположение, так что заполнитель
-    // вполне уместен
+    // ми знаємо, що використовується блочне
+    // розташування, так що заповнювач
+    // цілком доречний
     menuBar.add(Box.createHorizontalGlue());
-    // теперь поместим в полоску меню
-    // не выпадающее меню, а надпись со значком
+    // тепер помістимо у смужку меню
+    // не випадаюче меню, а напис зі значком
     JLabel icon = new JLabel(
-        new ImageIcon("images/download.gif"));
+        new ImageIcon("images/Download.gif"));
     icon.setBorder(
         BorderFactory.createLoweredBevelBorder());
     menuBar.add(icon);
-    // помещаем меню в наше окно
+    // моміщаємо меню у наше вікно
     setJMenuBar(menuBar);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
