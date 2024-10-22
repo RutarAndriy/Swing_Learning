@@ -1,5 +1,5 @@
 // CascadedMenus.java
-// Создание вложенных меню любой сложности
+// Створення вкладених меню будь-якої складності
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,11 +7,11 @@ public class CascadedMenus extends JFrame {
   public CascadedMenus() {
     super("CascadedMenus");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // создаем строку главного меню
+    // створюємо строку головного меню
     JMenuBar menuBar = new JMenuBar();
-    // создаем выпадающее меню
+    // створюємо випадаюче меню
     JMenu text = new JMenu("Текст");
-    // и несколько вложенных меню
+    // і декілька вкладених меню
     JMenu style = new JMenu("Стиль");
     JMenuItem bold = new JMenuItem("Жирный");
     JMenuItem italic = new JMenuItem("Курсив");
@@ -20,20 +20,20 @@ public class CascadedMenus extends JFrame {
     JMenuItem times = new JMenuItem("Times");
     font.add(arial);
     font.add(times);
-    // размещаем все в нужном порядке
+    // розміщуємо все в потрібному порядку
     style.add(bold);
     style.add(italic);
     style.addSeparator();
     style.add(font);
     text.add(style);
     menuBar.add(text);
-    // помещаем меню в окно
+    // поміщаємо меню у вікно
     setJMenuBar(menuBar);
-    // разделитель может быть полезен не только в меню
+    // розділювач може бути корисним не тільки в меню
     ((JComponent)getContentPane()).setBorder(
       BorderFactory.createEmptyBorder(0, 5, 0, 0));
     add(new JSeparator(SwingConstants.VERTICAL), "West");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
