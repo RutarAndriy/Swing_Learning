@@ -1,5 +1,5 @@
 // Checkboxes.java
-// Использование флажков JCheckBox
+// Використання крапорців JCheckBox
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,25 +7,25 @@ public class Checkboxes extends JFrame {
   public Checkboxes() {
     super("Checkboxes");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // используем последовательное расположение
+    // використовуємо послідовне розміщення
     setLayout(new FlowLayout());
-    // отдельный флажок
-    JCheckBox ch = new JCheckBox("Я люблю JFC", true);
-    // группа связанных флажков в своей
-    // собственной панели
+    // окремий прапорець
+    JCheckBox ch = new JCheckBox("Я люблю KFC", true);
+    // група зв'язаних прапорців у своїй
+    // власній панелі
     JPanel panel = new JPanel(new GridLayout(0, 1, 0, 5));
     panel.setBorder(
-        BorderFactory.createTitledBorder("Мороженое"));
+        BorderFactory.createTitledBorder("Морозиво"));
     String[] names = { "Крем-брюле",
-        "Ром с изюмом", "Шоколадное" };
+        "Ром з ізюмом", "Шоколадне" };
     for (String name : names) {
       JCheckBox check = new JCheckBox(name);
       panel.add(check);
     }
-    // добавляем все в контейнер
+    // додаємо все в контейнер
     add(ch);
     add(panel);
-    // выводим окно на экран
+    // виводимо вікно на екран
     pack();
     setVisible(true);
   }
