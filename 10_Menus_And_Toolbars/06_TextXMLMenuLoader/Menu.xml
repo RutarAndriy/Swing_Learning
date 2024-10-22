@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menubar name="mainMenu">
+	<menu name="file" text="Файл" mnemonic="Ф">
+		<menuitem name="create" text="Створити" mnemonic="С" accelerator="control N"/>
+		<menuitem name="open" text="Відкрити" mnemonic="В" enabled="false"/>
+		<menuitem name="close" text="Закрити" mnemonic="З" enabled="false"/>
+		<menuitem name="separator"/>
+		<menu name="print" text="Друк" mnemonic="Д">
+			<menuitem name="preview" text="Попередній перегляд" mnemonic="П"/>
+		</menu>
+		<menuitem name="separator"/>
+		<menuitem name="exit" text="Вихід" mnemonic="В" accelerator="alt X"/>
+	</menu>
+</menubar>
