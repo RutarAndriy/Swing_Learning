@@ -1,5 +1,5 @@
 // SimpleToolbars.java
-// Простые панели инструментов
+// Прості панелі інструментів
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -8,43 +8,43 @@ public class SimpleToolbars extends JFrame {
   public SimpleToolbars() {
     super("SimpleToolbars");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // первая панель инструментов
+    // перша панель інструментів
     JToolBar toolbar1 = new JToolBar();
-    // добавим кнопки
+    // додамо кнопки
     toolbar1.add(new JButton(
         new ImageIcon("images/New16.gif")));
     toolbar1.add(new JButton(
         new ImageIcon("images/Open16.gif")));
-    // разделитель
+    // розділювач
     toolbar1.addSeparator();
-    // добавим команду
+    // додамо команду
     toolbar1.add(new SaveAction());
-    // вторая панель инструментов
+    // друга панель інструментів
     JToolBar toolbar2 = new JToolBar();
-    // добавим команду
+    // додамо команду
     toolbar2.add(new SaveAction());
-    // раскрывающийся список
+    // випадаючий список
     toolbar2.add(new JComboBox(new String[] {
-        "Жирный", "Обычный" }));
-    // добавим панели инструментов в окно
+        "Жирний", "Звичайний" }));
+    // додамо панелі інструментів у вікно
     add(toolbar1, "North");
     add(toolbar2, "South");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // команда для панели инструментов
+  // команда для панелі інструментів
   class SaveAction extends AbstractAction {
     public SaveAction() {
-      // настроим значок команды
+      // налаштуємо значок команди
       putValue(AbstractAction.SMALL_ICON,
           new ImageIcon("images/Save16.gif"));
-      // текст подсказки
+      // текст підказки
       putValue(AbstractAction.SHORT_DESCRIPTION,
-          "Сохранить документ...");
+          "Зберегти документ...");
     }
     public void actionPerformed(ActionEvent e) {
-      // ничего не делаем
+      // нічого не робимо
     }
   }
   public static void main(String[] args) {
