@@ -1,36 +1,36 @@
 // CustomListSelection.java
-// Реализация особого режима выделения
+// Реалізація особливого режиму виділення
 import javax.swing.*;
 import java.awt.*;
 
 public class CustomListSelection extends JFrame {
-  private String[] data = { "Мороженное", "Курица",
-      "Холодное", "Горячее"};
+  private String[] data = { "Морозиво", "Курка",
+      "Холодне", "Гаряче"};
   public CustomListSelection() {
     super("CustomListSelection");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // настроим список и добавим его в окно
+    // налаштуємо список і добавимо його у вікно
     JList list = new JList(data);
     list.setSelectionModel(new CustomSelectionModel());
     add(new JScrollPane(list));
-    // выведем окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
-  // специальная модель выделения
+  // спеціальна модель виділення
   class CustomSelectionModel
       extends DefaultListSelectionModel {
-    // добавление интервала выделения
+    // додавання інтервалу виділення
     public void addSelectionInterval(int idx0, int idx1) {
       super.addSelectionInterval(idx0, idx1);
       adjustSelection(idx0);
     }
-    // установка интервала выделения
+    // встановлення інтервалу виділення
     public void setSelectionInterval(int idx0, int idx1) {
       super.setSelectionInterval(idx0, idx1);
       adjustSelection(idx0);
     }
-    // общий метод "подкрутки" выделения
+    // загальний метод "підкрутки" виділення
     private void adjustSelection(int idx) {
       if ( idx == 0 )
         addSelectionInterval(2, 2);
