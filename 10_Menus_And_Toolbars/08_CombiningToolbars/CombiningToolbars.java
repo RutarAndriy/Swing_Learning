@@ -1,6 +1,5 @@
 // CombiningToolbars.java
-// Создание комбинированных панелей
-// инструментов
+// Створення комбінованих панелей інструментів
 import javax.swing.*;
 import com.porty.swing.*;
 import java.awt.event.*;
@@ -9,7 +8,7 @@ public class CombiningToolbars extends JFrame {
   public CombiningToolbars() {
     super("CombiningToolbars");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // несколько панелей инструментов
+    // декілька панелей інструментів
     JToolBar toolbar1 = new JToolBar();
     toolbar1.add(new OpenAction());
     toolbar1.add(new SaveAction());
@@ -18,52 +17,52 @@ public class CombiningToolbars extends JFrame {
     JToolBar toolbar2 = new JToolBar();
     toolbar2.add(new JButton("Формат"));
     toolbar2.add(new JComboBox(new String[] {
-        "Красный", "Зеленый"}));
+        "Червоний", "Зелений"}));
     JToolBar toolbar3 = new JToolBar();
-    toolbar3.add(new JButton("Обычный"));
-    toolbar3.add(new JButton("Полужирный"));
-    toolbar3.add(new JButton("Подчеркнутый"));
-    // выравнивание содержимого
+    toolbar3.add(new JButton("Звичайний"));
+    toolbar3.add(new JButton("Напівжирний"));
+    toolbar3.add(new JButton("Підкреслений"));
+    // вирівнювання вмісту
     toolbar2.add(Box.createGlue());
-    // добавим две панели инструментов сюда
+    // доамо дві панелі інструментів сюди
     JPanel first =
         BoxLayoutUtils.createHorizontalPanel();
     first.add(toolbar1);
     first.add(Box.createHorizontalStrut(5));
     first.add(toolbar2);
-    // комбинируем полученные панели
+    // комбінуємо отримані панелі
     JPanel all =
         BoxLayoutUtils.createVerticalPanel();
     all.add(first);
     all.add(toolbar3);
-    // выравнивание содержимого
+    // вирівнювання вмісту
     BoxLayoutUtils.setGroupAlignmentX(
         JComponent.LEFT_ALIGNMENT, first, toolbar3);
-    // добавим полученное на север окна
+    // додамо отримане на північ вікна
     add(all, "North");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // несколько команд для панелей инструментов
+  // некілька команд для панелі інструментів
   class OpenAction extends AbstractAction {
     public OpenAction() {
-      // настроим значок команды
+      // налаштуємо знакок команди
       putValue(AbstractAction.SMALL_ICON,
           new ImageIcon("images/Open16.gif"));
     }
     public void actionPerformed(ActionEvent e) {
-      // ничего не делаем
+      // нічого не робимо
     }
   }
   class SaveAction extends AbstractAction {
     public SaveAction() {
-      // настроим значок команды
+      // налаштуємо знакок команди
       putValue(AbstractAction.SMALL_ICON,
           new ImageIcon("images/Save16.gif"));
     }
     public void actionPerformed(ActionEvent e) {
-      // ничего не делаем
+      // нічого не робимо
     }
   }
   public static void main(String[] args) {
