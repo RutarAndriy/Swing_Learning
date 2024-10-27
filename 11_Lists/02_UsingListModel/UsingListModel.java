@@ -1,5 +1,5 @@
 // UsingListModel.java
-// Использование стандартной модели списка
+// Використання стандартної моделі списку
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -10,13 +10,13 @@ public class UsingListModel extends JFrame {
   public UsingListModel() {
     super("UsingListModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // заполним модель данными
+    // заповнюємо модель даними
     dlm = new DefaultListModel();
-    dlm.add(0, "Кое-что");
-    dlm.add(0, "Кое-что еще");
-    dlm.add(0, "Еще немного");
-    // создаем кнопку и пару списков
-    JButton add = new JButton("Обновить");
+    dlm.add(0, "Щось");
+    dlm.add(0, "Щось ще");
+    dlm.add(0, "Ще небагато");
+    // створюємо кнопку і пару списків
+    JButton add = new JButton("Оновити");
     add.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         dlm.add(0, "Новинка!");
@@ -24,12 +24,12 @@ public class UsingListModel extends JFrame {
     });
     JList list1 = new JList(dlm);
     JList list2 = new JList(dlm);
-    // добавляем компоненты
+    // додаємо компоненти
     setLayout(new FlowLayout());
     add(add);
     add(new JScrollPane(list1));
     add(new JScrollPane(list2));
-    // выведем окно на экран
+    // виводимо вікно на екран
     setSize(400, 200);
     setVisible(true);
   }
