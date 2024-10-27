@@ -1,0 +1,43 @@
+// DBListModelTest.java
+// Використання моделі списку для работи із базами даних
+// Приклад застарів, тому не працює на нових версіях Java починаючи із 8-ї
+import javax.swing.*;
+import java.sql.*;
+import java.awt.*;
+
+import com.porty.swing.*;
+
+public class DBListModelTest {
+  // параметри дази даних
+  private static String
+      dsn = "jdbc:odbc:Library",
+      uid = "",
+      pwd = "",
+      query = "select * from readers.csv";
+  public static void main(String[] args) throws Exception {
+    // ініціалізація JDBC
+    Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+    // об'єкт-з'єднання із базою даних
+    Connection conn = DriverManager.getConnection(dsn, uid, pwd);
+    Statement st = conn.createStatement();
+    ResultSet rs = st.executeQuery(query);
+    // створюємо модель
+    final DatabaseListModel dblm = new DatabaseListModel();
+    // завантажуємо дані
+    dblm.setDataSource(rs, "surname");
+    rs.close();
+    // інтерфейс створюємо у потоці розсилання подій
+    SwingUtilities.invokeLater(
+        new Runnable() {
+          public void run() {
+            // приєднюємо список
+            JList list = new JList(dblm);
+            // поміщаємо список у вікно
+            JFrame frame = new JFrame("DBList");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(200, 200);
+            frame.add(new JScrollPane(list));
+            frame.setVisible(true);
+          } });
+  }
+}
