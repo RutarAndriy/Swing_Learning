@@ -1,6 +1,6 @@
 // com/porty/swing/ImageListCellRenderer.java
-// Класс для прорисовки в списке одновременно
-// значка и текста
+// Клас для промальовки у скиску одночасно
+// значка та тексту
 package com.porty.swing;
 
 import javax.swing.*;
@@ -8,18 +8,18 @@ import java.awt.*;
 
 public class ImageListCellRenderer
     extends DefaultListCellRenderer {
-  // метод, возвращающий для элемента рисующий компонент
+  // метод, який повертає для елемента малюючий компонент
   public Component getListCellRendererComponent(
       JList list, Object data, int idx, boolean isSelected,
       boolean hasFocus) {
-    // проверяем, нужного ли элемент типа
+    // перевіряємо, чи елемент потрібного нам типу
     if ( data instanceof ImageListElement ) {
       ImageListElement lie =
           (ImageListElement)data;
-      // получаем текст и значок
+      // отримуємо текст і значок
       Icon icon = lie.getIcon();
       String text = lie.getText();
-      // используем возможности базового класса
+      // використовуємо можливості базового класу
       JLabel label = (JLabel)
           super.getListCellRendererComponent(
               list, text, idx, isSelected, hasFocus);
