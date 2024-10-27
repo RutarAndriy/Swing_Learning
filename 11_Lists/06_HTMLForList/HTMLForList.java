@@ -1,23 +1,23 @@
 // HTMLForList.java
-// Использование стандартного объекта
+// Використання стандартного об'єкта
 // DefaultListCellRenderer
 import javax.swing.*;
 import java.awt.*;
 
 public class HTMLForList {
-  // данные списка
+  // дані списку
   private static Object[] data = {
-      "<html><font size=4 color=red>Первый",
-      new ImageIcon("bullet.gif"),
-      "<html><h2><font color=yellow>Большой"
+      "<html><font size=4 color=red>Перший",
+      new ImageIcon("Bullet.gif"),
+      "<html><h2><font color=yellow>Великий"
   };
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
         new Runnable() {
           public void run() {
-            // создаем список
+            // створюємо список
             JList list = new JList(data);
-            // помещаем его в окно
+            // поміщаємо його у вікно
             JFrame frame = new JFrame("HTMLForList");
             frame.setDefaultCloseOperation(
                 JFrame.EXIT_ON_CLOSE);
