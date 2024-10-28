@@ -1,30 +1,30 @@
 // SimpleComboBoxes.java
-// Создание простых раскрывающихся списков
+// Створення простих випадаючих списків
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
 
 public class SimpleComboBoxes extends JFrame {
-  // массив с элементами списка
+  // масив із елементами списка
   public String[] elements = new String[] {
-      "Обаятельный", "Умный", "Нежный", "Сильный"
+      "Чарівний", "Розумний", "Ніжний", "Сильний"
   };
   public SimpleComboBoxes() {
     super("SimpleComboBoxes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создадим пару раскрывающихся списков
+    // створемо пару випадаючих списків
     JComboBox combo1 = new JComboBox(elements);
-    // задаем прототип элемента списка
-    combo1.setPrototypeDisplayValue("Длинный элемент");
-    // второй раскрывающийся список
+    // задамо прототип елемента списку
+    combo1.setPrototypeDisplayValue("Довгий елемент");
+    // другий випадаючий список
     Vector<String> data = new Vector<String>();
     for (int i=0; i<10; i++)
-      data.add("Элемент №: " + i);
+      data.add("Елемент №: " + i);
     JComboBox combo2 = new JComboBox(data);
-    // сделаем его редактируемым
+    // робимо його редагуючим
     combo2.setEditable(true);
     combo2.setMaximumRowCount(6);
-    // добавим списки и выведем окно на экран
+    // додамо списки та виведемо вікно на екран
     setLayout(new FlowLayout());
     add(combo1);
     add(combo2);
