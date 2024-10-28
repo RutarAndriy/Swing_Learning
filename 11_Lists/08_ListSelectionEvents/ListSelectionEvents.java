@@ -1,41 +1,41 @@
 // ListSelectionEvents.java
-// Слежение за выделением списка
+// Слідкування за виділенням списку
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 
 public class ListSelectionEvents extends JFrame {
-  // данные списка
+  // дані списку
   private String[] data =
-      { "Красный", "Желтый", "Зеленый"};
+      { "Червоний", "Жовтий", "Зелений"};
   private JTextArea jta;
   public ListSelectionEvents() {
     super("ListSelectionEvents");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем список и текстовое поле
+    // створюємо список і текстове поле
     setLayout(new FlowLayout());
     JList list = new JList(data);
     list.setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
     jta = new JTextArea(5, 20);
-    // добавим слушателя событий выделения
+    // добавимо прослуховувача подій виділення
     list.addListSelectionListener(new SelectionL());
-    // добавляем компоненты
+    // добавляємо компоненти
     add(new JScrollPane(list));
     add(new JScrollPane(jta));
-    // выводим окно на экран
-    setSize(300, 200);
+    // виводимо вікно на екран
+    setSize(320, 200);
     setVisible(true);
   }
-  // слушатель событий от модели выделения
+  // прослуховувач подій від моделі виділення
   class SelectionL implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent lse) {
       int selected =
           ((JList)lse.getSource()).getSelectedIndex();
       switch ( selected ) {
-        case 0: jta.setText("Переходить нельзя"); break;
-        case 1: jta.setText("Будьте готовы"); break;
-        case 2: jta.setText("Переходите улицу");
+        case 0: jta.setText("Переходити не можна"); break;
+        case 1: jta.setText("Будьте готові"); break;
+        case 2: jta.setText("Переходьте вулицю");
       }
     }
   }
