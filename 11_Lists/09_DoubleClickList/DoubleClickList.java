@@ -1,35 +1,35 @@
 // DoubleClickList.java
-// Получение элемента списка по точке экрана
+// Отримання елемента списку по точці екрану
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class DoubleClickList extends JFrame {
-  // данные списка
+  // дані списку
   private String[] data = { "Стейк", "Лобстер",
-      "Борщ", "Севрюга"};
+      "Борщ", "Риба"};
   private JList list;
   public DoubleClickList() {
     super("DoubleClickList");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем список
+    // створюємо список
     list = new JList(data);
     list.setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
-    // добавим cлушателя событий от мыши
+    // додамо прослуховувача подій від миші
     list.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
         if ( e.getClickCount() == 2 ) {
-          // получаем элемент и покажем его
+          // отримуємо елемент і показуємо його
           int pos =
               list.locationToIndex(e.getPoint());
           JOptionPane.showMessageDialog(
-              list, "Уже готовится: " +
+              list, "Вже готується: " +
                   list.getModel().getElementAt(pos));
         }
       }
     });
-    // выведем окно на экран
+    // виводимо вікно на екран
     add(new JScrollPane(list));
     setSize(300, 200);
     setVisible(true);
