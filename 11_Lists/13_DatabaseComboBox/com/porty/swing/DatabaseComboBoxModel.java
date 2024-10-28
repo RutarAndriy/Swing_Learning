@@ -1,5 +1,5 @@
 // com/porty/swing/DatabaseComboBoxModel.java
-// Модель раскрывающегося списка для работы с базами данных
+// Модель випадаючого списку для роботи із базами даних
 package com.porty.swing;
 
 import javax.swing.*;
@@ -7,14 +7,14 @@ import java.sql.*;
 
 public class DatabaseComboBoxModel
     extends DefaultComboBoxModel {
-  // получение данных из запроса ResultSet
+  // отримуємоо дані із запиту ResultSet
   public void setDataSource(ResultSet rs, int column)
       throws SQLException {
-    // очистим список
+    // очистимо список
     removeAllElements();
-    // добавим новые элементы из базы данных
+    // додамо нові елементи із бази даних
     while ( rs.next() ) {
-      // получаем строки из столбца column
+      // отримуємо строки із стовпця column
       addElement(rs.getString(column));
     }
   }
