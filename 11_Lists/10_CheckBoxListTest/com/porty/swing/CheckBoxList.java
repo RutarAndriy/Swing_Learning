@@ -1,5 +1,5 @@
 // CheckBoxList.java
-// Список с флажками
+// Список із прапорцями
 package com.porty.swing;
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.util.Vector;
 
 public class CheckBoxList extends JList {
-  // сохраняем все конструкторы
+  // зберігаємо усі конструктори
   public CheckBoxList(ListModel model) {
     super(model);
     initList();
@@ -20,39 +20,39 @@ public class CheckBoxList extends JList {
     super(data);
     initList();
   }
-  // специальная настройка списка
+  // спеціальне налаштування списку
   private void initList() {
     setCellRenderer(new CheckBoxCellRenderer());
     setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
     addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
-        // следим за щелчками
+        // слідкуємо за клацаннями
         if ( e.getClickCount() == 1 &&
             SwingUtilities.isLeftMouseButton(e) ) {
-          // нужный нам щелчок
+          // потрібне нам клацання
           int pos =
               locationToIndex(e.getPoint());
           CheckBoxListElement cbel =
               (CheckBoxListElement)getModel().
                   getElementAt(pos);
           cbel.setSelected(! cbel.isSelected());
-          // заново рисуем только эту ячейку списка
+          // заново малюємо тільки цю комірку списку
           repaint(getCellBounds(pos, pos));
         }
       }
     });
   }
-  // отображающий флажки объект
+  // відображаючий прапорці об'єкт
   public static class CheckBoxCellRenderer
       extends JCheckBox implements ListCellRenderer {
     public Component getListCellRendererComponent(
         JList list, Object data, int idx,
         boolean isSelected, boolean hasFocus) {
-      // полагаем, что данные всегда нужного типа
+      // вважаємо, що дані завжди потрібного типу
       CheckBoxListElement
           cbel = (CheckBoxListElement)data;
-      // настраиваем флажок
+      // налаштовуємо прапорець
       if ( isSelected ) {
         setBackground(list.getSelectionBackground());
         setForeground(list.getSelectionForeground());

@@ -1,17 +1,17 @@
 // com/porty/swing/CheckBoxListElement.java
-// Данные элемента списка с флажками
+// Дані елемента списку із прапорцями
 package com.porty.swing;
 
 public class CheckBoxListElement {
-  // данные элемента
+  // дані елемента
   private boolean selected;
   private String text;
-  // удобный конструктор
+  // зручний конструктор
   public CheckBoxListElement(boolean selected, String text){
     this.selected = selected;
     this.text = text;
   }
-  // методы для доступа к значку и тексту
+  // методи для доступу до значка та тексту
   public boolean isSelected() {  return selected; }
   public String getText() { return text; }
   public void setSelected(boolean selected) {
