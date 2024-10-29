@@ -1,49 +1,49 @@
 // ComboBoxEvents.java
-// События раскрывающихся списков
+// Події випадаючих списків
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class ComboBoxEvents extends JFrame {
-  // данные для списков
-  private String[] data = { "США", "Италия",
-      "Швейцария", "Таиланд" };
+  // дані для списків
+  private String[] data = { "США", "Італія",
+      "Швейцарія", "Тайланд" };
   public ComboBoxEvents() {
     super("ComboBoxEvents");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // первый список
+    // перший список
     JComboBox combo1 = new JComboBox(data);
-    // слушатель смены выбранного элемента
+    // прослуховувач зміни вибраного елемента
     combo1.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-        // выясняем, что случилось
+        // з'ясовуємо, що відбулося
         if ( e.getStateChange() ==
             ItemEvent.SELECTED ) {
-          // покажем выбранный элемент
+          // відобразимо вибраний елемент
           Object item = e.getItem();
           JOptionPane.showMessageDialog(
               ComboBoxEvents.this, item);
         }
       }
     });
-    // список, позволяющий редактирование
+    // список, дозволяючий редагування
     final JComboBox combo2 = new JComboBox(data);
     combo2.setEditable(true);
-    // слушатель окончания редактирования
+    // прослуховувач закінчення редагування
     combo2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // покажем выбор пользователя
+        // покажемо вибір користувача
         Object item = combo2.getModel().
             getSelectedItem();
         JOptionPane.showMessageDialog(
             ComboBoxEvents.this, item);
       }
     });
-    // добавим списки в окно
+    // додамо списки у вікно
     setLayout(new FlowLayout());
     add(combo1);
     add(combo2);
-    // выведем окно на экран
+    // виведемо вікно на екран
     setSize(350, 250);
     setVisible(true);
   }
