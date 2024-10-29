@@ -1,28 +1,28 @@
 // UsingSpinnerModels.java
-// Использование стандартных моделей счетчика
+// Використання стандартних моделей лічильника
 import javax.swing.*;
 import java.awt.*;
 
 public class UsingSpinnerModels extends JFrame {
-  // набор данных для счетчика
+  // набір даних для лічильника
   private String[] data = {
-    "Холодно", "Прохладно", "Тепло", "Жарко"
+    "Холодно", "Прохолодно", "Тепло", "Гаряче"
   };
   public UsingSpinnerModels() {
     super("UsingSpinnerModels");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // модель счетчика для выбора из набора данных
+    // модель лічильника для вибору із набору даних
     SpinnerModel list = new SpinnerListModel(data);
     JSpinner spinner1 = new JSpinner(list);
-    // модель счетчика для выбора целых чисел
+    // модель лічильника для вибору цілих чисел
     SpinnerModel numbers = new SpinnerNumberModel(
       4, 0, 100, 1);
     JSpinner spinner2 = new JSpinner(numbers);
-    // добавим счетчики в панель содержимого
+    // додамо лічильники до панелі вмісту
     setLayout(new FlowLayout());
     add(spinner1);
     add(spinner2);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
