@@ -1,5 +1,5 @@
 // IndeterminateProgressBars.java
-// Индикаторы в состоянии "неопределенности"
+// Індикатор у стані "невизначеності"
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,13 +7,13 @@ public class IndeterminateProgressBars extends JFrame {
   public IndeterminateProgressBars() {
     super("IndeterminateProgressBars");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // неопределенный индикатор
+    // невизначений індикатор
     JProgressBar progress = new JProgressBar(0, 100);
     progress.setIndeterminate(true);
     progress.setStringPainted(true);
-    // добавляем его в окно и выводим на экран
+    // додаємо його у вікно та виводимо на екран
     setLayout(new FlowLayout());
-    add(new JLabel("Соединение:"));
+    add(new JLabel("З'єднання:"));
     add(progress);
     setSize(300, 200);
     setVisible(true);
