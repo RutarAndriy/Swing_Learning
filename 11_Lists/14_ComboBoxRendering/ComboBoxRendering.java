@@ -1,40 +1,40 @@
 // ComboBoxRendering.java
-// Отображение элементов раскрывающегося списка
+// Відображення елементів випадаючого списку
 import javax.swing.*;
 import com.porty.swing.*;
 
 import java.awt.*;
 
 public class ComboBoxRendering extends JFrame {
-  // данные для первого списка
-  private String[] textData = { "<html><code>Первый",
-      "<html><b>Жирный", "<html><font color=red>Красный",
-      "<html><em>Выразительный" };
+  // дані для першого списку
+  private String[] textData = { "<html><code>Перший",
+      "<html><b>Жирний", "<html><font color=red>Червоний",
+      "<html><em>Виразний" };
   // значки
   private ImageIcon bullet1 =
       new ImageIcon("Server16.gif");
   private ImageIcon bullet2 =
       new ImageIcon("Host16.gif");
-  // данные для второго списка со значками
+  // дані для другого списку зі значками
   private ImageListElement[] iconData = {
-      new ImageListElement(bullet1, "Основной Сервер"),
-      new ImageListElement(bullet1, "Дополнительный"),
+      new ImageListElement(bullet1, "Основний сервер"),
+      new ImageListElement(bullet1, "Додатковий"),
       new ImageListElement(bullet2,
           "<html><b><em>Машина директора")
   };
   public ComboBoxRendering() {
     super("ComboBoxRendering");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем пару раскрывающихся списков
+    // створюємо пару випадаючих списків
     JComboBox combo1 = new JComboBox(textData);
     JComboBox combo2 = new JComboBox(iconData);
-    // наш специальный отображающий объект
+    // наш спеціальний відображуваний об'єкт
     combo2.setRenderer(new ImageListCellRenderer());
-    // добавляем списки в окно
+    // додаємо списки у вікно
     setLayout(new FlowLayout());
     add(combo1);
     add(combo2);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(350, 200);
     setVisible(true);
   }
