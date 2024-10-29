@@ -1,5 +1,5 @@
 // SliderEvents.java
-// События ползунков
+// Події повзунків
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -8,28 +8,28 @@ public class SliderEvents extends JFrame {
   public SliderEvents() {
     super("SliderEvents");
     setDefaultCloseOperation( EXIT_ON_CLOSE );
-    // создаем ползунок и надписи
+    // створюємо повзунок і написи
     JSlider slider = new JSlider(0, 900, 0);
     slider.setMajorTickSpacing(100);
     slider.setPaintTicks(true);
-    boost = new JLabel("Ускорение: ");
-    // присоединяем слушателя
+    boost = new JLabel("Прискорення: ");
+    // приєднюємо прослуховувача
     slider.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
-        // меняем надпись
+        // змінюємо напис
         int value =
             ((JSlider)e.getSource()).getValue();
         int percent = value/15;
-        boost.setText("Ускорение: " + percent + " %");
+        boost.setText("Прискорення: " + percent + " %");
       }
     });
-    // добавляем компоненты в панель
+    // додаємо компоненти в панель
     JPanel contents = new JPanel();
-    contents.add(new JLabel("Размер буфера:"));
+    contents.add(new JLabel("Розмір буфера:"));
     contents.add(slider);
     add(contents);
     add(boost, "South");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(360, 100);
     setVisible(true);
   }
