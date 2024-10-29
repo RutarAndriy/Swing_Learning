@@ -1,54 +1,54 @@
 // UsingProgressBars.java
-// Использование основных возможностей 
+// Використання основних можливостей 
 // компонента JProgressBar
 import javax.swing.*;
 import java.awt.*;
 
 public class UsingProgressBars extends JFrame {
-  // максимальное значение (100%)
+  // максимальне значення (100%)
   private int MAX = 100;
-  // будем использовать общую модель
+  // будемо використовувати спільну модель
   private BoundedRangeModel model;
   public UsingProgressBars() {
     super("UsingProgressBars");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем стандартную модель
+    // створюємо стандартну модель
     model = new DefaultBoundedRangeModel(5, 0, 0, MAX);
-    // горизонтальный индикатор
+    // горизонтальний індикатор
     JProgressBar progress1 = new JProgressBar(model);
     progress1.setStringPainted(true);
-    // вертикальный индикатор
+    // вертикальний індикатор
     JProgressBar progress2 =
         new JProgressBar(JProgressBar.VERTICAL);
     progress2.setModel(model);
     progress2.setStringPainted(true);
-    progress2.setString("Немного терпения...");
-    // добавляем индикаторы в окно
+    progress2.setString("Трохи терпіння...");
+    // додаємо індикатори у вікно
     setLayout(new FlowLayout());
     add(progress1);
     add(progress2);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
-    // запускаем "процесс"
+    // запускаємо "процес"
     new LongProcess().execute();
   }
-  // эмуляция долгого процесса
+  // емуляція довгого процесу
   class LongProcess extends SwingWorker<String,Integer> {
-    // работаем до завершения процесса
+    // працюємо до завершення процесу
     protected String doInBackground() throws Exception {
       int current = 5;
       while ( current <= MAX ) {
-        // обновляем внешний вид
+        // оновлюємо зовнішній вигляд
         publish(current++);
-        // случайная задержка
+        // випадкова затримка
         Thread.sleep((int)(Math.random()*1000));
       }
       return "Готово";
     }
-    // выполняется в потоке рассылки событий
+    // виконується у потоці розсилки подій
     public void process(java.util.List<Integer> chunks) {
-      // увеличиваем текущее значение
+      // збільшуємо поточне значення
       model.setValue(chunks.get(0));
     }
   }
