@@ -1,34 +1,34 @@
 // ProgressBarTricks.java
-// Небольшие хитрости индикаторов процесса
+// Невеликі хитрощі індикаторів прогресу
 import javax.swing.*;
 import java.awt.*;
 
 public class ProgressBarTricks extends JFrame {
-  // максимальное значение индикатора
+  // максимальне значення індикатора
   private final int MAX = 100;
   public ProgressBarTricks() {
     super("ProgressBarTricks");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // настроим параметры для UI-представителей
+    // налаштуємо параметри для UI-представників
     UIManager.put("ProgressBar.cellSpacing", 2);
     UIManager.put("ProgressBar.cellLength", 6);
-    // стандартная модель
+    // стандартна модель
     final DefaultBoundedRangeModel model =
         new DefaultBoundedRangeModel(0, 0, 0, MAX);
-    // создадим простой индикатор процесса
-    // на основе полученной модели
+    // створимо простий індикатор процесу
+    // на основі отриманої моделі
     JProgressBar progress = new JProgressBar(model);
-    // добавим его в окно
+    // додамо його у вікно
     setLayout(new FlowLayout());
     add(progress);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
-    // создадим "процесс"
+    // створимо "процес"
     Thread process = new Thread(new Runnable() {
       public void run() {
-        // увеличиваем текущее значение модели до
-        // достижения максимального значения
+        // збільшуємо поточне значення модели до
+        // досягнення максимального значення
         int value = 0;
         while ( ++value <= MAX ) {
           final int passValue = value;
@@ -42,7 +42,7 @@ public class ProgressBarTricks extends JFrame {
         }
       }
     });
-    // запустим поток
+    // запускаємо потік
     process.start();
   }
   public static void main(String[] args) {
