@@ -1,5 +1,5 @@
 // SliderDefaultModel.java
-// Использование в ползунках стандартной модели
+// Використання в повзунках стандартної моделі
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,16 +9,16 @@ public class SliderDefaultModel extends JFrame {
   public SliderDefaultModel() {
     super("SliderDefaultModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создадем модель и пару ползунков
+    // створимо модель і пару повзунків
     model = new DefaultBoundedRangeModel(10, 10, 0, 100);
     JSlider slider1 = new JSlider(model);
     JSlider slider2 = new JSlider(JSlider.VERTICAL);
     slider2.setModel(model);
-    // добавляем ползунки в окно
+    // додамо повзунок у вікно
     setLayout(new FlowLayout());
     add(slider1);
     add(slider2);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 300);
     setVisible(true);
   }
