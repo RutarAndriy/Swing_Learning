@@ -1,6 +1,5 @@
 // HTMLComboEditorTest.java
-// Пример использование специального объекта для
-// редактирования
+// Приклад використання спеціального об'єкта для редагування
 import javax.swing.*;
 import com.porty.swing.HTMLComboBoxEditor;
 
@@ -10,32 +9,32 @@ import java.awt.event.ActionEvent;
 
 public class HTMLComboEditorTest
     extends JFrame {
-  // данные для раскрывающегося списка
+  // дані для випадаючого списку
   private String[] data = {
-      "<html><font color=yellow>Желтый",
-      "<html><strike>Зачеркнутый",
-      "<html><font color=green>Зеленый",
-      "<html><em>С наклоном" };
+      "<html><font color=yellow>Жовтий",
+      "<html><strike>Закреслений",
+      "<html><font color=green>Зелений",
+      "<html><em>Курсив" };
   public HTMLComboEditorTest() {
     super("HTMLComboEditorTest");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем список
+    // створюємо список
     final JComboBox combo = new JComboBox(data);
     combo.setPrototypeDisplayValue("11223344556677");
     combo.setEditable(true);
     combo.setEditor(new HTMLComboBoxEditor());
-    // добавляем список в окно
+    // додаємо список у вікно
     setLayout(new FlowLayout());
     add(combo);
-    // кнопка для добавления нового элемента в список
-    JButton addButton = new JButton("Добавить");
+    // кнопка для додавання нового елемента в список
+    JButton addButton = new JButton("Додати");
     addButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         combo.addItem(combo.getSelectedItem());
       }
     });
     add(addButton);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(330, 200);
     setVisible(true);
   }
