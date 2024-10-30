@@ -1,5 +1,5 @@
 // TabSelection.java
-// Работа с активными вкладками и обработка событий
+// Робота з активними вкладками і обробка подій
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.*;
@@ -9,31 +9,31 @@ public class TabSelection extends JFrame {
   public TabSelection() {
     super("TabSelection");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем нашу панель с вкладками
+    // створюємо нашу панель із вкладками
     JTabbedPane tabs = new JTabbedPane();
     tabs.addTab("Вкладка", new JPanel());
-    tabs.addTab("Еще вкладка", new JPanel());
-    // добавляем слушателя событий
+    tabs.addTab("Ще вкладка", new JPanel());
+    // додаємо прослуховувача подій
     tabs.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
-        // добавляем на вкладку новый компонент
+        // додаємо на вкладку новий компонент
         JPanel panel = (JPanel)
             ((JTabbedPane)e.getSource()).
                 getSelectedComponent();
         panel.add(new JButton("Кнопка"));
       }
     });
-    // работа с низкоуровневыми событиями
+    // робота із низькорівневими подіями
     tabs.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
-        // узнаем, на какой вкладке был щелчок
+        // дізнаємося, на якій вкладці відбулося клацання
         int idx = ((JTabbedPane)e.getSource()).
             indexAtLocation(e.getX(), e.getY());
         JOptionPane.showMessageDialog(
             null, "Index: " + idx);
       }
     });
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(tabs);
     setSize(400, 300);
     setVisible(true);
