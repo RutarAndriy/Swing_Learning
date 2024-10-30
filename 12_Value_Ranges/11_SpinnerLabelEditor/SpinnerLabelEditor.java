@@ -1,44 +1,44 @@
 // SpinnerLabelEditor.java
-// Редактор счетчика JSpinner на основе надписи
+// Редактор лічильника JSpinner на основі напису
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 
 public class SpinnerLabelEditor extends JFrame {
-  // данные для списка
+  // дані для списку
   private String[] data = {
-      "Красный", "Зеленый", "Синий"
+      "Червоний", "Зелений", "Синій"
   };
   public SpinnerLabelEditor() {
     super("SpinnerLabelEditor");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем счетчик
+    // створюємо лічильник
     JSpinner spinner = new JSpinner(
         new SpinnerListModel(data));
-    // присоединяем наш редактор
+    // приєднюємо наш редактор
     LabelEditor editor = new LabelEditor();
     spinner.setEditor(editor);
-    // регистрируем слушателя
+    // реєструємо прослуховувача
     spinner.addChangeListener(editor);
-    // для появления на экране необходимо
-    // чтобы до редактора дошло событие
+    // для появи на екран необхідно
+    // щоб до редактора дійшла подія
     spinner.getModel().setValue(data[1]);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setLayout(new FlowLayout());
     add(spinner);
     setSize(300, 200);
     setVisible(true);
   }
-  // специальный редактор для счетчика
+  // спеціальний редактор для лічильника
   class LabelEditor extends JLabel
       implements ChangeListener {
-    // метод слушателя событий
+    // метод прослуховувача подій
     public void stateChanged(ChangeEvent e) {
-      // получаем счетчик
+      // отримуємо лічильник
       JSpinner spinner = (JSpinner)e.getSource();
-      // получаем текущий элемент
+      // отримуємо поточний елемент
       Object value = spinner.getValue();
-      // устанавливаем новое значение
+      // встановлюємо нове значення
       if ( value.equals(data[0]) ) {
         setText("<html><h2><font color=\"red\">"
             + value);
@@ -52,7 +52,7 @@ public class SpinnerLabelEditor extends JFrame {
             + value);
       }
     }
-    // размер редактора
+    // розмір редактора
     public Dimension getPreferredSize() {
       return new Dimension(100, 30);
     }
