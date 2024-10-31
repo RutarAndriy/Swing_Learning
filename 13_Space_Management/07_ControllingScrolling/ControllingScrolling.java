@@ -1,6 +1,6 @@
 // ControllingScrolling.java
-// Управление процессом прокрутки с помощью
-// интерфейса Scrollable
+// Управління процесом прокрутки з допомогою
+// інтерфейсу Scrollable
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,57 +8,57 @@ public class ControllingScrolling extends JFrame {
   public ControllingScrolling() {
     super("ControllingScrolling");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // добавим в центр панель прокрутки с
-    // нашим компонентом
+    // додамо в центр панель прокрутки із
+    // нашим помпонентом
     add(new JScrollPane(new GridComponent()));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // компонент-"сетка" с особым режимом прокрутки
+  // компонент-"сітка" із особливим режимом прокручування
   class GridComponent extends JPanel
       implements Scrollable {
-    // размер ячейки сетки
+    // розмір клітинки сітки
     private int CELL_SIZE = 45;
-    // количество ячеек сетки
+    // кількість клітинок сітки
     private int CELL_COUNT = 50;
-    // предпочтительный размер компонента
+    // бажаний розмір компонента
     public Dimension getPreferredSize() {
       return new Dimension(CELL_SIZE*CELL_COUNT,
           CELL_SIZE*CELL_COUNT);
     }
-    // прорисовка компонента
+    // промальовка компонента
     public void paintComponent(Graphics g) {
-      // нужно вызвать метод базового класса
+      // потрібно викликати метод базового класу
       super.paintComponent(g);
       for (int x=0; x<CELL_COUNT; x++) {
         for (int y=0; y<CELL_COUNT; y++) {
-          // рисуем ячейку
+          // малюємо клітинку
           g.setColor(Color.BLACK);
           g.drawRect(x*CELL_SIZE, y*CELL_SIZE,
               CELL_SIZE, CELL_SIZE);
-          // текст с координатами
+          // текст із координатами
           g.drawString(""+x+","+y,
               x*CELL_SIZE + 5, y*CELL_SIZE + CELL_SIZE/2);
         }
       }
     }
-    // предпочтительный размер области прокрутки
+    // бажаний розмір області прокручування
     public Dimension
     getPreferredScrollableViewportSize() {
       return getPreferredSize();
     }
-    // приращение при прокрутке на один элемент
+    // приріст при прокручуванні на один елемент
     public int getScrollableUnitIncrement(
         Rectangle visible, int or, int dir) {
       return CELL_SIZE;
     }
-    // приращение при прокрутке "блоком"
+    // приріст при прокручуванні "блоком"
     public int getScrollableBlockIncrement(
         Rectangle visible, int or, int dir) {
       return CELL_SIZE*10;
     }
-    // нужно ли следить за размером области прокрутки
+    // чи потрібно слідкувати за розміром області прокрутки
     public boolean getScrollableTracksViewportWidth() {
       return false;
     }
