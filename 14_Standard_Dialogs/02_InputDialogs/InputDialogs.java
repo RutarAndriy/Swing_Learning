@@ -1,53 +1,53 @@
 // InputDialogs.java
-// Стандартные диалоговые окна JOptionPane для ввода данных
+// Стандартні діалогові вікна JOptionPane для вводу даних
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class InputDialogs extends JFrame {
-  // значок для одного из сообщений
-  private ImageIcon icon = new ImageIcon("question.gif");
-  // данные для выбора
-  private String[] values = {"Белый","Красный","Зеленый" };
+  // значок для одного із повідомлень
+  private ImageIcon icon = new ImageIcon("Question.gif");
+  // дані для вибору
+  private String[] values = {"Білий","Червоний","Зелений" };
   public InputDialogs() {
     super("InputDialogs");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // после щелчков на кнопках выводятся сообщения
-    JButton input1 = new JButton("2 и 3 параметра");
+    // після клацання нпо кнопках виводяться повідомлення
+    JButton input1 = new JButton("2 і 3 параметри");
     input1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // ввод строки в текстовом поле
+        // ввід строки у текстове поле
         String res = JOptionPane.showInputDialog(
             InputDialogs.this,
-            "<html><h2>Светит ли солнце?");
+            "<html><h2>Чи світить сонце?");
         res = JOptionPane.showInputDialog(
             InputDialogs.this,
-            "Ваш ответ был таким?", res);
+            "Ваша відповідь була такою:", res);
       }
     });
-    JButton input2 = new JButton("4 параметра");
+    JButton input2 = new JButton("4 параметри");
     input2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // позволяет задавать тип и заголовок
+        // дозволяє задавати тип і заголовок
         String res = JOptionPane.showInputDialog(
             InputDialogs.this, new String[] {
-            "Пароль введен неверно!", "Повторите ввод:"},
+            "Пароль введено неправильно!", "Повторіть ввід:"},
             "Пароль", JOptionPane.WARNING_MESSAGE);
       }
     });
-    JButton input3 = new JButton("7 параметров");
+    JButton input3 = new JButton("7 параметрів");
     input3.addActionListener(new ActionListener() {
-      // выбор из нескольких альтернатив
+      // вибір із декількох альтернатив
       public void actionPerformed(ActionEvent e) {
         Object res = JOptionPane.showInputDialog(
-            InputDialogs.this,"Выберите любимый цвет:",
-            "Выбор цвета", JOptionPane.QUESTION_MESSAGE,
+            InputDialogs.this,"Виберіть улюблений колір:",
+            "Вибір кольору", JOptionPane.QUESTION_MESSAGE,
             icon, values, values[0]);
         JOptionPane.showMessageDialog(
             InputDialogs.this, res);
       }
     });
-    // добавляем кнопки в окно
+    // додаємо кнопки у вікно
     setLayout(new FlowLayout());
     add(input1);
     add(input2);
