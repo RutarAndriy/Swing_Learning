@@ -1,6 +1,6 @@
 // TreeSelectionModes.java
-// Использование стандартной модели выделения и
-// всех поддерживаемых ею режимов
+// Використання стандартної моделі виділення і
+// всіх підтримуваних нею режимів
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
@@ -10,90 +10,90 @@ public class TreeSelectionModes extends JFrame {
   public TreeSelectionModes() {
     super("TreeSelectionModes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создадим модель нашего дерева
+    // створюємо модель нашого дерева
     TreeModel model = createTreeModel();
-    // дерево с одиночным режимом выделения
+    // дерево з одинарним режимом виділення
     JTree tree1 = new JTree(model);
     tree1.getSelectionModel().setSelectionMode(
         TreeSelectionModel.SINGLE_TREE_SELECTION);
-    // дерево с выделением непрерывными интервалами
+    // дерево з виділенням нерозривними інтервалами
     JTree tree2 = new JTree(model);
     tree2.getSelectionModel().setSelectionMode(
         TreeSelectionModel.CONTIGUOUS_TREE_SELECTION);
-    // модель выделения можно хранить и отдельно
+    // модель виділення можна зберігати і окремо
     TreeSelectionModel selModel =
         new DefaultTreeSelectionModel();
     selModel.setSelectionMode(
         TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
     JTree tree3 = new JTree(model);
     tree3.setSelectionModel(selModel);
-    // будем следить за выделением в последнем дереве
+    // будемо слідкувати за виділенням у останньому дереві
     tree3.addTreeSelectionListener(new SelectionL());
-    // размещаем деревья в панели
+    // розміщення дерев на панелі
     JPanel contents = new JPanel(new GridLayout(1, 3));
     contents.add(new JScrollPane(tree1));
     contents.add(new JScrollPane(tree2));
     contents.add(new JScrollPane(tree3));
     add(contents);
-    // добавляем текстовое поле
+    // додамо текстове поле
     add(new JScrollPane(log), "South");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(500, 300);
     setVisible(true);
   }
-  // текстовое поле для информации
+  // текстове поле для інформації
   private JTextArea log = new JTextArea(5, 20);
-  // листья дерева храним в массивах
+  // листи дерева зберігаємо у масивах
   private String[] langs = { "Java", "Scala", "Ruby" };
   private String[] ides =
       { "IDEA", "Eclipse", "NetBeans" };
-  // создание несложной модели дерева
+  // створення нескладної моделі дерева
   private TreeModel createTreeModel() {
-    // корень нашего дерева
+    // корінь нашого дерева
     DefaultMutableTreeNode root =
-        new DefaultMutableTreeNode("Создание кода");
-    // основные ветви
+        new DefaultMutableTreeNode("Створення коду");
+    // основні гілки
     DefaultMutableTreeNode lang =
-        new DefaultMutableTreeNode("Языки");
+        new DefaultMutableTreeNode("Мови");
     DefaultMutableTreeNode ide =
-        new DefaultMutableTreeNode("Среды");
+        new DefaultMutableTreeNode("Середовища");
     root.add(lang);
     root.add(ide);
-    // присоединяем листья
+    // приєднуємо листи
     for (int i=0; i<langs.length; i++) {
       lang.add(new DefaultMutableTreeNode(langs[i]));
       ide.add(new DefaultMutableTreeNode(ides[i]));
     }
-    // создаем стандартную модель
+    // створюємо стандартну модель
     return new DefaultTreeModel(root);
   }
-  // этот слушатель следит за изменением выделения
+  // цей прослуховувач слідкує за зміною виділення
   class SelectionL implements TreeSelectionListener {
     public void valueChanged(TreeSelectionEvent e)  {
-      // получаем источник события - дерево
+      // отримуємо джерело події - дерево
       JTree tree = (JTree)e.getSource();
-      // добавленные/удаленные пути
+      // додавання видалення шляхів
       TreePath[] paths = e.getPaths();
-      log.append("Изменено путей: " +
+      log.append("Змінено шляхів: " +
           paths.length + "\n");
-      // выделенные элементы и их номера строк
+      // виділені елементи та їх номери строк
       TreePath[] selected = tree.getSelectionPaths();
       int[] rows = tree.getSelectionRows();
-      // последние элементы в пути
+      // останні елементи в шляху
       for (int i=0; i<selected.length; i++) {
-        log.append("Выделен: " +
+        log.append("Виділений: " +
             selected[i].getLastPathComponent() +
-            " на строке: " + rows[i] +  "\n");
+            " на строці: " + rows[i] +  "\n");
       }
-      // полная информация о пути в дереве
+      // повна інформація про шляхи в дереві
       if ( selected.length > 0 ) {
         TreePath path = selected[0];
         Object[] nodes = path.getPath();
         for (int i=0; i<nodes.length; i++) {
-          // путь состоит из узлов
+          // шлях складається із вузлів
           DefaultMutableTreeNode node =
               (DefaultMutableTreeNode)nodes[i];
-          log.append("Отрезок пути " + i + " : " +
+          log.append("Відрізок шляху " + i + " : " +
               node.getUserObject() + " ");
         }
       }
