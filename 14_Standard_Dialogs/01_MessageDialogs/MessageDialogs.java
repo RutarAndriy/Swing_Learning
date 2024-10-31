@@ -1,45 +1,45 @@
 // MessageDialogs.java
-// Методы JOptionPane для вывода соообщений
+// Методи JOptionPane для відображення повідомлень
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class MessageDialogs extends JFrame {
-  // этот значок выведем в одном из сообщений
-  private ImageIcon icon = new ImageIcon("question.gif");
+  // цей значок відобразимо в одному із повідомлень
+  private ImageIcon icon = new ImageIcon("Question.gif");
   public MessageDialogs() {
     super("MessageDialogs");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // кнопки, после щелчков на которых
-    // выводятся сообщения
-    JButton message1 = new JButton("2 параметра");
+    // кнопки, після клацання по яких
+    // відображаються повідомлення
+    JButton message1 = new JButton("2 параметри");
     message1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(
             MessageDialogs.this,
-            "<html><h2>Привет!<br>HTML есть и здесь!");
+            "<html><h2>Привіт!<br>HTML є і тут!");
       }
     });
-    JButton message2 = new JButton("4 параметра");
+    JButton message2 = new JButton("4 параметри");
     message2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(
             MessageDialogs.this,new String[] {
-            "Сообщение может быть",
-            "записано массивом!" }, "Свой заголовок",
+            "Повідомлення може бути",
+            "записане масивом!" }, "Свій заголовок",
             JOptionPane.ERROR_MESSAGE);
       }
     });
-    JButton message3 = new JButton("5 параметров");
+    JButton message3 = new JButton("5 параметрів");
     message3.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(
             MessageDialogs.this,
-            "Настроено все что можно", "Свой заголовок",
+            "Налаштовано все що тільки можна", "Свій заголовок",
             JOptionPane.INFORMATION_MESSAGE, icon);
       }
     });
-    // выведем окно на экран
+    // виведемо вікно на екран
     setLayout(new FlowLayout());
     add(message1);
     add(message2);
