@@ -1,5 +1,5 @@
 // UsingViewport.java
-// Работа с "видоискателем" JViewport
+// Робота з "відеошукачем" JViewport
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,19 +7,19 @@ public class UsingViewport extends JFrame {
   public UsingViewport() {
     super("UsingViewport");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // надпись с текстом большого размера
+    // напис із текстом великого розміру
     JLabel bigLabel = new JLabel(
-        "<html><h1>Большая Надпись!<br>Много текста!");
-    // "видоискатель"
+        "<html><h1>Великий напис!<br>Багато тексту!");
+    // "відеошукач"
     JViewport viewport = new JViewport();
-    // устанавливаем вид и видимый диапазон
+    // задаємо вид та видимий діапазон
     viewport.setView(bigLabel);
     viewport.setExtentSize(new Dimension(100, 60));
-    // точка начала видимой области
+    // точка початку видимої області
     viewport.setViewPosition(new Point(50, 50));
-    // ограничим размер "видоискателя"
+    // обмежимо розмір "відеошукача"
     viewport.setPreferredSize(new Dimension(100, 60));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setLayout(new FlowLayout());
     add(viewport);
     setSize(400, 300);
