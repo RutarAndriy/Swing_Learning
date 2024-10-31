@@ -1,5 +1,5 @@
 // Scrollbars.java
-// Полосы прокрутки JScrollBar
+// Смуги прокручування JScrollBar
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,21 +7,21 @@ public class Scrollbars extends JFrame {
   public Scrollbars() {
     super("Scrollbars");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем стандартную модель
+    // створюємо стандартну модель
     BoundedRangeModel model =
         new DefaultBoundedRangeModel(10, 40, 0, 100);
-    // пара полос прокрутки
+    // пара смуг прокручування
     JScrollBar scrollbar1 = new JScrollBar(
         JScrollBar.HORIZONTAL);
     JScrollBar scrollbar2 = new JScrollBar(
         JScrollBar.VERTICAL);
-    // присоединяем модель
+    // приєднуємо модель
     scrollbar1.setModel(model);
     scrollbar2.setModel(model);
-    // добавляем компоненты в панель
+    // додаємо компоненти до панелі
     add(scrollbar1, "South");
     add(scrollbar2, "East");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
