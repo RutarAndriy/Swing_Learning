@@ -1,5 +1,5 @@
 // SimpleTreeModel.java
-// Создание простой модели для дерева
+// Створення простої моделі для дерева
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
@@ -10,9 +10,9 @@ public class SimpleTreeModel extends JFrame {
   public SimpleTreeModel() {
     super("SimpleTreeModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // дерево на основе нашей модели
+    // дерево на основі нашої моделі
     JTree tree = new JTree(new SimpleModel());
-    // добавляем его в окно
+    // додаємо його у вікно
     add(new JScrollPane(tree));
     setSize(300, 200);
     setVisible(true);
@@ -20,31 +20,31 @@ public class SimpleTreeModel extends JFrame {
 
   // наша модель для дерева
   class SimpleModel implements TreeModel {
-    // корень дерева и основные узлы
-    private String root = "Кое-что интересное";
+    // корінь дерева і основні вузли
+    private String root = "Що-небуть цікаве";
     private String
-        colors = "Цвета",
-        food = "Еда";
-    // хранилища данных
+        colors = "Кольори",
+        food = "Їжа";
+    // сховища даних
     private ArrayList<String> rootList = new ArrayList<String>(),
         colorsList = new ArrayList<String>(),
         foodList = new ArrayList<String>();
     public SimpleModel() {
-      // заполняем списки данными
+      // заповнюємо списки даними
       rootList.add(colors);
       rootList.add(food);
-      colorsList.add("Красный");
-      colorsList.add("Зеленый");
-      foodList.add("Мороженое");
+      colorsList.add("Червоний");
+      colorsList.add("Зелений");
+      foodList.add("Морозиво");
       foodList.add("Бутерброд");
     }
 
-    // возвращает корень дерева
+    // повертаємо корінь дерева
     public Object getRoot() {
       return root;
     }
 
-    // сообщает о количестве потомков узла
+    // овідомляє про кількість нащадків вузла
     public int getChildCount(Object parent) {
       if ( parent == root ) return rootList.size();
       else if ( parent == colors )
@@ -53,7 +53,7 @@ public class SimpleTreeModel extends JFrame {
       return 0;
     }
 
-    // возвращает потомка узла по порядковому номеру
+    // повертає нащадка вузла за порядковим номером
     public Object getChild(Object parent, int index) {
       if ( parent == root )
         return rootList.get(index);
@@ -64,7 +64,7 @@ public class SimpleTreeModel extends JFrame {
       return null;
     }
 
-    // позволяет получить порядковый номер потомка
+    // дозволяє отримати порядковий номер нащадка
     public int getIndexOfChild(
         Object parent, Object child) {
       if ( parent == root )
@@ -76,21 +76,21 @@ public class SimpleTreeModel extends JFrame {
       return 0;
     }
 
-    // определяет, какие узлы являются листьями
+    // визначає, які вузли є листами
     public boolean isLeaf(Object node) {
       if ( colorsList.contains(node) ||
           foodList.contains(node) ) return true;
       else return false;
     }
 
-    // вызывается при изменении значения некоторого узла
-    // для нашей модели не понадобится
+    // викликається при зміні значення деякого вузла
+    // для нашої моделі не знадобиться
     public void valueForPathChanged(
         TreePath path, Object value) {
     }
 
-    // методы для присоединения и удаления слушателей
-    // нашей простой модели не потребуются
+    // методи для приєднання та видалення прослуховувачів
+    // нашій простій моделі не знадобляться
     public void addTreeModelListener(
         TreeModelListener tml) {
     }
