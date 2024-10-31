@@ -1,5 +1,5 @@
 // SimpleScrollPanes.java
-// Настройка некоторых простых свойств панелей прокрутки
+// Налащтування деяких простих властивостей панелі прокрутки
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,17 +7,17 @@ public class SimpleScrollPanes extends JFrame {
   public SimpleScrollPanes() {
     super("SimpleScrollPanes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // надпись
-    JLabel label = new JLabel(new ImageIcon("image.jpg"));
-    // особый конструктор панели прокрутки
+    // напис
+    JLabel label = new JLabel(new ImageIcon("Image.jpg"));
+    // особливий конструктор панелі прокрутки
     JScrollPane scrollPane = new JScrollPane(label,
         JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
         JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-    // некоторые свойства
+    // деякі властивості
     scrollPane.setViewportBorder(
         BorderFactory.createLineBorder(Color.BLUE));
     scrollPane.setWheelScrollingEnabled(false);
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(scrollPane);
     setSize(400, 300);
     setVisible(true);
