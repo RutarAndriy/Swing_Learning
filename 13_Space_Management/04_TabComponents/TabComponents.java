@@ -1,5 +1,5 @@
 // TabComponents.java
-// Размещение компонентов во вкладках
+// Розміщення компонентів у вкладках
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,23 +8,23 @@ public class TabComponents extends JFrame {
   public TabComponents() {
     super("TabComponents");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // панель с вкладками
+    // панель із вкладками
     final JTabbedPane tabs = new JTabbedPane();
     tabs.addTab(null, new JPanel());
     tabs.addTab(null, new JPanel());
-    // флажок во вкладке
-    JCheckBox checkBox = new JCheckBox("Флажок!");
+    // прапорець у вкладці
+    JCheckBox checkBox = new JCheckBox("Прапорець!");
     checkBox.setOpaque(false);
     tabs.setTabComponentAt(0, checkBox);
-    // вкладка с надписью и кнопкой закрытия
+    // вкладка із написом та кнопкою закривання
     final JPanel panel = new JPanel();
-    JLabel label = new JLabel("Можно закрыть!");
+    JLabel label = new JLabel("Можна закрити!");
     JButton closeButton = new JButton(new AbstractAction() {
       {
-        putValue(SMALL_ICON, new ImageIcon("close.png"));
+        putValue(SMALL_ICON, new ImageIcon("Close.png"));
       }
       public void actionPerformed(ActionEvent e) {
-        // нужно определить вкладку, в которой находится кнопка
+        // треба визначити вкладку, у якій знаходиться кнопка
         tabs.removeTabAt(
             tabs.indexOfTabComponent(panel));
       }
@@ -35,7 +35,7 @@ public class TabComponents extends JFrame {
     panel.add(label);
     panel.add(closeButton);
     tabs.setTabComponentAt(1, panel);
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(tabs);
     setSize(430, 300);
     setVisible(true);
