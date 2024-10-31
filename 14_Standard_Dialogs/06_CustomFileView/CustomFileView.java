@@ -1,5 +1,5 @@
 // CustomFileView.java
-// Внешний вид файлов в компоненте JFileChooser
+// Зовнішній вигляд файлів у компоненті JFileChooser
 import javax.swing.*;
 import javax.swing.filechooser.*;
 import java.awt.*;
@@ -8,30 +8,30 @@ public class CustomFileView extends JFrame {
   public CustomFileView() {
     super("CustomFileView");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
-    // настраиваем компонент для выбора файлов
+    // налаштовуємо компонент для вибору файлів
     JFileChooser chooser = new JFileChooser();
-    chooser.setDialogTitle("Выберите файл");
+    chooser.setDialogTitle("Виберіть файл");
     chooser.setFileView(new NewFileView(
         chooser.getFileSystemView()));
-    // показываем диалоговое окно
+    // показуємо діалогове вікно
     int res = chooser.showOpenDialog(this);
   }
-  // объект, определяющий внешний вид файлов
+  // об'єкт, визначаючий зовнішній вигляд файлів
   class NewFileView extends FileView {
-    // значки, применяемые для файлов
-    private Icon fileIcon = new ImageIcon("file.gif");
-    private Icon folderIcon = new ImageIcon("folder.gif");
-    // конструктору необходимо описание файловой системы
+    // значки, що застосовуються для файлів
+    private Icon fileIcon = new ImageIcon("File.gif");
+    private Icon folderIcon = new ImageIcon("Folder.gif");
+    // конструктору необхідний опис файлової системи
     public NewFileView(FileSystemView fileSystem) {
       this.fileSystem = fileSystem;
     }
     private FileSystemView fileSystem;
-    // возвращает значок для файла
+    // повертаємо значок для файлу
     public Icon getIcon(java.io.File file) {
-      // основные части файловой системы пропускаем
+      // основні частини файлової системи пропускаємо
       if ( fileSystem.isRoot(file) ||
           fileSystem.isDrive(file) )
         return null;
