@@ -1,36 +1,36 @@
 // HeadersAndCorners.java
-// Заголовки и "уголки" панели прокрутки JScrollPane
+// Заголовки та "кутники" панелі прокручування JScrollPane
 import javax.swing.*;
 import java.awt.*;
 
 public class HeadersAndCorners extends JFrame {
-  // надпись с большим изображением
+  // напис із великим зображенням
   private JLabel label = new JLabel(
-      new ImageIcon("image.jpg"));
+      new ImageIcon("Image.jpg"));
   public HeadersAndCorners() {
     super("HeadersAndCorners");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем панель прокрутки
+    // створюємо панель прокрутки
     JScrollPane scroll = new JScrollPane(label);
-    // устанавливаем заголовки
+    // встановлюємо заголовки
     scroll.setColumnHeaderView(new XHeader());
     scroll.setRowHeaderView(new YHeader());
-    // устанавливаем левый верхний "уголок"
+    // встановлюємо лівий верхній "кутник"
     scroll.setCorner(JScrollPane.UPPER_LEFT_CORNER,
         new JButton(new ImageIcon("Print16.gif")));
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(scroll);
     setSize(400, 300);
     setVisible(true);
   }
-  // заголовок по оси X
+  // заголовок по осі X
   class XHeader extends JPanel {
-    // размер заголовка
+    // розмір заголовку
     public Dimension getPreferredSize() {
       return new Dimension(
           label.getPreferredSize().width, 20);
     }
-    // прорисовываем линейку
+    // промальовуємо лінійку
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
       int width = getWidth();
@@ -39,14 +39,14 @@ public class HeadersAndCorners extends JFrame {
       }
     }
   }
-  // заголовок по оси Y
+  // заголовок по осі  Y
   class YHeader extends JPanel {
-    // размер заголовка
+    // розмір заголовку
     public Dimension getPreferredSize() {
       return new Dimension(
           20, label.getPreferredSize().height);
     }
-    // прорисовываем линейку
+    // промальовуємо лінійку
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
       int height = getHeight();
