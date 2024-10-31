@@ -1,5 +1,5 @@
 // FilteringFiles.java
-// Фильтры файлов в компоненте JFileChooser
+// Фільтри файлів в компоненті JFileChooser
 import javax.swing.*;
 import javax.swing.filechooser.*;
 import java.awt.*;
@@ -8,35 +8,35 @@ public class FilteringFiles extends JFrame {
   public FilteringFiles() {
     super("FilteringFiles");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
-    // настраиваем компонент для выбора файла
+    // налаштовуємо компонент для вибору файлів
     JFileChooser chooser = new JFileChooser();
-    chooser.setDialogTitle("Выберите текстовый файл");
-    // присоединяем фильтр
+    chooser.setDialogTitle("Виберіть текстовий файл");
+    // приєднюємо фільт
     chooser.addChoosableFileFilter(
         new TextFilesFilter());
     chooser.setFileFilter(
         new TextFilesFilter());
-    // выводим диалоговое окно на экран
+    // виводимо діалогове вікно на екран
     int res = chooser.showOpenDialog(this);
     if ( res == JFileChooser.APPROVE_OPTION )
       JOptionPane.showMessageDialog(
           this, chooser.getSelectedFile());
   }
-  // фильтр, отбирающий текстовые файлы
+  // фільтр, відбираючий текстові файли
   class TextFilesFilter extends FileFilter {
-    // принимает файл или отказывает ему
+    // приймаємо файл або відказуємо йому
     public boolean accept(java.io.File file) {
-      // все каталоги принимаем
+      // всі каталоги приймаємо
       if ( file.isDirectory() ) return true;
-      // для файлов смотрим на расширение
+      // для файлів дивимося на розширення
       return ( file.getName().endsWith(".txt") );
     }
-    // возвращает описание фильтра
+    // повертаємо опис фільтру
     public String getDescription() {
-      return "Текстовые файлы (*.txt)";
+      return "Текстові файли (*.txt)";
     }
   }
   public static void main(String[] args) {
