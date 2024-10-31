@@ -1,52 +1,51 @@
 // SimpleFileChooser.java
-// Создание простых диалоговых окон 
-// открытия и сохранения файлов
+// Створення простих діалоових вікон 
+// відкривання та зберігання файлів
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class SimpleFileChooser extends JFrame {
-  // создадим общий экземпляр JFileChooser
+  // створюємо загальний екземпляр JFileChooser
   private JFileChooser fc = new JFileChooser();
   public SimpleFileChooser() {
     super("SimpleFileChooser");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // кнопка, создающая диалоговое окно для открытия файла
-    JButton open = new JButton("Открыть...");
+    // кнопка, створююча діалогове вікно для відкривання файлів
+    JButton open = new JButton("Відкрити...");
     open.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        fc.setDialogTitle("Выберите каталог");
-        // настроим для выбора каталога
+        fc.setDialogTitle("Виберіть каталог");
+        // налаштуємо для вибору каталогу
         fc.setFileSelectionMode(
             JFileChooser.DIRECTORIES_ONLY);
         int res = fc.showOpenDialog(
             SimpleFileChooser.this);
-        // если файл выбран, покажем его
+        // якщо файл вибраний, відобразимо його
         if ( res == JFileChooser.APPROVE_OPTION )
           JOptionPane.showMessageDialog(
               SimpleFileChooser.this,
               fc.getSelectedFile());
       }
     });
-    // кнопка, создающая диалоговое окно
-    // для сохранения файла
-    JButton save = new JButton("Сохранить...");
+    // кнопка, створююча діалогове вікно для збереження файлу
+    JButton save = new JButton("Зберегти...");
     save.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        fc.setDialogTitle("Сохранение файла");
-        // настройка режима
+        fc.setDialogTitle("Збереження файлу");
+        // налаштування режиму
         fc.setFileSelectionMode(
             JFileChooser.FILES_ONLY);
         int res = fc.showSaveDialog(
             SimpleFileChooser.this);
-        // сообщим об успехе
+        // повідомимо про успіх
         if ( res == JFileChooser.APPROVE_OPTION )
           JOptionPane.showMessageDialog(
               SimpleFileChooser.this,
-              "Файл сохранен");
+              "Файл збережено");
       }
     });
-    // добавим кнопки и выведем окно на экран
+    // додамо кнопки і виведемо вікно на екран
     setLayout(new FlowLayout());
     add(open);
     add(save);
