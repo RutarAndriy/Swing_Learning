@@ -1,6 +1,6 @@
 // PreviewingFiles.java
-// Предварительный просмотр файлов
-// в компоненте JFileChooser
+// Попередній перегляд файлів
+// у компоненті JFileChooser
 import javax.swing.*;
 import javax.swing.filechooser.*;
 import java.beans.*;
@@ -10,36 +10,36 @@ public class PreviewingFiles extends JFrame {
   public PreviewingFiles() {
     super("PreviewingFiles");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
-    // настраиваем компонент для выбора файла
+    // налаштовуємо компонент для вибору файлу
     JFileChooser chooser = new JFileChooser();
-    chooser.setDialogTitle("Выберите изображение");
-    // присоединяем фильтр
+    chooser.setDialogTitle("Виберіть зображення");
+    // приєднюємо фільтр
     chooser.setFileFilter(new ImageFilesFilter());
-    // убираем универсальный фильтр
+    // забираємо універсальний фільтр
     chooser.setAcceptAllFileFilterUsed(false);
-    // присоединяем дополнительный компонент
+    // приєднюємо додатковий компонент
     Previewer previewer = new Previewer();
     chooser.setAccessory(previewer);
-    // регистрируем в качестве слушателя
+    // реєструємо в якості прослуховувача
     chooser.addPropertyChangeListener(previewer);
-    // выводим диалоговое окно на экран
+    // виводимо діалогове вікно на екран
     int res = chooser.showOpenDialog(this);
     if ( res == JFileChooser.APPROVE_OPTION )
       JOptionPane.showMessageDialog(
           this, chooser.getSelectedFile());
   }
-  // компонент для предварительного просмотра
+  // компонент для попереднього перегляду
   class Previewer extends JPanel
       implements PropertyChangeListener {
     private JLabel label;
     public Previewer() {
-      // настраиваем контейнер
+      // налаштовуємо контейнер
       setLayout(new BorderLayout());
       setPreferredSize(new Dimension(200, 200));
-      // создаем надпись в панели прокрутки
+      // створюємо напис в панелі прокрутки
       label = new JLabel();
       JScrollPane scroller = new JScrollPane(label);
       add(scroller);
@@ -47,28 +47,28 @@ public class PreviewingFiles extends JFrame {
     public void propertyChange(PropertyChangeEvent e) {
       if ( e.getPropertyName().equals(
           JFileChooser.SELECTED_FILE_CHANGED_PROPERTY)) {
-        // сменился выбранный файл, покажем его
+        // змінився вибраний файл, покажемо його
         if ( e.getNewValue() != null )
           label.setIcon(new ImageIcon(
               e.getNewValue().toString()));
       }
     }
   }
-  // фильтр, отбирающий файлы с изображениями
+  // фільтр, відбираючий файли із зображеннями
   class ImageFilesFilter extends FileFilter {
-    // принимает файл или отказывает ему
+    // приймаємо файл або відмовляємо йому
     public boolean accept(java.io.File file) {
-      // все каталоги принимаем
+      // всі каталоги приймаємо
       if ( file.isDirectory() ) return true;
-      // имя файла не будет учитывать регистр
+      // ім'я файлу не буде враховувати регістр
       String name = file.getName().toLowerCase();
-      // для файлов смотрим на расширение
+      // для файлів дивимося на розширення
       return ( name.endsWith(".jpg") ||
           name.endsWith(".gif") || name.endsWith(".png") );
     }
-    // возвращает описание фильтра
+    // повертає опис фільтру
     public String getDescription() {
-      return "Изображения (*.jpg, *.gif, *.png)";
+      return "Зображення (*.jpg, *.gif, *.png)";
     }
   }
   public static void main(String[] args) {
