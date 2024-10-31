@@ -1,6 +1,6 @@
 // TreeModelUpdates.java
-// Пример эффективного обновления большого
-// дерева с переменными данными
+// Приклад ефективного оновлення великого
+// дерева зі змінними даними
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
@@ -12,24 +12,24 @@ import java.awt.*;
 public class TreeModelUpdates extends JFrame {
   // дерево
   private JTree tree;
-  // стандартная модель дерева
+  // стандартна модель дерева
   private DefaultTreeModel model;
   public TreeModelUpdates() {
     super("TreeModelUpdates");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем дерево на основе модели
+    // створюємо дерево на основі моделі
     tree = new JTree(model = createTreeModel());
     add(new JScrollPane(tree));
     setSize(400, 300);
     setVisible(true);
   }
-  // создание несложной, но большой модели дерева
+  // створення нескладної, але великої моделі дерева
   private DefaultTreeModel createTreeModel() {
-    // корень нашего дерева
+    // корінь нашого дерева
     DefaultMutableTreeNode root =
         new DefaultMutableTreeNode(
-            "Большоооое Дерево");
-    // присоединяем листья
+            "Велииииииике Дерево");
+    // приєднюємо листи
     for (int i=0; i<100; i++) {
       DefaultMutableTreeNode node = new ChangeableColorNode();
       root.add(node);
@@ -37,39 +37,39 @@ public class TreeModelUpdates extends JFrame {
         node.add(new ChangeableColorNode());
       }
     }
-    // создаем стандартную модель
+    // створюємо стандартну модель
     return new DefaultTreeModel(root);
   }
-  // узел дерева, динамически обновляющий свое содержимое
+  // вузол дерева, який динамічно оновлює свій вміст
   class ChangeableColorNode
       extends DefaultMutableTreeNode implements ActionListener {
-    // случайная задержка обновления
+    // випадкова затримка оновлення
     private int delay = (int) (Math.random()*3000 + 500);
-    // цвета текста, хранимого в узле
+    // колір тексту, який зберігається у вузлі
     private int r,g,b;
     public ChangeableColorNode() {
-      // генерируем цвета и запускаем таймер обновления
+      // генеруємо кольори і запускаємо таймер оновлення
       generateColors();
       new Timer(delay, this).start();
     }
-    // этот метод вызывается таймером
+    // цей метод викликається таймером
     public void actionPerformed(ActionEvent e) {
-      // обновляем цвета и текст
+      // оновлюємо колір та текст
       generateColors();
-      // обновляем узел если он развернут
+      // оновлюємо вузол, якщо він розкритий
       TreePath path = new TreePath(
           model.getPathToRoot(this));
       if ( tree.isVisible(path) ) {
         model.nodeChanged(this);
       }
     }
-    // метод генерирует случайные цвета и обновляет текст
+    // метод генерує випадкові кольори і оновлює текст
     public void generateColors() {
       r = (int) (Math.random()*255);
       g = (int) (Math.random()*255);
       b = (int) (Math.random()*255);
       setUserObject("<html><font color=rgb("
-          +r+","+g+","+b+")>Какой-то цвет!");
+          +r+","+g+","+b+")>Який-небуть колір!");
     }
   }
   public static void main(String[] args) {
