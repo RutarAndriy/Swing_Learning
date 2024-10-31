@@ -1,5 +1,5 @@
 // SimpleColorChooser.java
-// Выбор цвета с помощью JColorChooser
+// Вибір кольору з допомогою JColorChooser
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,21 +8,21 @@ public class SimpleColorChooser extends JFrame {
   public SimpleColorChooser() {
     super("SimpleColorChooser");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // кнопка выводит на экран окно выбора цвета
-    JButton choose = new JButton("Выбор цвета фона");
+    // кнопка виводить на екран вікно вибору кольору
+    JButton choose = new JButton("Вибір кольору фону");
     choose.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         Color color = JColorChooser.showDialog(
             SimpleColorChooser.this,
-            "Выберите цвет фона",
+            "Виберіть колір фону",
             getContentPane().getBackground());
-        // если цвет выбран, используем его
+        // якщо колір вибрано, використовуємо його
         if ( color != null)
           getContentPane().setBackground(color);
         repaint();
       }
     });
-    // выводим окно на экран
+    // виводимо вікно на екран
     setLayout(new FlowLayout());
     add(choose);
     setSize(300, 200);
