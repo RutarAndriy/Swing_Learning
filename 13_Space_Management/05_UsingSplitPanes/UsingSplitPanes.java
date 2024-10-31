@@ -1,32 +1,32 @@
 // UsingSplitPanes.java
-// Использование разделяемых панелей
+// Використання розділювальних панелей
 import javax.swing.*;
 import java.awt.*;
 
 public class UsingSplitPanes extends JFrame {
-  // этот значок будем использовать в надписях
-  private Icon icon = new ImageIcon("image.jpg");
+  // цей значок будемо використовувати в написах
+  private Icon icon = new ImageIcon("Image.jpg");
   public UsingSplitPanes() {
     super("UsingSplitPanes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // первая разделяемая панель
+    // перша розділювальна панель
     JSplitPane splitMain = new JSplitPane();
     splitMain.setOneTouchExpandable(true);
-    // размер полосы
+    // розмір смуги
     splitMain.setDividerSize(20);
-    // вертикальная разделяемая панель
+    // вертикальна розділювальна панель
     JSplitPane split2 = new JSplitPane(
         JSplitPane.VERTICAL_SPLIT, true);
-    // настроим ее компоненты
+    // налаштовуємо її компоненти
     split2.setTopComponent(
         new JScrollPane(new JLabel(icon)));
     split2.setBottomComponent(
         new JScrollPane(new JLabel(icon)));
-    // настроим компоненты первой панели
+    // налаштуємо компоненти першої панелі
     splitMain.setLeftComponent(
         new JScrollPane(new JLabel(icon)));
     splitMain.setRightComponent(split2);
-    // добавим панель и выведем окно на экран
+    // додаємо панель і виводимо вікно на екран
     add(splitMain);
     setSize(600, 400);
     setVisible(true);
