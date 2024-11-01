@@ -1,6 +1,6 @@
 // TreeDefaultRendering.java
-// Использование возможностей стандартного
-// отображащего объекта DefaultTreeCellRenderer
+// Використання можливостей стандартного
+// відображуваного об'єкта DefaultTreeCellRenderer
 import javax.swing.*;
 import javax.swing.tree.*;
 import java.awt.*;
@@ -9,9 +9,9 @@ public class TreeDefaultRendering extends JFrame {
   public TreeDefaultRendering() {
     super("TreeDefaultRendering");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем дерево на основе незатейливой модели
+    // створюємо дерево на основі невибагливої моделі
     JTree tree = new JTree(createTreeModel());
-    // создадем и настраиваем отображающий объект
+    // створюємо та налаштовуємо відображуваний об'єкт
     DefaultTreeCellRenderer renderer =
         new DefaultTreeCellRenderer();
     renderer.setLeafIcon(new ImageIcon("Leaf.gif"));
@@ -19,37 +19,37 @@ public class TreeDefaultRendering extends JFrame {
         new ImageIcon("NodeClosed.gif"));
     renderer.setOpenIcon(
         new ImageIcon("NodeOpened.gif"));
-    // передаем его дереву
+    // передаємо його дереву
     tree.setCellRenderer(renderer);
-    // добавляем дерево и выводим окно на экран
+    // додаємо дерево і виводимо його на екран
     add(new JScrollPane(tree));
     setSize(400, 300);
     setVisible(true);
   }
-  // листья дерева храним в массивах
+  // листи дерева зберігаємо у масивах
   private String[] langs = {
       "<html><b>Java", "<html><pre>Scala", "Ruby" };
   private String[] ides = {
       "IDEA", "<html><i>Eclipse", "NetBeans" };
-  // создание несложной модели дерева
+  // створення нескладної моделі дерева
   private TreeModel createTreeModel() {
-    // корень нашего дерева
+    // корінь нашого дерева
     DefaultMutableTreeNode root =
         new DefaultMutableTreeNode(
-            "<html><font color=blue>Создание кода");
-    // основные ветви
+            "<html><font color=blue>Створення коду");
+    // основні гілки
     DefaultMutableTreeNode lang =
-        new DefaultMutableTreeNode("Языки");
+        new DefaultMutableTreeNode("Мови");
     DefaultMutableTreeNode ide =
-        new DefaultMutableTreeNode("Среды");
+        new DefaultMutableTreeNode("Середовища");
     root.add(lang);
     root.add(ide);
-    // присоединяем листья
+    // приєднання листів
     for (int i=0; i<langs.length; i++) {
       lang.add(new DefaultMutableTreeNode(langs[i]));
       ide.add(new DefaultMutableTreeNode(ides[i]));
     }
-    // создаем стандартную модель
+    // створюємо стандартну модель
     return new DefaultTreeModel(root);
   }
   public static void main(String[] args) {
