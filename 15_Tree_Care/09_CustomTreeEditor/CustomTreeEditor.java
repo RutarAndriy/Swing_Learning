@@ -1,5 +1,5 @@
 // CustomTreeEditor.java
-// Создание специализированного редактора узлов
+// Створення спеціалізованого редактора вузлів
 import javax.swing.*;
 import javax.swing.tree.*;
 import javax.swing.text.*;
@@ -11,9 +11,9 @@ public class CustomTreeEditor extends JFrame {
   public CustomTreeEditor() {
     super("CustomTreeEditor");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // настраиваем дерево
+    // налаштовуємо дерево
     JTree tree = new JTree(createTreeModel());
-    // включаем редактирование узлов
+    // вмикаємо редагування вузлів
     tree.setEditable(true);
     DefaultTreeCellRenderer renderer =
         new DefaultTreeCellRenderer();
@@ -21,38 +21,38 @@ public class CustomTreeEditor extends JFrame {
         new DefaultTreeCellEditor(tree, renderer,
             new MaskTreeEditor(tree));
     tree.setCellEditor(editor);
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(new JScrollPane(tree));
     setSize(400, 300);
     setVisible(true);
   }
-  // список телефонов
+  // список телефонів
   private String[] phoneDirectory = {
       "123-13-13", "444-55-67", "111-23-45"};
-  // создает модель дерева
+  // створює модель дерева
   private TreeModel createTreeModel() {
     DefaultMutableTreeNode root =
-        new DefaultMutableTreeNode("Компания");
+        new DefaultMutableTreeNode("Компанія");
     DefaultMutableTreeNode node =
-        new DefaultMutableTreeNode("Отдел кадров");
+        new DefaultMutableTreeNode("Відділ кадрів");
     root.add(node);
-    // присоединяем листья
+    // приєднуємо листи
     for (String phone : phoneDirectory) {
       node.add(new DefaultMutableTreeNode(phone));
     }
     return new DefaultTreeModel(root);
   }
-  // специальный редактор узлов дерева
+  // спеціальний редактор вузлів дерева
   class MaskTreeEditor extends AbstractCellEditor
       implements TreeCellEditor {
     // дерево
     private JTree tree;
-    // текстовое поле, применяемое для редактирования
+    // текстове поле, яке використовується для редагування
     private JFormattedTextField editor;
     // конструктор редактора
     public MaskTreeEditor(JTree tree) {
       this.tree = tree;
-      // создаем форматирующий объект
+      // створюємо форматуючий об'єкт
       try {
         MaskFormatter phone =
             new MaskFormatter("###-##-##");
@@ -60,28 +60,28 @@ public class CustomTreeEditor extends JFrame {
       } catch (Exception ex) {
         ex.printStackTrace();
       }
-      // присоединяем к полю слушателя
+      // приєднюємо до поля прослуховувача
       editor.addActionListener(new ActionListener() {
-        // вызывается при окончании редактирования
+        // викликається при закінченні редагування
         public void actionPerformed(ActionEvent e) {
           stopCellEditing();
         }
       });
     }
-    // возвращает компонент, используемый как редактор
+    // повертає компонент, який використовується як редактор
     public Component getTreeCellEditorComponent(
         JTree tree, Object value, boolean selected,
         boolean expanded, boolean leaf, int row) {
-      // устанавливаем новое значение
+      // встановлюємо нове значення
       editor.setText(value.toString());
-      // возвращаем текстовое поле
+      // повертаємо текстове поле
       return editor;
     }
-    // возращает текущее значение в редакторе
+    // повертаємо поточне значення в редакторі
     public Object getCellEditorValue() {
       return editor.getText();
     }
-    // определяет, можно ли проводить редактирование
+    // визначає, чи можна проводити редагування
     public boolean isCellEditable(EventObject event) {
       MutableTreeNode node = (MutableTreeNode)
           tree.getLastSelectedPathComponent();
