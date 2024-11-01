@@ -1,57 +1,57 @@
 // TreeDefaultEditing.java
-// Стандартные редакторы для деревьев
+// Стандартні редактори для дерев
 import javax.swing.*;
 import javax.swing.tree.*;
 import java.awt.*;
 
 public class TreeDefaultEditing extends JFrame {
-  // листья дерева храним в массивах
+  // листи дерев зберігаємо у масивах
   private String[] basics = {
-      "Красный", "Зеленый", "Синий" };
+      "Червоний", "Зелений", "Синій" };
   private String[] extendeds = {
-      "Желтый", "Голубой", "Розовый" };
+      "Жовтий", "Голубий", "Рожевий" };
   public TreeDefaultEditing() {
     super("TreeDefaultEditing");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем дерево на основе простой модели
+    // створюємо дерево на основі простої моделі
     JTree tree = new JTree(createTreeModel());
-    // включаем редактирование
+    // вмикаємо редагування
     tree.setEditable(true);
-    // "настоящий" редактор
+    // "справжній" редактор
     JComboBox combo = new JComboBox(
-        new String[] {"Красный", "Зеленый"});
+        new String[] {"Червоний", "Зелений"});
     DefaultCellEditor editor = new DefaultCellEditor(combo);
-    // специальный редактор для дерева
+    // спеціальний редактор для дерев
     DefaultTreeCellRenderer renderer =
         new DefaultTreeCellRenderer();
     DefaultTreeCellEditor treeEditor =
         new DefaultTreeCellEditor(tree, renderer, editor);
-    // присоединяем редактор к дереву
+    // приєднуємо редактор до дерева
     tree.setCellEditor(treeEditor);
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(new JScrollPane(tree));
     setSize(400, 300);
     setVisible(true);
   }
-  // создание несложной модели дерева
+  // створення нескладної моделі дерева
   private TreeModel createTreeModel() {
-    // корень нашего дерева
+    // корінь нашого дерева
     DefaultMutableTreeNode root =
-        new DefaultMutableTreeNode("Цвета");
-    // основные ветви
+        new DefaultMutableTreeNode("Кольори");
+    // основні гілки
     DefaultMutableTreeNode basic =
-        new DefaultMutableTreeNode("Основные");
+        new DefaultMutableTreeNode("Основні");
     DefaultMutableTreeNode extended =
-        new DefaultMutableTreeNode("Дополнительные");
+        new DefaultMutableTreeNode("Додаткові");
     root.add(basic);
     root.add(extended);
-    // присоединяем листья
+    // приєднюємо листи
     for (int i=0; i<basics.length; i++) {
       basic.add(new DefaultMutableTreeNode(basics[i]));
       extended.add(
           new DefaultMutableTreeNode(extendeds[i]));
     }
-    // создаем стандартную модель
+    // створюємо стандартну модель
     return new DefaultTreeModel(root);
   }
   public static void main(String[] args) {
