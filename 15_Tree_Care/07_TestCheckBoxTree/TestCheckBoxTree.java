@@ -1,5 +1,5 @@
 // TestCheckBoxTree.java
-// Проверка дерева с поддержкой флажков
+// Перевірка дерева з підтримкою прапорців
 import com.porty.swing.*;
 import javax.swing.*;
 import javax.swing.tree.*;
@@ -9,39 +9,39 @@ public class TestCheckBoxTree extends JFrame {
   public TestCheckBoxTree() {
     super("TestCheckBoxTree");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем модель и дерево
+    // створюємо модель і дерево
     TreeModel model = createTreeModel();
     CheckBoxTree tree = new CheckBoxTree(model);
-    // добавляем дерево в окно
+    // додаємо дерево у вікно
     add(new JScrollPane(tree));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // листья дерева храним в массивах
+  // листя дерева зберігаємо у масивах
   private String[] langs = { "Java", "Scala", "Ruby" };
   private String[] ides =
       { "IDEA", "Eclipse", "NetBeans" };
-  // создание несложной модели дерева
+  // створення нескладної моделі дерева
   private TreeModel createTreeModel() {
-    // корень нашего дерева
+    // корінь нашого дерева
     DefaultMutableTreeNode root =
-        new DefaultMutableTreeNode("Создание кода");
-    // основные ветви
+        new DefaultMutableTreeNode("Створення коду");
+    // основні гілки
     DefaultMutableTreeNode lang =
-        new DefaultMutableTreeNode("Языки");
+        new DefaultMutableTreeNode("Мови");
     DefaultMutableTreeNode ide =
-        new DefaultMutableTreeNode("Среды");
+        new DefaultMutableTreeNode("Середовища");
     root.add(lang);
     root.add(ide);
-    // присоединяем листья с данными для флажков
+    // приєднуємо листя з даними для прапорців
     for (int i=0; i<langs.length; i++) {
       lang.add(new DefaultMutableTreeNode(
           new CheckBoxListElement(false, langs[i])));
       ide.add(new DefaultMutableTreeNode(
           new CheckBoxListElement(false, ides[i])));
     }
-    // создаем стандартную модель
+    // створюємо стандартну модель
     return new DefaultTreeModel(root);
   }
   public static void main(String[] args) {
