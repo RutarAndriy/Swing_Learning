@@ -1,5 +1,5 @@
 // TreeExpansionEvents.java
-// События при развертывании узлов дерева
+// Події при розгортанні вузлів дерева
 import javax.swing.*;
 import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeWillExpandListener;
@@ -14,9 +14,9 @@ public class TreeExpansionEvents extends JFrame {
   public TreeExpansionEvents() {
     super("TreeExpansionEvents");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем дерево на основе модели
+    // створюємо дерево на основі моделі
     JTree tree = new JTree(createTreeModel());
-    // добавляем слушателей
+    // додаємо прослуховувачів
     TreeListener listener = new TreeListener();
     tree.addTreeExpansionListener(listener);
     tree.addTreeWillExpandListener(listener);
@@ -24,47 +24,47 @@ public class TreeExpansionEvents extends JFrame {
     setSize(400, 300);
     setVisible(true);
   }
-  // листья дерева храним в массивах
+  // листи дерев зберігаємо в масивах
   private String[] langs = {
       "<html><b>Java", "<html><pre>Scala", "Ruby" };
   private String[] ides = {
       "IDEA", "<html><i>Eclipse", "NetBeans" };
-  // создание несложной модели дерева
+  // створення нескладної моделі дерева
   private TreeModel createTreeModel() {
-    // корень нашего дерева
+    // корінь нашого дерева
     DefaultMutableTreeNode root =
         new DefaultMutableTreeNode(
-            "<html><font color=blue>Создание кода");
-    // основные ветви
+            "<html><font color=blue>Створення коду");
+    // основні гілки
     DefaultMutableTreeNode lang =
-        new DefaultMutableTreeNode("Языки");
+        new DefaultMutableTreeNode("Мови");
     DefaultMutableTreeNode ide =
-        new DefaultMutableTreeNode("Среды");
+        new DefaultMutableTreeNode("Середовища");
     root.add(lang);
     root.add(ide);
-    // присоединяем листья
+    // приєднюємо листи
     for (int i=0; i<langs.length; i++) {
       lang.add(new DefaultMutableTreeNode(langs[i]));
       ide.add(new DefaultMutableTreeNode(ides[i]));
     }
-    // создаем стандартную модель
+    // створюємо стандартну модель
     return new DefaultTreeModel(root);
   }
-  // слушатель событий о развертывании узлов
+  // прослуховувач подій про розгортання вузлів
   class TreeListener implements TreeExpansionListener,
       TreeWillExpandListener {
     public void treeExpanded(TreeExpansionEvent event) {
-      System.out.println("Узел развернут: " + event.getPath());
+      System.out.println("Вузол розгорнутий: " + event.getPath());
     }
     public void treeCollapsed(TreeExpansionEvent event) {
-      System.out.println("Узел свернут: " + event.getPath());
+      System.out.println("Вузол згорнутий: " + event.getPath());
     }
     public void treeWillExpand(TreeExpansionEvent event)
         throws ExpandVetoException { }
     public void treeWillCollapse(TreeExpansionEvent event)
         throws ExpandVetoException {
       if ( event.getPath().getLastPathComponent().
-          toString().equals("Языки") )
+          toString().equals("Мови") )
         throw new ExpandVetoException(event);
     }
   }
