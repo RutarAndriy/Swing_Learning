@@ -1,35 +1,35 @@
 // UsingTextFields.java
-// Использование текстовых полей Swing
+// Використання текстових полів Swing
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class UsingTextFields extends JFrame {
-  // наши поля
+  // наші поля
   private JTextField smallField, bigField;
   public UsingTextFields() {
     super("UsingTextFields");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем текстовые поля
+    // створюємо текстові поля
     smallField = new JTextField(10);
     bigField = new JTextField("Текст поля", 25);
-    // дополнительные настройки
+    // додаткові налаштування
     bigField.setFont(new Font("Verdana", Font.PLAIN, 16));
     bigField.setHorizontalAlignment(JTextField.RIGHT);
-    // слушатель окончания ввода
+    // прослуховувач завершення вводу
     smallField.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // показываем введенный текст
+        // відображаємо введений текст
         JOptionPane.showMessageDialog(
             UsingTextFields.this,
             "Ваше слово: " +
                 smallField.getText());
       }
     });
-    // поле с паролем
+    // поле з паролем
     JPasswordField password = new JPasswordField(15);
     password.setEchoChar('$');
-    // добавляем поля в окно и выводим его на экран
+    // додаємо поля у вікно і виводимо його на екран
     setLayout(new FlowLayout());
     add(smallField);
     add(bigField);
