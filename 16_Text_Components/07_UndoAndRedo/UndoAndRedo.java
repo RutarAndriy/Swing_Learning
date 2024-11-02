@@ -1,51 +1,51 @@
 // UndoAndRedo.java
-// Поддержка отмены и повтора операций
-// в текстовых компонентах Swing
+// Підтримка відміни та повтору операцій
+// у текстових компонентах Swing
 import javax.swing.*;
 import javax.swing.undo.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class UndoAndRedo extends JFrame {
-  // поддержка отмены/повтора операций
+  // підтримка відміни/повтору операцій
   private UndoManager undoManager = new UndoManager();
   public UndoAndRedo() {
     super("UndoAndRedo");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // панель инструментов
+    // панель інструментів
     JToolBar toolBar = new JToolBar();
     toolBar.add(new UndoAction());
     toolBar.add(new RedoAction());
-    // текстовое поле
+    // текстове поле
     JTextArea textArea = new JTextArea();
-    // добавляем слушателя операций
+    // додаємо прослуховувача операцій
     textArea.getDocument().
         addUndoableEditListener(undoManager);
-    // добавляем компоненты в окно
+    // додаємо компоненти у вікно
     add(toolBar, "North");
     add(new JScrollPane(textArea));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // команда - отмена операции
+  // команда - відміна операції
   class UndoAction extends AbstractAction {
     public UndoAction() {
-      // настройка команды
+      // налаштування команди
       putValue(AbstractAction.SMALL_ICON,
-          new ImageIcon("undo16.gif"));
+          new ImageIcon("Undo16.gif"));
     }
     public void actionPerformed(ActionEvent e) {
       if ( undoManager.canUndo() )
         undoManager.undo();
     }
   }
-  // команда - повтор операции
+  // команда - повтор операції
   class RedoAction extends AbstractAction {
     public RedoAction() {
-      // настройка команды
+      // налаштування команди
       putValue(AbstractAction.SMALL_ICON,
-          new ImageIcon("redo16.gif"));
+          new ImageIcon("Redo16.gif"));
     }
     public void actionPerformed(ActionEvent e) {
       if ( undoManager.canRedo() )
