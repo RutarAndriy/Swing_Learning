@@ -1,33 +1,33 @@
 // TableResizeModes.java
-// Режимы перераспределения пространства таблицы
-// при изменении размеров столбцов
+// Режими перерозпреділення простору таблиці
+// при зміні розмірів стовбців
 import javax.swing.*;
 import java.awt.*;
 
 public class TableResizeModes extends JFrame {
-  // названия столбцов таблицы
+  // назви стовбців таблиці
   private String[] columnNames = {
-      "Название", "Вкус", "Цвет"
+      "Нава", "Смак", "Колір"
   };
-  // данные для таблицы
+  // дані для таблиці
   private String[][] data = {
-      { "Апельсин", "Кисло-сладкий", "Оранжевый"},
-      { "Лимон", "Кислый", "Желтый"}
+      { "Апельсин", "Кисло-солодкий", "Оранжевий"},
+      { "Лимон", "Кислий", "Жовтий"}
   };
-  // массив таблиц
+  // масив таблиць
   private JTable[] tables = new JTable[5];
   public TableResizeModes() {
     super("TableResizeModes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // окно делим на пять ячеек
+    // вікно ділимо на 5 комірок
     setLayout(new GridLayout(5, 1));
-    // создаем массив таблиц
+    // створюємо масив таблиць
     for (int i=0; i<tables.length; i++) {
       tables[i] =
           new JTable(data, columnNames);
       add(new JScrollPane(tables[i]));
     }
-    // меняем режимы распределения пространства
+    // змінюємо режими розпреділення простору
     tables[1].setAutoResizeMode(
         JTable.AUTO_RESIZE_OFF);
     tables[2].setAutoResizeMode(
@@ -36,8 +36,8 @@ public class TableResizeModes extends JFrame {
         JTable.AUTO_RESIZE_LAST_COLUMN);
     tables[4].setAutoResizeMode(
         JTable.AUTO_RESIZE_ALL_COLUMNS);
-    // придаем окну оптимальный размер и
-    // выводим его на экран
+    // задаємо вікну оптимальний розмір і
+    // виводимо його на екран
     pack();
     setVisible(true);
 
