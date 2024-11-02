@@ -1,6 +1,6 @@
 // TestAutoCompletion.java
-// Проверка работы текстового поля с
-// автоматическим заполнением
+// Перевірка роботи текстового поля з
+// автоматичним доповненням
 import com.porty.swing.*;
 import javax.swing.*;
 import java.awt.*;
@@ -9,25 +9,25 @@ public class TestAutoCompletion extends JFrame {
   public TestAutoCompletion() {
     super("TestAutoCompletion");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем и настраиваем поле
+    // створюємо і налаштовуємо поле
     JTextField field =
         new JTextField();
     field.setColumns(15);
-    // слова для автозаполнения
+    // слова для автодоповнення
     AutoCompleteTextDocument doc =
         new AutoCompleteTextDocument(field);
-    doc.addWord("прекрасный");
-    doc.addWord("великолепный");
-    // добавляем поле в окно
+    doc.addWord("прекрасний");
+    doc.addWord("чудовий");
+    // додаємо поле у вікно
     setLayout(new FlowLayout());
     add(field);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
         new Runnable() {
-          public void run() { new TextHighlights(); } });
+          public void run() { new TestAutoCompletion(); } });
   }
 }

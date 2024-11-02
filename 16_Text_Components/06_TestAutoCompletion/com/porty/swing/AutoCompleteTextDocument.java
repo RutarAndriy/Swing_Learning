@@ -1,5 +1,5 @@
 // com/porty/swing/AutoCompleteTextDocument.java
-// Модель документа с поддержкой автозаполнения
+// Модель документу із підтримкою автодоповнення
 package com.porty.swing;
 
 import javax.swing.text.*;
@@ -7,63 +7,63 @@ import javax.swing.*;
 import java.util.*;
 
 public class AutoCompleteTextDocument extends PlainDocument {
-  // текстовый компонент в котором работает документ
+  // текстовий компонент в якому працює документ
   private JTextComponent comp;
-  // список слов для автозаполнения
+  // список шарів для автодоповнення
   private List<String> words = new ArrayList<String>();
-  // конструктор требует текстовый компонент
+  // конструктор вимагає текстовий компонент
   public AutoCompleteTextDocument(JTextComponent comp) {
     this.comp = comp;
     comp.setDocument(this);
   }
-  // добавляет слово в список
+  // додає слово у список
   public void addWord(String word) {
     words.add(word);
   }
-  // свойство, управляющее началом автозаполнения
+  // властивість, керуюча початком автодоповнення
   private int beforeCompletion = 3;
   public void setBeforeCompletion(int value) {
     beforeCompletion = value;
   }
 
-  // вызывается при вставке в документ нового текста
+  // викликається при вставці в документ нового тексту
   @Override
   public void insertString(int offs, String str, AttributeSet a)
       throws BadLocationException {
-    // текущая позиция в тексте
+    // поточна позиція в тексті
     int end = offs + str.length();
-    // определяем позиции текущего слова
+    // визначаємо позицію поточного слова
     final int wordStart = Utilities.getWordStart(comp, offs);
-    // длина текущего слова
+    // довжина поточного слова
     int wordLength = end - wordStart;
-    // проверим, можно ли завершать слово
+    // перевіряємо, чи можна завершити слово
     if ( wordLength >= beforeCompletion) {
-      // получаем текущее слово
+      // отримуємо поточне слово
       String word = getText(wordStart, offs - wordStart) + str;
-      // пытаемся найти его полный вариант в списке
+      // намагаємося знайти його повний варіант у списку
       String wholeWord = "";
       for (String next : words) {
         if (next.startsWith(word)) {
-          // слово найдено
+          // слово знайдено
           wholeWord = next;
           break;
         }
       }
-      // если слово найдено
+      // якщо слово знайдено
       if ( wholeWord.length() > 0) {
-        // вырезаем часть для автозаполнения
+        // вирізаємо частину для автодоповнення
         final String toComplete =
             wholeWord.substring(wordLength);
-        // позиции для выделения этой части
+        // позиція для виділення цієї частини
         final int startPos = offs + str.length();
         final int endPos = end + toComplete.length();
-        // добавляем добавку к тексту
+        // додаємо добавку до тексту
         str = str + toComplete;
-        // отложенная задача для выделения добавки
+        // відложена задача для виділення добавки
         SwingUtilities.invokeLater(new Runnable() {
           public void run() {
             try {
-              // выделим добавленную часть
+              // виділяємо добавлену частину
               comp.setSelectionStart(startPos);
               comp.setSelectionEnd(endPos);
             } catch (Exception ex) {
@@ -73,7 +73,7 @@ public class AutoCompleteTextDocument extends PlainDocument {
         });
       }
     }
-    // родительский метод добавит текст
+    // батьківський метод додасть текст
     super.insertString(offs, str, a);
   }
 }
