@@ -1,5 +1,5 @@
 // StyledText.java
-// Богатые возможности редактора JTextPane
+// Багаті можливості редактора JTextPane
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
@@ -8,19 +8,19 @@ public class StyledText extends JFrame {
   public StyledText() {
     super("StyledText");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создадим редактор
+    // створюємо редактор
     JTextPane textPane = new JTextPane();
-    // создание документа и стилей
+    // створення документа і стилів
     createDocument(textPane);
-    // добавим редактор в окно
+    // додамо редактор у вікно
     add(new JScrollPane(textPane));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
   private void createDocument(JTextPane tp) {
-    // настройка стилей
-    // стиль основного текста
+    // налаштування стилів
+    // стиль основного тексту
     Style normal = tp.addStyle("Normal", null);
     StyleConstants.setFontFamily(normal, "Verdana");
     StyleConstants.setFontSize(normal, 13);
@@ -28,24 +28,24 @@ public class StyledText extends JFrame {
     Style heading = tp.addStyle("Heading", normal);
     StyleConstants.setFontSize(heading, 20);
     StyleConstants.setBold(heading, true);
-    // наполняем документ содержимым, используя стили
-    insertString("Незамысловатый Заголовок", tp, heading);
-    insertString("Далее идет обычное содержимое,", tp, normal);
-    insertString("помеченное стилем Normal.", tp, normal);
-    insertString("Еще Один Заголовок", tp, heading);
-    // меняем произольную часть текста
+    // наповнюємо документ вмістом, використовуючи стилі
+    insertString("Нехитрий Заголовок", tp, heading);
+    insertString("Далі йде звичайний вміст,", tp, normal);
+    insertString("помічений стилем Normal.", tp, normal);
+    insertString("Ще Один Заголовок", tp, heading);
+    // змінюємо випадкову частину тексту
     SimpleAttributeSet red = new SimpleAttributeSet();
     StyleConstants.setForeground(red, Color.red);
     StyledDocument doc = tp.getStyledDocument();
     doc.setCharacterAttributes(5, 5, red, false);
-    // добавим компонент в конец текста
+    // додамо компонент в кінець тексту
     tp.setCaretPosition(doc.getLength());
-    JCheckBox check = new JCheckBox("Все возможно!");
+    JCheckBox check = new JCheckBox("Все можливо!");
     check.setOpaque(false);
     tp.insertComponent(check);
   }
-  // вставляет строку в конец документа с переносом,
-  // используя заданный стиль оформления
+  // вставляємо строку в кінець документу з переносом,
+  // використовуючи заданий стиль оформлення
   private void insertString(String s, JTextPane tp, Style style) {
     try {
       Document doc = tp.getDocument();
