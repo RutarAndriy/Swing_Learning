@@ -1,6 +1,5 @@
 // UsingTableColumnModel.java
-// Использование стандартной модели столбцов
-// таблицы и объектов TableColumn
+// Використання стандартної моделі стовбців таблиці і об'єктів TableColumn
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.event.*;
@@ -8,25 +7,25 @@ import java.awt.*;
 import java.util.Enumeration;
 
 public class UsingTableColumnModel extends JFrame {
-  // модель столбцов
+  // модель стовбців
   private TableColumnModel columnModel;
-  // названия столбцов таблицы
+  // назви стовбців таблиці
   private String[] columnNames = {
-      "Имя", "Любимый цвет", "Напиток"
+      "Ім'я", "Улюблений колір", "Напиток"
   };
   // данные для таблицы
   private String[][] data = {
-      { "Иван", "Зеленый", "Апельсиновый сок"},
-      { "Александр", "Бежевый", "Зеленый чай"}
+      { "Іван", "Зелений", "Апельсиновий сік"},
+      { "Олександр", "Бежевий", "Зелений чай"}
   };
   public UsingTableColumnModel() {
     super("UsingTableColumnModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // наша таблица
+    // наша таблиця
     JTable table = new JTable(data, columnNames);
-    // получаем стандартную модель
+    // отримуємо стандартну модель
     columnModel = table.getColumnModel();
-    // меняем размеры столбцов
+    // змінюємо розміри стовбців
     Enumeration e = columnModel.getColumns();
     while ( e.hasMoreElements() ) {
       TableColumn column =
@@ -34,28 +33,28 @@ public class UsingTableColumnModel extends JFrame {
       column.setMinWidth(30);
       column.setMaxWidth(90);
     }
-    // создадим пару кнопок
+    // створимо декілька кнопок
     JPanel buttons = new JPanel();
-    JButton move = new JButton("Поменять местами");
+    JButton move = new JButton("Поміняти місцями");
     move.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // меняем местами первые два столбца
+        // міняємо місцями перших два стовбці
         columnModel.moveColumn(0, 1);
       }
     });
     buttons.add(move);
-    JButton add = new JButton("Добавить");
+    JButton add = new JButton("Додати");
     add.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // добавляем столбец
+        // додаємо стовбець
         TableColumn newColumn =
             new TableColumn(1, 100);
-        newColumn.setHeaderValue("<html><b>Новый!");
+        newColumn.setHeaderValue("<html><b>Новий!");
         columnModel.addColumn(newColumn);
       }
     });
     buttons.add(add);
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(new JScrollPane(table));
     add(buttons, "South");
     setSize(400, 300);
