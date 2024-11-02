@@ -1,5 +1,5 @@
 // FormattedFields.java
-// Применение полей JFormattedTextField
+// Використання полів JFormattedTextField
 import javax.swing.*;
 import javax.swing.text.*;
 import java.text.*;
@@ -7,14 +7,14 @@ import java.util.Date;
 import java.awt.*;
 
 public class FormattedFields extends JFrame {
-  // поля для форматированного ввода данных
+  // поля для форматованого вводу даних
   private JFormattedTextField
       phoneField, dateField, numberField;
   public FormattedFields() {
     super("FormattedFields");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // ограниченный ввод на основе маски
-    // телефонный номер
+    // обмежуємо ввід на основі маски
+    // телефонний номер
     try {
       MaskFormatter phone =
           new MaskFormatter("+#-###-###-##-##");
@@ -24,27 +24,27 @@ public class FormattedFields extends JFrame {
     } catch (Exception ex) {
       ex.printStackTrace();
     }
-    // редактирование даты
-    // формат даты
+    // редагування дати
+    // формат дати
     DateFormat date =
         new SimpleDateFormat("dd MMMM yyyy, EEEE");
-    // настройка форматирующего объекта
+    // налаштування форматуючого об'єкту
     DateFormatter formatter = new DateFormatter(date);
     formatter.setAllowsInvalid(false);
     formatter.setOverwriteMode(true);
-    // настройка текстового поля
+    // налаштування текстового поля
     dateField = new JFormattedTextField(formatter);
     dateField.setColumns(15);
     dateField.setValue(new Date());
-    // редактирование чисел
-    // формат числа с экспонентой
+    // редагування чисел
+    // формат числа з експонентою
     NumberFormat number = new DecimalFormat("##0.##E0");
     numberField = new JFormattedTextField(
         new NumberFormatter(number));
-    // настройка поля
+    // налаштування поля
     numberField.setColumns(10);
     numberField.setValue(1500);
-    // добавляем поля в панель содержимого
+    // додаємо поля до панелі вмісту
     setLayout(new FlowLayout());
     add(new JLabel("Телефон:"));
     add(phoneField);
@@ -52,7 +52,7 @@ public class FormattedFields extends JFrame {
     add(dateField);
     add(new JLabel("Число:"));
     add(numberField);
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
