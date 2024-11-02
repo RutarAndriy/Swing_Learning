@@ -1,5 +1,5 @@
 // TextHighlights.java
-// Дополнительное выделение текста
+// Додаткове виділення тексту
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
@@ -8,11 +8,11 @@ public class TextHighlights extends JFrame {
   public TextHighlights() {
     super("TextHighlights");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем и настраиваем поле
+    // створюємо і налаштовуємо поле
     JTextArea area =
-        new JTextArea("Привет мир!");
+        new JTextArea("Привіт світ!");
     try {
-      // добавим выделенный фрагмент желтого цвета
+      // додаємо виділений фрагмент фовтого кольору
       Object reference =
           area.getHighlighter().
               addHighlight(0, 6,
@@ -21,9 +21,9 @@ public class TextHighlights extends JFrame {
     } catch (BadLocationException e) {
       e.printStackTrace();
     }
-    // добавляем поле в окно
+    // додаємо поле у вікно
     add(new JScrollPane(area));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
   }
