@@ -1,5 +1,5 @@
 // UsingDefaultTableModel.java
-// Использование стандартной модели при создании таблицы
+// Використання стандартної моделі при створенні таблиці
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.event.*;
@@ -11,40 +11,40 @@ public class UsingDefaultTableModel extends JFrame {
   public UsingDefaultTableModel() {
     super("UsingDefaultTableModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем стандартную модель
+    // створюємо стандартну модель
     dtm = new DefaultTableModel();
-    // задаем названия стоблцов
+    // задаємо назви стовбців
     dtm.setColumnIdentifiers(
-        new String[] {"Номер", "Товар", "Цена"});
-    // наполняем модель данными
+        new String[] {"Номер", "Товар", "Ціна"});
+    // наповнюємо модель даними
     dtm.addRow(new String[] {"№1", "Блокнот", "5.5"});
     dtm.addRow(new String[] {"№2", "Телефон", "175"});
-    dtm.addRow(new String[] {"№3", "Карандаш", "1.2"});
-    // передаем модель в таблицу
+    dtm.addRow(new String[] {"№3", "Олівець", "1.2"});
+    // передаємо модель у таблицю
     JTable table = new JTable(dtm);
-    // данные могут меняться динамически
-    JButton add = new JButton("Добавить");
+    // дані можуть змінюватися динамічно
+    JButton add = new JButton("Додати");
     add.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // добавляем новые данные
+        // додаємо нові дані
         dtm.addRow(
-            new String[] {"?", "Новинка!", "Супер Цена!"});
+            new String[] {"?", "Новинка!", "Супер Ціна!"});
       }
     });
-    JButton remove = new JButton("Удалить");
+    JButton remove = new JButton("Видалити");
     remove.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // удаляем последнюю строку (отсчет с нуля)
+        // видаляємо останній рядок (відлік з нуля)
         dtm.removeRow(dtm.getRowCount() - 1);
       }
     });
-    // добавляем кнопки и таблицу
+    // додаємо кнопки і таблицю
     add(new JScrollPane(table));
     JPanel buttons = new JPanel();
     buttons.add(add);
     buttons.add(remove);
     add(buttons, "South");
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(300, 300);
     setVisible(true);
   }
