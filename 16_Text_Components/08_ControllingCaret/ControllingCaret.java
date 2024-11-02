@@ -1,5 +1,5 @@
 // ControllingCaret.java
-// Управление текстовым курсором
+// Управління текстовий курсором
 import javax.swing.*;
 import javax.swing.event.CaretListener;
 import javax.swing.event.CaretEvent;
@@ -10,26 +10,26 @@ public class ControllingCaret extends JFrame {
   public ControllingCaret() {
     super("ControllingCaret");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // многострочное текстовое поле
+    // багаторядкове текстове поле
     final JTextArea textArea = new JTextArea();
-    // добавим текст
-    textArea.append("Просто какой-то текст");
-    // настройка курсора и выделение текста
+    // додамо текст
+    textArea.append("Просто який-небуть текст");
+    // налаштування курсору і виділення тексту
     Caret caret = textArea.getCaret();
     caret.setBlinkRate(50);
     caret.setDot(5);
     caret.moveDot(10);
-    // добавим текстовое поле в окно
+    // додамо текстове поле у вікно
     add(new JScrollPane(textArea));
-    // надпись для слова у курсора
+    // напис для слова біля курсору
     final JLabel label = new JLabel();
     add(label, "South");
-    // слушатель перемещений курсора
+    // прослуховувач переміщень курсору
     textArea.addCaretListener(new CaretListener() {
       public void caretUpdate(CaretEvent e) {
-        // выведем слово у курсора
+        // виведемо слово біля курсору
         try {
-          // начало и конец слова на позиции
+          // початок і кінець слова на позиції
           int wordStart =
               Utilities.getWordStart(textArea, e.getDot());
           int wordEnd =
@@ -41,7 +41,7 @@ public class ControllingCaret extends JFrame {
         }
       }
     });
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
