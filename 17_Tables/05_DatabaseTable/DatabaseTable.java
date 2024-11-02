@@ -1,32 +1,32 @@
 // DatabaseTable.java
-// Таблица, работающая с базой данных
-// посредством специальной модели
+// Таблиця, працююча із базою даних за посередництва спеціальної моделі
+// Приклад застарів, тому не працює на нових версіях Java починаючи із 8-ї
 import java.sql.*;
 import java.awt.*;
 import javax.swing.*;
 import com.porty.swing.*;
 
 public class DatabaseTable {
-  // параметры подключения
+  // параметри підключення
   private static String
       dsn = "jdbc:odbc:Library",
       uid = "",
       pwd = "";
   public static void main(String[] args) throws Exception {
-    // инициализация JDBC
+    // ініціалізація JDBC
     Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-    // объект-соединение с БД
+    // об'єкт-з'єднання із БД
     Connection conn = DriverManager.getConnection(dsn, uid, pwd);
     Statement st = conn.createStatement();
-    // выполняем запрос
+    // виконуємо запит
     ResultSet rs = st.executeQuery(
         "select * from readers.csv");
     // наша модель
     final DatabaseTableModel dbm =
         new DatabaseTableModel(true);
-    // считываем данные в таблицу
+    // зчитуємо дані в таблицю
     dbm.setDataSource(rs);
-    // таблица и окно
+    // таблиця і вікно
     SwingUtilities.invokeLater(
         new Runnable() {
           public void run() {

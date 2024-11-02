@@ -1,6 +1,6 @@
 // com/porty/swing/DatabaseTableModel.java
-// Модель данных таблицы, работающая
-// с запросами к базам данных
+// Модель даних таблиці, працююча
+// із запитами до бази даних
 package com.porty.swing;
 
 import javax.swing.table.*;
@@ -9,76 +9,76 @@ import java.util.*;
 
 public class DatabaseTableModel
     extends AbstractTableModel {
-  // здесь мы будем хранить названия столбцов
+  // тут ми будемо зберігати назви стовбців
   private ArrayList<String> columnNames = new ArrayList<String>();
-  // список типов столбцов
+  // список типів стовбців
   private ArrayList<Class> columnTypes = new ArrayList<Class>();
-  // хранилище для полученных данных из базы данных
+  // сховище для отриманих даних із бази даних
   private ArrayList<ArrayList<Object>> data
       = new ArrayList<ArrayList<Object>>();
-  // признак редактирования таблицы
+  // признак редагування таблиці
   private boolean editable;
-  // конструктор позволяет задать возможность редактирования
+  // конструктор позволяє задати можливість редагування
   public DatabaseTableModel(boolean editable) {
     this.editable = editable;
   }
-  // количество строк
+  // кількість рядків
   public int getRowCount() {
     return data.size();
   }
-  // количество столбцов
+  // кількість стовбців
   public int getColumnCount() {
     return columnNames.size();
   }
-  // тип данных столбца
+  // тип даних стовбця
   public Class getColumnClass(int column) {
     return columnTypes.get(column);
   }
-  // название столбца
+  // назва стовбця
   public String getColumnName(int column) {
     return columnNames.get(column);
   }
-  // данные в ячейке
+  // дані в комірці
   public Object getValueAt(int row, int column) {
     return (data.get(row)).get(column);
   }
-  // возможность редактирования
+  // можливість редагування
   public boolean isCellEditable(int row, int column) {
     return editable;
   }
-  // замена значения ячейки
+  // заміна значення комірки
   public void setValueAt(
       Object value, int row, int column){
     (data.get(row)).set(column, value);
   }
-  // получение данных из объекта ResultSet
+  // отримання даних із об'єкту ResultSet
   public void setDataSource(
       ResultSet rs) throws Exception {
-    // удаляем прежние данные
+    // видаляємо попередні дані
     data.clear();
     columnNames.clear();
     columnTypes.clear();
-    // получаем вспомогательную информацию о столбцах
+    // отримуємо допоміжну інформацію про стовбці
     ResultSetMetaData rsmd = rs.getMetaData();
     int columnCount = rsmd.getColumnCount();
     for ( int i=0; i<columnCount; i++) {
-      // название столбца
+      // назва стовбця
       columnNames.add(rsmd.getColumnName(i+1));
-      // тип столбца
+      // тип стовбця
       Class type =
           Class.forName(rsmd.getColumnClassName(i+1));
       columnTypes.add(type);
     }
-    // получаем данные
+    // отримуємо дані
     while ( rs.next() ) {
-      // здесь будем хранить ячейки одной строки
+      // тут будемо зберігати комірки одного рядка
       ArrayList<Object> row = new ArrayList<Object>();
       for ( int i=0; i<columnCount; i++) {
         row.add(rs.getObject(i+1));
       }
       data.add(row);
     }
-    // сообщаем об изменениях в структуре данных
+    // повідомляємо про зміни в структурі даних
     fireTableStructureChanged();
   }
 }
