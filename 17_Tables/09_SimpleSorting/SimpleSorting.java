@@ -1,5 +1,5 @@
 // SimpleSorting.java
-// Сортировка таблицы по умолчанию
+// Сортування таблиці за замовчуванням
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -9,10 +9,10 @@ public class SimpleSorting extends JFrame {
   public SimpleSorting() {
     super("SimpleSorting");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем таблицу на основе модели по умолчанию
+    // створюємо таблицю на основі моделі за замовчуванням
     SortModel sm = new SortModel();
     sm.setColumnCount(4);
-    // добавляем сто строк случайных чисел
+    // додаємо сто рядків випадкових чисел
     for ( int i = 0; i < 100; i++ ) {
       sm.addRow(new Integer[] { i,
           (int)(5*Math.random()),
@@ -20,19 +20,19 @@ public class SimpleSorting extends JFrame {
           (int)(5*Math.random())} );
     }
     JTable table = new JTable();
-    // автоматическое включение сортировки
+    // автоматичне включення сортування
     table.setAutoCreateRowSorter(true);
-    // ограничение по количеству столбцов
+    // обмеження по кількості стовбців
     ((TableRowSorter)table.getRowSorter()).setMaxSortKeys(2);
     table.setModel(sm);
     add(new JScrollPane(table));
-    // выводим окно на экран
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // модель для демонстрации сортировки и фильтрации
+  // модель для демонстрації сортування та фільтрації
   static class SortModel extends DefaultTableModel {
-    // тип данных, хранимых в столбце
+    // тип даних, який зберігається у стовбці
     public Class getColumnClass(int column) {
       return Integer.class;
     }
@@ -40,6 +40,6 @@ public class SimpleSorting extends JFrame {
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
         new Runnable() {
-          public void run() { new FilterAndSelection(); } });
+          public void run() { new SimpleSorting(); } });
   }
 }
