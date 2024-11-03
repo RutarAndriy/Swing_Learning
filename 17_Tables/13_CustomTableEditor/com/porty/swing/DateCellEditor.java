@@ -1,5 +1,5 @@
 // com/porty/swing/DateCellEditor.java
-// Редактор для ячеек таблицы, отображающих даты
+// Редактор для комірок таблиці, які відображають дати
 package com.porty.swing;
 
 import javax.swing.*;
@@ -8,24 +8,24 @@ import java.util.*;
 
 public class DateCellEditor extends AbstractCellEditor
     implements TableCellEditor {
-  // редактор - прокручивающийся список
+  // редактор - прокручуваний список
   private JSpinner editor;
   // конструктор
   public DateCellEditor() {
-    // настраиваем прокручивающийся список
+    // налаштовуємо прокручуваний список
     SpinnerDateModel model = new SpinnerDateModel(
         new Date(), null, null, Calendar.DAY_OF_MONTH);
     editor = new JSpinner(model);
   }
-  // возвращает компонент, применяемый для редактирования
+  // повертаємо компонент, який застосовується для редагування
   public java.awt.Component getTableCellEditorComponent(
       JTable table, Object value, boolean isSelected,
       int row, int column) {
-    // меняем значение и возвращаем список
+    // змінюємо значення і повертаємо список
     editor.setValue(value);
     return editor;
   }
-  // возвращает текущее значение в редакторе
+  // повертає поточне значення в редакторі
   public Object getCellEditorValue() {
     return editor.getValue();
   }

@@ -1,6 +1,5 @@
 // CustomTableEditor.java
-// Применение специализированного редактора
-// для ячеек таблицы
+// Застосування спеціального редактора для комірок таблиці
 import javax.swing.*;
 import javax.swing.table.*;
 import java.util.*;
@@ -8,31 +7,31 @@ import java.awt.*;
 import com.porty.swing.*;
 
 public class CustomTableEditor extends JFrame {
-  // заголовок столбцов таблицы
+  // заголовки стовбців таблиці
   private String[] columns = {
-      "Операция", "Дата" };
-  // данные таблицы
+      "Операція", "Дата" };
+  // дані таблиці
   private Object[][] data = {
-      { "Покупка", new Date() },
-      { "Продажа", new Date() }
+      { "Купівля", new Date() },
+      { "Продаж", new Date() }
   };
   public CustomTableEditor() {
     super("CustomTableEditor");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем таблицу на основе стандартной модели
+    // створюємо таблицю на основі стандартної моделі
     DefaultTableModel model =
         new DefaultTableModel(data, columns) {
-          // необходимо указать тип столбца
+          // необхідно вказати тип стовбця
           public Class getColumnClass(int column) {
             return data[0][column].getClass();
           }
         };
     JTable table = new JTable(model);
     table.setRowHeight(20);
-    // указываем редактор для дат
+    // вказуємо редактор для дат
     table.setDefaultEditor(
         Date.class, new DateCellEditor());
-    // выводим окно на экран
+    // виводимо вікно на екран
     getContentPane().add(new JScrollPane(table));
     setSize(400, 300);
     setVisible(true);
