@@ -1,31 +1,31 @@
 // TableDefaultEditing.java
-// Применение стандартного редактора для таблиц
+// Застосування стандартного редактора для таблиць
 import javax.swing.*;
 import java.awt.*;
 
 public class TableDefaultEditing extends JFrame {
-  // название столбцов
+  // назви стовбців
   private String[] columns = {
-      "Имя", "Любимый Цвет" };
-  // данные для таблицы
+      "Ім'я", "Улюблений колір" };
+  // дані для таблиці
   private String[][] data = {
-      { "Иван", "Зеленый" },
-      { "Александр", "Красный"},
-      { "Петр", "Синий"}
+      { "Іван", "Зелений" },
+      { "Олександр", "Червоний"},
+      { "Петро", "Синій"}
   };
   public TableDefaultEditing() {
     super("TableDefaultEditing");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем таблицу
+    // створюємо таблицю
     JTable table = new JTable(data, columns);
-    // настраиваем стандартный редактор
+    // налаштовуємо стандартний редактор
     JComboBox combo = new JComboBox(
-        new String[] { "Зеленый", "Желтый", "Белый"});
+        new String[] { "Зелений", "Жовтий", "Білий"});
     DefaultCellEditor editor =
         new DefaultCellEditor(combo);
     table.getColumnModel().getColumn(1).
         setCellEditor(editor);
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(new JScrollPane(table));
     setSize(400, 300);
     setVisible(true);
