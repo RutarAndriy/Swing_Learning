@@ -1,5 +1,5 @@
 // ClipboardContents.java
-// Р”РѕСЃС‚СѓРї Рє СЃРѕРґРµСЂР¶РёРјРѕРјСѓ Р±СѓС„РµСЂР° РѕР±РјРµРЅР°
+// Доступ до вмісту буфера обміну
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -12,23 +12,23 @@ import javax.swing.*;
 public class ClipboardContents extends JFrame {
   public ClipboardContents() {
     super("ClipboardContents");
-    // РІС‹С…РѕРґ РїСЂРё Р·Р°РєСЂС‹С‚РёРё РѕРєРЅР°
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // РґРѕР±Р°РІРёРј РєРЅРѕРїРєСѓ РїРѕР»СѓС‡РµРЅРёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
-    JButton getButton = new JButton("РџРѕР»СѓС‡РёС‚СЊ");
-    // С‚РµРєСЃС‚РѕРІРѕРµ РїРѕР»Рµ РґР»СЏ РІС‹РІРѕРґР° РґР°РЅРЅС‹С…
+    // додамо кнопку отримання вмісту
+    JButton getButton = new JButton("Отримати");
+    // текстове поле для виводу даних
     final JTextArea textArea = new JTextArea();
     getButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         try {
-          // Р±СѓС„РµСЂ РѕР±РјРµРЅР°
+          // буфер обміну
           Clipboard clipboard = Toolkit.getDefaultToolkit().
               getSystemClipboard();
-          // РІС‹РІРµРґРµРј РІСЃРµ С‚РёРїС‹ РґР°РЅРЅС‹С…
+          // виведемо всі типи даних
           for (DataFlavor next:
               clipboard.getAvailableDataFlavors()) {
             textArea.append(next.toString() + "\n");
-            // РїРѕРїС‹С‚РєР° РїРѕР»СѓС‡РёС‚СЊ СЃР°РјРё РґР°РЅРЅС‹Рµ
+            // спроба отримати самі дані
             textArea.append(clipboard.
                 getData(next).toString() + "\n");
           }
@@ -37,18 +37,17 @@ public class ClipboardContents extends JFrame {
         } catch (IOException ex) {
           ex.printStackTrace();
         }
-
       }
     });
     add(new JScrollPane(textArea));
     add(getButton, "South");
-    // РІС‹РІРµРґРµРј РѕРєРЅРѕ РЅР° СЌРєСЂР°РЅ
+    // виведемо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
-        new Runnable() {
-          public void run() { new ClipboardContents(); } });
+      new Runnable() {
+        public void run() { new ClipboardContents(); } });
   }
 }
