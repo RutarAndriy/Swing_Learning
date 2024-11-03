@@ -1,6 +1,5 @@
 // RegisteringTableRenderer.java
-// Регистрация в таблице собственного
-// объекта для отображения
+// Реєстрація в таблиці власного об'єкта для відображення
 import javax.swing.*;
 import javax.swing.table.*;
 import com.porty.swing.*;
@@ -10,50 +9,50 @@ public class RegisteringTableRenderer extends JFrame {
   public RegisteringTableRenderer() {
     super("RegisteringTableRenderer");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем таблицы на основе нашей модели
+    // створюємо таблиці на основі нашої моделі
     JTable table = new JTable(new SpecialModel());
-    // регистрируем объект для прорисовки новых данных
+    // реєструємо об'єкт для промальовування нових даних
     table.setDefaultRenderer(ImageListElement.class,
         new ImageTableCellRenderer());
-    // выводим окно на экран
+    // виводимо вікно на екран
     add(new JScrollPane(table));
     pack();
     setVisible(true);
   }
-  // модель таблицы
+  // модель таблиці
   class SpecialModel extends AbstractTableModel {
     // значки
     private Icon
-        image1 = new ImageIcon("clip1.gif"),
-        image2 = new ImageIcon("clip2.gif");
-    // названия столбцов
+        image1 = new ImageIcon("Clip1.gif"),
+        image2 = new ImageIcon("Clip2.gif");
+    // назви стовбців
     private String[] columnNames = {
-        "Компания", "Адрес"
+        "Компанія", "Адреса"
     };
-    // данные таблицы
+    // дані таблиці
     private Object[][] data = {
         { new ImageListElement(image1, "MegaWorks"),
             "<html><font color=\"red\">Париж" },
         { new ImageListElement(image2, "TerraMedia"),
-            "<html><b>С.-Петербург" }
+            "<html><b>Відень" }
     };
-    // количество столбцов
+    // кількість стовбців
     public int getColumnCount() {
       return columnNames.length;
     }
-    // названия столбцов
+    // назви стовбців
     public String getColumnName(int column) {
       return columnNames[column];
     }
-    // количество строк
+    // кількість рядків
     public int getRowCount() {
       return data.length;
     }
-    // тип данных столбца
+    // тип даних стовбця
     public Class getColumnClass(int column) {
       return data[0][column].getClass();
     }
-    // значение в ячейке
+    // значення в комірці
     public Object getValueAt(int row, int column) {
       return data[row][column];
     }
