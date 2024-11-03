@@ -1,36 +1,36 @@
 // TableSelection.java
-// Режимы выделения ячеек таблицы
+// Режими виділення комірок таблиці
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 
 public class TableSelection extends JFrame {
-  // названия столбцов таблицы
+  // назви стовбців таблиці
   private String[] columnNames = {
-      "Название", "Вкус", "Цвет"
+      "Назва", "Смак", "Колір"
   };
-  // данные для таблицы
+  // дані для таблиці
   private String[][] data = {
-      { "Апельсин", "Кисло-сладкий", "Оранжевый"},
-      { "Арбуз", "Сладкий", "Темно-зеленый"},
-      { "Лимон", "Кислый", "Желтый"}
+      { "Апельсин", "Кисло-солодкий", "Оранжевий"},
+      { "Кавун", "Солодкий", "Темно-зелений"},
+      { "Лимон", "Кислий", "Жовтий"}
   };
   public TableSelection() {
     super("TableSelection");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем пару таблиц с одинаковыми данными
-    // первая таблица - выделение по строкам
+    // створюємо пару таблицт із одинаковими даними
+    // перша таблиця - виділення по рядках
     JTable table1 = new JTable(data, columnNames);
     table1.getSelectionModel().setSelectionMode(
         ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-    // вторая таблица - выделение по столбцам
+    // друга таблиця - виділення по стовбцях
     JTable table2 = new JTable(data, columnNames);
     table2.setRowSelectionAllowed(false);
     TableColumnModel cm = table2.getColumnModel();
     cm.setColumnSelectionAllowed(true);
     cm.getSelectionModel().setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
-    // добавляем таблицы и выводим окно на экран
+    // додаємо таблиці та виводимо вікно на екран
     setLayout(new GridLayout(1, 2));
     add(new JScrollPane(table1));
     add(new JScrollPane(table2));
