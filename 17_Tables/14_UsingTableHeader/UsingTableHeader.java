@@ -1,58 +1,58 @@
 // UsingTableHeader.java
-// Настройка заголовка таблицы JTableHeader
+// Налаштування заголовка таблиці JTableHeader
 import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.border.*;
 import java.awt.*;
 
 public class UsingTableHeader extends JFrame {
-  // данные для таблицы
+  // дані для таблиці
   private String[][] data = {
-      { "Июнь", "+18 С" },
-      { "Июль", "+22 С" },
-      { "Август", "+19 С" }
+      { "Червень", "+18 С" },
+      { "Липень", "+22 С" },
+      { "Серпень", "+19 С" }
   };
-  // названия столбцов
+  // назви стовбців
   private String[] columnNames = {
-      "Месяц", "Средняя температура"
+      "Місяць", "Середня температура"
   };
   public UsingTableHeader() {
     super("UsingTableHeader");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // создаем таблицу
+    // створюємо таблицю
     JTable table = new JTable(data, columnNames);
     table.setAutoCreateRowSorter(true);
-    // настраиваем заголовок таблицы
+    // налаштовуємо заголовок таблиці
     JTableHeader header = table.getTableHeader();
     header.setReorderingAllowed(false);
     header.setResizingAllowed(false);
-    // присоединяем отображающий объект
+    // приєднюємо відображуючий об'єкт
     header.setDefaultRenderer(new HeaderRenderer());
-    // добавляем таблицы в панель прокрутки
+    // додаємо таблицю в панель прокрутки
     add(new JScrollPane(table));
     setSize(400, 300);
     setVisible(true);
   }
-  // специальный отображающий объект для заголовка
+  // спеціальний відображуваний об'єкт для заголовку
   class HeaderRenderer
       extends DefaultTableCellRenderer {
-    // метод возвращает компонент для прорисовки
+    // метод повертає компонент для промальовування
     public Component getTableCellRendererComponent(
         JTable table, Object value, boolean isSelected,
         boolean hasFocus, int row, int column) {
-      // получаем настроенную надпись от базового класса
+      // отримуємо налаштовуваний напис від базового класу
       JLabel label = (JLabel)super.
           getTableCellRendererComponent(table,
               value, isSelected, hasFocus,
               row, column);
-      // настраиваем особую рамку и цвет фона
+      // налаштовуємо особливу рамку і колір фону
       label.setBackground(Color.gray);
       label.setBorder(border);
       return label;
     }
     private Border border = BorderFactory.
         createMatteBorder(16, 16, 16, 16,
-            new ImageIcon("bullet.png"));
+            new ImageIcon("Bullet.png"));
   }
   public static void main(String[] args) {
     SwingUtilities.invokeLater(
