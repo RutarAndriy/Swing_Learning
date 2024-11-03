@@ -1,5 +1,5 @@
 // ListDrag.java
-// РџРµСЂРµС‚Р°СЃРєРёРІР°РЅРёРµ Рё РІСЃС‚Р°РІРєР° РґР°РЅРЅС‹С… Рё TransferHandler
+// Перетягування і вставка даних та TransferHandler
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -7,36 +7,36 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 
 public class ListDrag extends JFrame {
-  // РЅР°С‡Р°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ СЃРїРёСЃРєРѕРІ
+  // початкові дані для списків
   private String[] listData =
-      new String[] { "Р Р°Р·", "Р”РІР°", "РўСЂРё" };
+      new String[] { "Раз", "Два", "Три" };
   public ListDrag() {
     super("ListDrag");
-    // РІС‹С…РѕРґ РїСЂРё Р·Р°РєСЂС‹С‚РёРё РѕРєРЅР°
+    // Виходимо при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // СЃРѕР·РґР°РµРј РјРѕРґРµР»Рё
+    // створюємо моделі
     DefaultListModel model1 = new DefaultListModel(),
         model2 = new DefaultListModel();
     for (String element: listData) {
       model1.addElement(element);
       model2.addElement(element);
     }
-    // СЃРѕР·РґР°РµРј СЃРїРёСЃРєРё
+    // створюємо списки
     JList list1 = new JList(model1);
     list1.setTransferHandler(new ListTransferHandler(list1));
     list1.setDragEnabled(true);
     JList list2 = new JList(model2);
     list2.setTransferHandler(new ListTransferHandler(list2));
     list2.setDragEnabled(true);
-    // РґРѕР±Р°РІРёРј СЃРїРёСЃРєРё РЅР° СЌРєСЂР°РЅ
+    // додамо списки на екран
     setLayout(new GridLayout(1, 2));
     add(new JScrollPane(list1));
     add(new JScrollPane(list2));
-    // РІС‹РІРµРґРµРј РѕРєРЅРѕ РЅР° СЌРєСЂР°РЅ
+    // виводимо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // РѕР±СЉРµРєС‚-Р°РґР°РїС‚РµСЂ РґР»СЏ СЃРїРёСЃРєРѕРІ Рё РёС… РґР°РЅРЅС‹С…
+  // об'єкт-адаптер для списків та їхніх даних
   static class ListTransferHandler extends TransferHandler {
     private JList list;
     public ListTransferHandler(JList list) {
@@ -44,18 +44,18 @@ public class ListDrag extends JFrame {
     }
     @Override
     public int getSourceActions(JComponent c) {
-      // РґР°РЅРЅС‹Рµ РјРѕРіСѓС‚ РєРѕРїРёСЂРѕРІР°С‚СЊСЃСЏ РёР»Рё РїРµСЂРµРјРµС‰Р°С‚СЊСЃСЏ
+      // Дані можуть копіюватися табо переміщуватися
       return TransferHandler.COPY_OR_MOVE;
     }
     @Override
     public boolean canImport(TransferSupport support) {
-      // РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ РёРјРїРѕСЂС‚ С‚РѕР»СЊРєРѕ СЃС‚СЂРѕРєРѕРІС‹С… РґР°РЅРЅС‹С…
+      // підтримується імпорт лише строкових даних
       return support.isDataFlavorSupported(
           DataFlavor.stringFlavor);
     }
     @Override
     protected Transferable createTransferable(JComponent c) {
-      // СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ СЃРїРѕСЃРѕР± Р°РґР°РїС‚РёСЂРѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ РґР»СЏ РѕР±РјРµРЅР°
+      // стандартний спосіб адаптувати строку для обміну
       return new StringSelection(
           list.getSelectedValue().toString());
     }
@@ -63,11 +63,11 @@ public class ListDrag extends JFrame {
     public boolean importData(TransferSupport support) {
       if ( support.isDataFlavorSupported(DataFlavor.stringFlavor) ) {
         try {
-          // РґРѕР±Р°РІР»СЏРµРј РІ РјРѕРґРµР»СЊ РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ РЅР° РІС‹Р±СЂР°РЅРЅСѓСЋ РїРѕР·РёС†РёСЋ
+          // додаємо в модель нову строку на вибрану позицію
           ((DefaultListModel)list.getModel()).
               add(list.locationToIndex(
                   support.getDropLocation().getDropPoint()),
-                  // РїРѕР»СѓС‡РµРЅРёРµ СЃС‚СЂРѕРєРё РёР· Transferable
+                  // отримання строки із Transferable
                   support.getTransferable().
                       getTransferData(DataFlavor.stringFlavor));
           return true;
