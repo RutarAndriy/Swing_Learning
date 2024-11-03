@@ -1,5 +1,5 @@
 // UndoListAdd.java
-// РћС‚РјРµРЅР° РѕРїРµСЂР°С†РёР№ РІ СЃРїРёСЃРєР°С… Рё UndoManager
+// Відміна операцій в списках та UndoManager
 import javax.swing.*;
 import javax.swing.undo.*;
 import java.awt.*;
@@ -7,40 +7,40 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class UndoListAdd extends JFrame {
-  // РѕР±СЉРµРєС‚ РґР»СЏ РѕС‚РјРµРЅС‹ РѕРїРµСЂР°С†РёР№
+  // об'єкт для відміни операцій
   private UndoManager undoManager = new UndoManager();
   public UndoListAdd() {
-    super("ListDrag");
-    // РІС‹С…РѕРґ РїСЂРё Р·Р°РєСЂС‹С‚РёРё РѕРєРЅР°
+    super("UndoListAdd");
+    // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    // СЃРѕР·РґР°РµРј РјРѕРґРµР»СЊ СЃРїРёСЃРєР°
+    // створюємо модель списку
     final DefaultListModel model = new DefaultListModel();
-    // СЃРѕР·РґР°РµРј СЃРїРёСЃРєРё
+    // створюємо списки
     JList list1 = new JList(model);
     JList list2 = new JList(model);
-    // РґРѕР±Р°РІРёРј СЃРїРёСЃРєРё РІ РѕРєРЅРѕ
+    // додаємо списки у вікно
     JPanel listPanel = new JPanel(new GridLayout(1, 2));
     listPanel.add(new JScrollPane(list1));
     listPanel.add(new JScrollPane(list2));
     add(listPanel);
-    // РєРЅРѕРїРєР° РґРѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
-    JButton add = new JButton("Р”РѕР±Р°РІРёС‚СЊ");
+    //скнопка додавання елемента
+    JButton add = new JButton("Додати");
     add.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        String newElement = "РќРѕРІС‹Р№!";
+        String newElement = "Новий!";
         model.addElement(newElement);
-        // СЂРµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕР№ РѕРїРµСЂР°С†РёРё РґР»СЏ РѕС‚РјРµРЅС‹
+        // реєстрація нової операції для відміни
         undoManager.addEdit(new
             ListAddUndoableEdit(model, newElement));
       }
     });
-    // РєРЅРѕРїРєРё РѕС‚РјРµРЅС‹ Рё РїРѕРІС‚РѕСЂР°
-    final JButton undo = new JButton("РћС‚РјРµРЅРёС‚СЊ");
-    final JButton redo = new JButton("РџРѕРІС‚РѕСЂРёС‚СЊ");
-    // РѕР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёР№ РєРЅРѕРїРѕРє
+    // кнопки відміни і повтору
+    final JButton undo = new JButton("Відмінити");
+    final JButton redo = new JButton("Повторити");
+    // оброблювач натискань кнопок
     ActionListener al = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        // РѕС‚РјРµРЅР° Рё РїРѕРІС‚РѕСЂ РїСЂРё РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё
+        // відміна і повтор при можливості
         if ( e.getSource() == undo
             && undoManager.canUndo() ) {
           undoManager.undo();
@@ -51,19 +51,19 @@ public class UndoListAdd extends JFrame {
     };
     undo.addActionListener(al);
     redo.addActionListener(al);
-    // РґРѕР±Р°РІРёРј РєРЅРѕРїРєРё РЅР° СЋРі РѕРєРЅР°
+    // додамо кнопки на південь вікна
     JPanel buttons = new JPanel();
     buttons.add(add);
     buttons.add(undo);
     buttons.add(redo);
     add(buttons, "South");
-    // РІС‹РІРµРґРµРј РѕРєРЅРѕ РЅР° СЌРєСЂР°РЅ
+    // виводмо вікно на екран
     setSize(400, 300);
     setVisible(true);
   }
-  // РєР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РґРѕР±Р°РІР»РµРЅРёРµ РІ СЃРїРёСЃРѕРє
+  // клас, описуючий додавання в список
   class ListAddUndoableEdit extends AbstractUndoableEdit {
-    // РјРѕРґРµР»СЊ Рё РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚
+    // модель і новий елемент
     private DefaultListModel model;
     private Object element;
     public ListAddUndoableEdit(DefaultListModel model, Object element) {
