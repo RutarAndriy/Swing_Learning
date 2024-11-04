@@ -10,15 +10,15 @@ public class StartingEventThread {
     Toolkit.getDefaultToolkit().
         getSystemEventQueue().push(new CustomQueue());
     // створюємо вікно
-    JFrame frame = new JFrame("Тест");
+    JFrame frame = new JFrame("StartingEventThread");
     System.out.println("(1) JFrame()");
     // додаємо прапорець
     JCheckBox checkBox = new JCheckBox("Тест");
     frame.add(checkBox, "South");
     System.out.println("(2) Доданий прапорець");
     // створюємо список
-    DefaultListModel model = new DefaultListModel();
-    JList list = new JList(model);
+    DefaultListModel<String> model = new DefaultListModel<>();
+    JList<String> list = new JList<>(model);
     frame.add(list);
     System.out.println("(3) Доданий список");
     // оновлюємо модель
