@@ -15,7 +15,7 @@ public class KeyBindingTest extends JFrame {
     // спрацьовує при відпусканні комбінації Ctrl+A
     im.put(KeyStroke.getKeyStroke(
         KeyEvent.VK_A,
-        KeyEvent.CTRL_MASK, true), "Action");
+        KeyEvent.CTRL_DOWN_MASK, true), "Action");
     // спрацьовує при друкуванні великої літери 'Я'
     im.put(KeyStroke.getKeyStroke('Я'), "Action");
     am.put("Action", new AnAction());
