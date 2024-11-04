@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class ConfirmClosing extends JFrame {
   public ConfirmClosing() {
-    super("Програма");
+    super("ConfirmClosing");
     // відключаємо дію закриття
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     // додаємо прослуховувач подій від вікна
