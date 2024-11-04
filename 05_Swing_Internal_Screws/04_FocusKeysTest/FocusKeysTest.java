@@ -19,7 +19,7 @@ public class FocusKeysTest extends JFrame {
     // налаштуємо клавіші передавання фокусу
     HashSet<AWTKeyStroke> set = new HashSet<AWTKeyStroke>();
     set.add(AWTKeyStroke.getAWTKeyStroke(
-        'Q', KeyEvent.CTRL_MASK));
+        'Q', KeyEvent.CTRL_DOWN_MASK));
     button.setFocusTraversalKeys(
         KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set);
     // виводимо вікно на екран
