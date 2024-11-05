@@ -14,7 +14,7 @@ public class ListSelectionEvents extends JFrame {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо список і текстове поле
     setLayout(new FlowLayout());
-    JList list = new JList(data);
+    JList<String> list = new JList<>(data);
     list.setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
     jta = new JTextArea(5, 20);
