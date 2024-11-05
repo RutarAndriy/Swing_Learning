@@ -6,12 +6,12 @@ import java.awt.*;
 
 public class UsingListModel extends JFrame {
   // наша модель
-  private DefaultListModel dlm;
+  private DefaultListModel<String> dlm;
   public UsingListModel() {
     super("UsingListModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // заповнюємо модель даними
-    dlm = new DefaultListModel();
+    dlm = new DefaultListModel<>();
     dlm.add(0, "Щось");
     dlm.add(0, "Щось ще");
     dlm.add(0, "Ще небагато");
@@ -22,8 +22,8 @@ public class UsingListModel extends JFrame {
         dlm.add(0, "Новинка!");
       }
     });
-    JList list1 = new JList(dlm);
-    JList list2 = new JList(dlm);
+    JList<String> list1 = new JList<>(dlm);
+    JList<String> list2 = new JList<>(dlm);
     // додаємо компоненти
     setLayout(new FlowLayout());
     add(add);
