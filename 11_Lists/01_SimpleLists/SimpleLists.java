@@ -14,17 +14,17 @@ public class SimpleLists extends JFrame {
     super("SimpleLists");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо списки
-    JList list1 = new JList(data1);
+    JList<String> list1 = new JList<>(data1);
     // для другого списку використовуємо вектор
     Vector<String> data = new Vector<String>();
     data.addAll(Arrays.asList(data2));
-    JList list2 = new JList(data);
+    JList<String> list2 = new JList<>(data);
     // динамічно наповнюємо вектор
     Vector<String> big = new Vector<String>();
     for (int i=0; i<50; i++) {
       big.add("# " + i);
     }
-    JList bigList = new JList(big);
+    JList<String> bigList = new JList<>(big);
     bigList.setPrototypeCellValue("12345");
     // додамо списки в панель
     setLayout(new FlowLayout());
