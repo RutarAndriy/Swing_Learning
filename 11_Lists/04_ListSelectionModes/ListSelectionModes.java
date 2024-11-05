@@ -10,18 +10,18 @@ public class ListSelectionModes extends JFrame {
     super("ListSelectionModes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // заповнимо модель даними
-    DefaultListModel dlm =
-        new DefaultListModel();
+    DefaultListModel<String> dlm =
+        new DefaultListModel<>();
     for (String next : data)
       dlm.addElement(next);
     // три списки з різним типом виділення
-    JList list1 = new JList(dlm);
+    JList<String> list1 = new JList<>(dlm);
     list1.setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
-    JList list2 = new JList(dlm);
+    JList<String> list2 = new JList<>(dlm);
     list2.setSelectionMode(
         ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-    JList list3 = new JList(dlm);
+    JList<String> list3 = new JList<>(dlm);
     // аналогічно попередньому виклику
     list3.getSelectionModel().setSelectionMode(
         ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
