@@ -24,7 +24,7 @@ public class SimpleToolbars extends JFrame {
     // додамо команду
     toolbar2.add(new SaveAction());
     // випадаючий список
-    toolbar2.add(new JComboBox(new String[] {
+    toolbar2.add(new JComboBox<String>(new String[] {
         "Жирний", "Звичайний" }));
     // додамо панелі інструментів у вікно
     add(toolbar1, "North");
