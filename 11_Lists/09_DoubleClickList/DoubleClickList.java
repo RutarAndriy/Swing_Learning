@@ -8,12 +8,12 @@ public class DoubleClickList extends JFrame {
   // дані списку
   private String[] data = { "Стейк", "Лобстер",
       "Борщ", "Риба"};
-  private JList list;
+  private JList<String> list;
   public DoubleClickList() {
     super("DoubleClickList");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо список
-    list = new JList(data);
+    list = new JList<>(data);
     list.setSelectionMode(
         ListSelectionModel.SINGLE_SELECTION);
     // додамо прослуховувача подій від миші
