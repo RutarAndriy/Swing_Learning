@@ -16,7 +16,7 @@ public class CombiningToolbars extends JFrame {
     toolbar1.add(new JButton("Стиль"));
     JToolBar toolbar2 = new JToolBar();
     toolbar2.add(new JButton("Формат"));
-    toolbar2.add(new JComboBox(new String[] {
+    toolbar2.add(new JComboBox<String>(new String[] {
         "Червоний", "Зелений"}));
     JToolBar toolbar3 = new JToolBar();
     toolbar3.add(new JButton("Звичайний"));
