@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class CheckBoxListTest {
   // дані списку
-  private static Object[] data = {
+  private static CheckBoxListElement[] data = {
       new CheckBoxListElement(false, "Корпус"),
       new CheckBoxListElement(false,
           "<html><h3><font color=red>Колонки"),

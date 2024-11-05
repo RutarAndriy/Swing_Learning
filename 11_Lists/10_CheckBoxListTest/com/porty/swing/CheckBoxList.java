@@ -6,17 +6,17 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Vector;
 
-public class CheckBoxList extends JList {
+public class CheckBoxList extends JList<CheckBoxListElement> {
   // зберігаємо усі конструктори
-  public CheckBoxList(ListModel model) {
+  public CheckBoxList(ListModel<CheckBoxListElement> model) {
     super(model);
     initList();
   }
-  public CheckBoxList(Object[] data) {
+  public CheckBoxList(CheckBoxListElement[] data) {
     super(data);
     initList();
   }
-  public CheckBoxList(Vector data) {
+  public CheckBoxList(Vector<CheckBoxListElement> data) {
     super(data);
     initList();
   }
@@ -45,13 +45,10 @@ public class CheckBoxList extends JList {
   }
   // відображаючий прапорці об'єкт
   public static class CheckBoxCellRenderer
-      extends JCheckBox implements ListCellRenderer {
+      extends JCheckBox implements ListCellRenderer<CheckBoxListElement> {
     public Component getListCellRendererComponent(
-        JList list, Object data, int idx,
+        JList list, CheckBoxListElement data, int idx,
         boolean isSelected, boolean hasFocus) {
-      // вважаємо, що дані завжди потрібного типу
-      CheckBoxListElement
-          cbel = (CheckBoxListElement)data;
       // налаштовуємо прапорець
       if ( isSelected ) {
         setBackground(list.getSelectionBackground());
@@ -60,8 +57,8 @@ public class CheckBoxList extends JList {
         setBackground(list.getBackground());
         setForeground(list.getForeground());
       }
-      setSelected(cbel.isSelected());
-      setText(cbel.getText());
+      setSelected(data.isSelected());
+      setText(data.getText());
       return this;
     }
   }
