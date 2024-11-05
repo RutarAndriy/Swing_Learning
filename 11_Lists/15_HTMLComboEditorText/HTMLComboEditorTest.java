@@ -19,7 +19,7 @@ public class HTMLComboEditorTest
     super("HTMLComboEditorTest");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо список
-    final JComboBox combo = new JComboBox(data);
+    final JComboBox<Object> combo = new JComboBox<>(data);
     combo.setPrototypeDisplayValue("11223344556677");
     combo.setEditable(true);
     combo.setEditor(new HTMLComboBoxEditor());
