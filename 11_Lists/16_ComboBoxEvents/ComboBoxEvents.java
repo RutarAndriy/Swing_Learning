@@ -12,7 +12,7 @@ public class ComboBoxEvents extends JFrame {
     super("ComboBoxEvents");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // перший список
-    JComboBox combo1 = new JComboBox(data);
+    JComboBox<String> combo1 = new JComboBox<>(data);
     // прослуховувач зміни вибраного елемента
     combo1.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
@@ -27,7 +27,7 @@ public class ComboBoxEvents extends JFrame {
       }
     });
     // список, дозволяючий редагування
-    final JComboBox combo2 = new JComboBox(data);
+    final JComboBox<String> combo2 = new JComboBox<>(data);
     combo2.setEditable(true);
     // прослуховувач закінчення редагування
     combo2.addActionListener(new ActionListener() {
