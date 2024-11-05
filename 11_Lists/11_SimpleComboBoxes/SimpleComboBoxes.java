@@ -13,14 +13,14 @@ public class SimpleComboBoxes extends JFrame {
     super("SimpleComboBoxes");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створемо пару випадаючих списків
-    JComboBox combo1 = new JComboBox(elements);
+    JComboBox<String> combo1 = new JComboBox<>(elements);
     // задамо прототип елемента списку
     combo1.setPrototypeDisplayValue("Довгий елемент");
     // другий випадаючий список
     Vector<String> data = new Vector<String>();
     for (int i=0; i<10; i++)
       data.add("Елемент №: " + i);
-    JComboBox combo2 = new JComboBox(data);
+    JComboBox<String> combo2 = new JComboBox<>(data);
     // робимо його редагуючим
     combo2.setEditable(true);
     combo2.setMaximumRowCount(6);
