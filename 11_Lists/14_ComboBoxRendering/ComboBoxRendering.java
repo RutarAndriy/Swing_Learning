@@ -26,8 +26,8 @@ public class ComboBoxRendering extends JFrame {
     super("ComboBoxRendering");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо пару випадаючих списків
-    JComboBox combo1 = new JComboBox(textData);
-    JComboBox combo2 = new JComboBox(iconData);
+    JComboBox<String> combo1 = new JComboBox<>(textData);
+    JComboBox<ImageListElement> combo2 = new JComboBox<>(iconData);
     // наш спеціальний відображуваний об'єкт
     combo2.setRenderer(new ImageListCellRenderer());
     // додаємо списки у вікно
