@@ -18,7 +18,7 @@ public class TreeDefaultEditing extends JFrame {
     // вмикаємо редагування
     tree.setEditable(true);
     // "справжній" редактор
-    JComboBox combo = new JComboBox(
+    JComboBox<String> combo = new JComboBox<>(
         new String[] {"Червоний", "Зелений"});
     DefaultCellEditor editor = new DefaultCellEditor(combo);
     // спеціальний редактор для дерев
