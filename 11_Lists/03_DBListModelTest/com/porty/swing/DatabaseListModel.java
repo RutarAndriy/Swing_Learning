@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class DatabaseListModel extends AbstractListModel {
+public class DatabaseListModel extends AbstractListModel<String> {
   // тут будемо зберігати дані
-  private ArrayList<String> data = new ArrayList<String>();
+  private ArrayList<String> data = new ArrayList<>();
   // завантаження даних із бази даних
   public void setDataSource(ResultSet rs, String column)
       throws SQLException {
@@ -24,7 +24,7 @@ public class DatabaseListModel extends AbstractListModel {
   public int getSize() {
     return data.size();
   }
-  public Object getElementAt(int idx) {
+  public String getElementAt(int idx) {
     return data.get(idx);
   }
 }
