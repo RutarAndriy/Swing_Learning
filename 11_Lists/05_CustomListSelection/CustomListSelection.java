@@ -10,7 +10,7 @@ public class CustomListSelection extends JFrame {
     super("CustomListSelection");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // налаштуємо список і добавимо його у вікно
-    JList list = new JList(data);
+    JList<String> list = new JList<>(data);
     list.setSelectionModel(new CustomSelectionModel());
     add(new JScrollPane(list));
     // виводимо вікно на екран
