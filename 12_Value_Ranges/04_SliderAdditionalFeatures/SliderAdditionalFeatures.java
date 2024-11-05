@@ -12,7 +12,7 @@ public class SliderAdditionalFeatures extends JFrame {
     BoundedRangeModel model =
         new DefaultBoundedRangeModel(10, 0, 0, 60);
     // таблиця з написами
-    Dictionary labels = new Hashtable();
+    Dictionary<Integer, JLabel> labels = new Hashtable<>();
     labels.put(0, new JLabel(
         "<html><font color=red size=4>Нуль"));
     labels.put(10, new JLabel(
