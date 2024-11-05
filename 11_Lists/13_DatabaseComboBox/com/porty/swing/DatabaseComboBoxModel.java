@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.sql.*;
 
 public class DatabaseComboBoxModel
-    extends DefaultComboBoxModel {
+    extends DefaultComboBoxModel<String> {
   // отримуємоо дані із запиту ResultSet
   public void setDataSource(ResultSet rs, int column)
       throws SQLException {

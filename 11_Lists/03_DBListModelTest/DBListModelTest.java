@@ -13,7 +13,7 @@ public class DBListModelTest {
       dsn = "jdbc:h2:./Test",
       uid = "user",
       pwd = "",
-      query = "SELECT * FROM USERS ";
+      query = "SELECT * FROM USERS";
   public static void main(String[] args) throws Exception {
     // ініціалізація JDBC
     Class.forName("org.h2.Driver");

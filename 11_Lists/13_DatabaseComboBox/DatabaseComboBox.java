@@ -1,6 +1,6 @@
 // DatabaseComboBox.java
 // Приклад використання моделі DatabaseComboBoxModel
-// Приклад застарів, тому не працює на нових версіях Java починаючи із 8-ї
+// java -classpath h2-2.3.232.jar DatabaseComboBox.java
 import javax.swing.*;
 import com.porty.swing.DatabaseComboBoxModel;
 import java.sql.*;
@@ -9,8 +9,8 @@ import java.awt.*;
 public class DatabaseComboBox extends JFrame {
   // параметри підключення до бази даних
   private static String
-      dsn = "jdbc:odbc:Library",
-      uid = "",
+      dsn = "jdbc:h2:./Test",
+      uid = "user",
       pwd = "";
   // наша модель
   private DatabaseComboBoxModel cbm;
@@ -20,12 +20,12 @@ public class DatabaseComboBox extends JFrame {
     // налаштовуємо з'єднання із базою даних
     Connection conn = null;
     try {
-      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+      Class.forName("org.h2.Driver");
       // об'єкт-з'єднання із базою даних
       conn = DriverManager.getConnection(dsn, uid, pwd);
       Statement st = conn.createStatement();
       ResultSet rs = st.executeQuery(
-          "select * from readers.csv");
+          "SELECT * FROM USERS");
       // передаємо дані в модель
       cbm = new DatabaseComboBoxModel();
       cbm.setDataSource(rs, 2);
@@ -35,7 +35,7 @@ public class DatabaseComboBox extends JFrame {
     }
     // приєднюємо модель до списку
     setLayout(new FlowLayout());
-    add(new JComboBox(cbm));
+    add(new JComboBox<>(cbm));
     // виводимо вікно на екран
     setSize(300, 200);
     setVisible(true);
