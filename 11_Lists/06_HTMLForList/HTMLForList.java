@@ -16,7 +16,7 @@ public class HTMLForList {
         new Runnable() {
           public void run() {
             // створюємо список
-            JList list = new JList(data);
+            JList<Object> list = new JList<>(data);
             // поміщаємо його у вікно
             JFrame frame = new JFrame("HTMLForList");
             frame.setDefaultCloseOperation(
