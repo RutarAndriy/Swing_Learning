@@ -19,7 +19,7 @@ public class ImageList {
         new Runnable() {
           public void run() {
             // створюємо список і налаштовуємо його
-            JList list = new JList(data);
+            JList<Object> list = new JList<>(data);
             list.setCellRenderer(new ImageListCellRenderer());
             // додаємо у вікно
             JFrame frame = new JFrame("ImageList");
