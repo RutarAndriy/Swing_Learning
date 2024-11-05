@@ -6,19 +6,19 @@ import java.awt.*;
 
 public class UsingComboBoxModel extends JFrame {
   // наша стандартна модель
-  private DefaultComboBoxModel cbm;
+  private DefaultComboBoxModel<String> cbm;
   public UsingComboBoxModel() {
     super("UsingComboBoxModel");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо стандартну модель і заповнюємо її даними
-    cbm = new DefaultComboBoxModel();
+    cbm = new DefaultComboBoxModel<>();
     for (int i=0; i<10; i++) {
       cbm.addElement("Елемент списку №: " + i);
     }
     // змінюємо вибраний елемент
     cbm.setSelectedItem(cbm.getElementAt(4));
     // список на основі нашої моделі
-    JComboBox combo = new JComboBox(cbm);
+    JComboBox<String> combo = new JComboBox<>(cbm);
     combo.setMaximumRowCount(5);
     // стандартна модель дозволяє
     // динамічно маніпулювати даними
