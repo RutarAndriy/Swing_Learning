@@ -30,12 +30,12 @@ public class GoodMenu extends JFrame {
     open.setMnemonic('В'); // українська літера
     // встановимо клавішу швидкого доступу (латинська літера)
     open.setAccelerator(
-      KeyStroke.getKeyStroke('O', KeyEvent.CTRL_MASK));
+      KeyStroke.getKeyStroke('O', KeyEvent.CTRL_DOWN_MASK));
     // пункт меню "Зберегти"
     JMenuItem save = new JMenuItem("Зберегти");
     save.setMnemonic('З');
     save.setAccelerator(
-      KeyStroke.getKeyStroke('S', KeyEvent.CTRL_MASK));
+      KeyStroke.getKeyStroke('S', KeyEvent.CTRL_DOWN_MASK));
     // додамо все в меню
     file.add(open);
     file.add(save);
@@ -50,7 +50,7 @@ public class GoodMenu extends JFrame {
     JMenuItem cut = new JMenuItem("Вирізати");
     cut.setMnemonic('В');
     cut.setAccelerator(
-      KeyStroke.getKeyStroke('X', KeyEvent.CTRL_MASK));
+      KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK));
     // пункт меню "Копіювати"
     JMenuItem copy = new JMenuItem("Копіювати");
     copy.setMnemonic('К');
