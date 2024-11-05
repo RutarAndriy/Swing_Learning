@@ -27,7 +27,7 @@ public class ActionSample extends JFrame {
       // встановлюємо параметри команди
       putValue(NAME, "Привіт, Action!");
       putValue(SHORT_DESCRIPTION, "Це підказка");
-      putValue(MNEMONIC_KEY, new Integer('A'));
+      putValue(MNEMONIC_KEY, Integer.valueOf('A'));
     }
     // у цьому методі обробляється подія, як
     // і в попередньому методі ActionListener
