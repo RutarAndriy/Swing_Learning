@@ -14,10 +14,10 @@ public class UndoListAdd extends JFrame {
     // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо модель списку
-    final DefaultListModel model = new DefaultListModel();
+    final DefaultListModel<String> model = new DefaultListModel<>();
     // створюємо списки
-    JList list1 = new JList(model);
-    JList list2 = new JList(model);
+    JList<String> list1 = new JList<>(model);
+    JList<String> list2 = new JList<>(model);
     // додаємо списки у вікно
     JPanel listPanel = new JPanel(new GridLayout(1, 2));
     listPanel.add(new JScrollPane(list1));
@@ -76,6 +76,7 @@ public class UndoListAdd extends JFrame {
       model.removeElement(element);
     }
     @Override
+    @SuppressWarnings("unchecked")
     public void redo() throws CannotRedoException {
       super.redo();
       model.addElement(element);
