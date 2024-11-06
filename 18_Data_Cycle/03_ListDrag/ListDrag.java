@@ -15,17 +15,17 @@ public class ListDrag extends JFrame {
     // Виходимо при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо моделі
-    DefaultListModel model1 = new DefaultListModel(),
-        model2 = new DefaultListModel();
+    DefaultListModel<String> model1 = new DefaultListModel<>(),
+        model2 = new DefaultListModel<>();
     for (String element: listData) {
       model1.addElement(element);
       model2.addElement(element);
     }
     // створюємо списки
-    JList list1 = new JList(model1);
+    JList<String> list1 = new JList<>(model1);
     list1.setTransferHandler(new ListTransferHandler(list1));
     list1.setDragEnabled(true);
-    JList list2 = new JList(model2);
+    JList<String> list2 = new JList<>(model2);
     list2.setTransferHandler(new ListTransferHandler(list2));
     list2.setDragEnabled(true);
     // додамо списки на екран
@@ -60,6 +60,7 @@ public class ListDrag extends JFrame {
           list.getSelectedValue().toString());
     }
     @Override
+    @SuppressWarnings("unchecked")
     public boolean importData(TransferSupport support) {
       if ( support.isDataFlavorSupported(DataFlavor.stringFlavor) ) {
         try {
