@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableRowSorter;
-import java.awt.*;
+import javax.swing.table.TableModel;
 
 public class FilterAndSelection extends JFrame {
   public FilterAndSelection() {
@@ -23,14 +23,18 @@ public class FilterAndSelection extends JFrame {
     final JTable table = new JTable(sm);
     // автоматичне включення сортування
     table.setAutoCreateRowSorter(true);
-    // приєднюємо фільтруючий об'єкт
-    ((TableRowSorter)table.getRowSorter()).
-        setRowFilter(new RowFilter() {
-          public boolean include(Entry entry) {
+    // отримуємо об'єкт-сортувальник
+    TableRowSorter <? extends TableModel> rowSorter =
+        (TableRowSorter<? extends TableModel>) table.getRowSorter();
+    // створюємо об'єкт-фільтр
+    RowFilter<? super TableModel,? super Integer> rowFilter = new RowFilter<>() {
+        public boolean include(Entry entry) {
             // вмикаємо лише парні рядки
             return ((Integer)entry.getValue(0)) % 2 == 0;
-          }
-        });
+        }
+    };
+    // приєднюємо фільтруючий об'єкт
+    rowSorter.setRowFilter(rowFilter);
     add(new JScrollPane(table));
     // поле для відображення номерів вибраних рядків
     final JTextArea out = new JTextArea(4, 10);
