@@ -19,7 +19,7 @@ public class TableDefaultEditing extends JFrame {
     // створюємо таблицю
     JTable table = new JTable(data, columns);
     // налаштовуємо стандартний редактор
-    JComboBox combo = new JComboBox(
+    JComboBox<String> combo = new JComboBox<>(
         new String[] { "Зелений", "Жовтий", "Білий"});
     DefaultCellEditor editor =
         new DefaultCellEditor(combo);
