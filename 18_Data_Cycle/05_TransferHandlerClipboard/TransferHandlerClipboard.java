@@ -10,11 +10,11 @@ public class TransferHandlerClipboard extends JFrame {
     // вихід при закриванні вікна
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     // створюємо модель
-    DefaultListModel model = new DefaultListModel();
+    DefaultListModel<String> model = new DefaultListModel<>();
     model.addElement("Раз");
     model.addElement("Два");
     // список із рядками
-    final JList list = new JList(model);
+    final JList<String> list = new JList<>(model);
     list.setTransferHandler(new ListDrag.ListTransferHandler(list));
     list.setDragEnabled(true);
     list.setDropMode(DropMode.INSERT);

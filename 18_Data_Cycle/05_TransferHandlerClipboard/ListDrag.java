@@ -31,6 +31,7 @@ public class ListDrag extends JFrame {
           list.getSelectedValue().toString());
     }
     @Override
+    @SuppressWarnings("unchecked")
     public boolean importData(TransferSupport support) {
       if ( support.isDataFlavorSupported(DataFlavor.stringFlavor) ) {
         try {
